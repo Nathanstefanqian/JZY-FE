@@ -1,0 +1,11 @@
+/**app.wxss**/
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+  box-sizing: border-box;
+} 
+.top {
+    margin-top:70rpx;
+}

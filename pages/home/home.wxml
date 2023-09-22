@@ -1,0 +1,21 @@
+<!-- pages/home/home.wxml -->
+<view class="blank"></view>
+<view class="container">
+  <van-notice-bar left-icon="volume-o" text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。" />
+  <view class="refresh-tip" wx:if="{{isRefreshing}}">
+    <text>正在刷新...</text>
+  </view>
+  <van-search shape="round" placeholder="这里搜索" bind:search="onSearch" ></van-search>
+  <van-tabs animated active="{{ active }}" bind:change="onChange">
+    <van-tab title="校内代拿">
+      <van-dropdown-menu>
+        <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+        <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+      </van-dropdown-menu>
+      <van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg" wx:for="item in list" custom-class="card" />
+    </van-tab>
+    <van-tab title="校外兼职">
+      <van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg" wx:for="item in list" custom-class="card" />
+    </van-tab>
+  </van-tabs>
+</view>

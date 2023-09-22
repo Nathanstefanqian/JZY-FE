@@ -1,0 +1,12 @@
+<view class="bg">
+<view class="top"></view>
+<van-image
+  round
+  width="5rem"
+  height="5rem"
+  fit="cover"
+  src="https://img.yzcdn.cn/vant/cat.jpeg"
+/>
+</view>
+<view class="container">
+</view>

@@ -1,0 +1,11 @@
+.card {
+    margin-bottom: 50rpx;
+}
+.refresh-tip {
+    text-align: center;
+    padding: 10px;
+    color: #888;
+}
+.blank {
+    margin-top: 140rpx;
+}

@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/my/my",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#e3d366",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/home.png",
+        "selectedIconPath": "assets/home1.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "assets/my.png",
+        "selectedIconPath": "assets/my1.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-row": "./dist/row/index",
+    "van-button": "./dist/button/index",
+    "van-col": "./dist/col/index",
+    "van-tabbar": "./dist/tabbar/index",
+    "van-tabbar-item": "./dist/tabbar-item/index",
+    "van-search": "./dist/search/index",
+    "van-icon": "./dist/icon/index",
+    "van-tab": "./dist/tab/index",
+    "van-tabs": "./dist/tabs/index",
+    "van-card": "./dist/card/index",
+    "van-image": "./dist/image/index",
+    "van-dropdown-menu": "./dist/dropdown-menu/index",
+    "van-dropdown-item": "./dist/dropdown-item/index",
+    "van-notice-bar": "./dist/notice-bar/index"
+  }
+}

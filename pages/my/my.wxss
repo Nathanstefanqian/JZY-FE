@@ -1,0 +1,17 @@
+/* pages/my/my.wxss */
+.bg {
+    box-sizing: border-box;
+    width: 100%;
+    height: 450rpx;
+    display: flex;
+    padding: 20rpx;
+    flex-direction: column;
+    background-image: url('https://upload.nathanqian.top/bg.JPG');
+    background-position: 10%;
+}
+.bg-image {
+    width: 100%;
+}
+.avatar {
+
+}

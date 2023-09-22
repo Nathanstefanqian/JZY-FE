@@ -7,5 +7,5 @@
   box-sizing: border-box;
 } 
 .top {
-    margin-top:70rpx;
+    margin-top:140rpx;
 }

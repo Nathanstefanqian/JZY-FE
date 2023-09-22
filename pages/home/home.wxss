@@ -6,6 +6,4 @@
     padding: 10px;
     color: #888;
 }
-.blank {
-    margin-top: 140rpx;
-}
+

@@ -1,11 +1,11 @@
 <!-- pages/home/home.wxml -->
-<view class="blank"></view>
+<view class="top"></view>
 <view class="container">
   <van-notice-bar left-icon="volume-o" text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。" />
   <view class="refresh-tip" wx:if="{{isRefreshing}}">
     <text>正在刷新...</text>
   </view>
-  <van-search shape="round" placeholder="这里搜索" bind:search="onSearch" ></van-search>
+  <van-search shape="round" placeholder="这里搜索" bind:search="onSearch"></van-search>
   <van-tabs animated active="{{ active }}" bind:change="onChange">
     <van-tab title="校内代拿">
       <van-dropdown-menu>

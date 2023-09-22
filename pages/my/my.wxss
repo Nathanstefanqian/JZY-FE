@@ -6,8 +6,6 @@
     display: flex;
     padding: 20rpx;
     flex-direction: column;
-    background-image: url('https://upload.nathanqian.top/bg.JPG');
-    background-position: 10%;
 }
 .bg-image {
     width: 100%;

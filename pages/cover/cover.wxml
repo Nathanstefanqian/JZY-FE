@@ -1,5 +1,4 @@
 <view class="bg">
     <image src="../../assets/logo.png" mode="aspectFit" style="width: 200rpx;" />
     <span>通大兼职易</span>
-    <van-button bind:tap="enter">点击进入</van-button>
 </view>

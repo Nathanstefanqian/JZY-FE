@@ -1,0 +1,49 @@
+.guide image {
+    position: absolute;
+    top: 362rpx;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 880rpx;
+    font-size: 44rpx;
+}
+
+.text span:first-child {
+    margin-bottom: 20rpx;
+}
+
+.text span:nth-child(2) {
+    text-align: center;
+    width: 586rpx;
+    font-size: 28rpx;
+    font-weight: 400;
+    color: rgba(102, 110, 122, 1);
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    margin-top: 40rpx;
+    width: 112rpx;
+    height: 24rpx;
+}
+
+.active {
+    width: 24px;
+    height: 8px;
+    opacity: 1;
+    border-radius: 40px;
+    background: rgba(253, 119, 83, 1);
+}
+.inactive {
+    margin-left: 10rpx;
+    width: 8px;
+    height: 8px;
+    opacity: 0.2;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 50%;
+}

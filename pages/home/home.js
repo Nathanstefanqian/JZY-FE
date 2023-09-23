@@ -38,7 +38,7 @@ Page({
   },
   onSearch(event) {
       wx.navigateTo({
-        url: '../search/search',
+        url: '../cover/cover',
       })
   }
 })

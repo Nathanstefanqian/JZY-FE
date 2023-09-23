@@ -1,0 +1,16 @@
+<!--guide/guide.wxml-->
+<van-transition name="slide-right" show="{{ show }}">
+<view class="guide">
+    <image src="../../assets/guide1.svg" style="width: 390rpx;" mode="aspectFit" />
+    <view class="text">
+        <span>得到你梦想的工作</span>
+        <span>在我们的应用中的小工具中获取工作推荐、搜索和保存工作机会</span>
+        <view class="toggle">
+            <view class="active"></view>
+            <view class="inactive"></view>
+            <view class="inactive"></view>
+        </view>
+    </view>
+</view>
+</van-transition>
+

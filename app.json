@@ -3,7 +3,8 @@
     "pages/cover/cover",
     "pages/home/home",
     "pages/my/my",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/guide/guide"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -47,6 +48,7 @@
     "van-image": "./dist/image/index",
     "van-dropdown-menu": "./dist/dropdown-menu/index",
     "van-dropdown-item": "./dist/dropdown-item/index",
+    "van-transition": "./dist/transition/index",
     "van-notice-bar": "./dist/notice-bar/index"
   }
 }

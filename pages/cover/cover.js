@@ -1,8 +1,9 @@
 Page({
-    enter() {
-        console.log('出发')
-        wx.navigateTo({
-          url: '../my/my'
-        })
+    onLoad() {
+        setTimeout(() => {
+            wx.navigateTo({
+              url: '../guide/guide'
+            })
+        }, 2000)
     }
 })

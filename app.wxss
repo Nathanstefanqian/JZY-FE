@@ -3,8 +3,10 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 40rpx;
   box-sizing: border-box;
+  position: relative;
 } 
 .top {
     margin-top:140rpx;
@@ -16,4 +18,9 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

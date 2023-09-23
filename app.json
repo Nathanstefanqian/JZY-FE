@@ -4,7 +4,9 @@
     "pages/home/home",
     "pages/my/my",
     "pages/search/search",
-    "pages/guide/guide"
+    "pages/guide/guide",
+    "pages/login/login",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -49,6 +51,10 @@
     "van-dropdown-menu": "./dist/dropdown-menu/index",
     "van-dropdown-item": "./dist/dropdown-item/index",
     "van-transition": "./dist/transition/index",
-    "van-notice-bar": "./dist/notice-bar/index"
+    "van-divider": "./dist/divider/index",
+    "van-notice-bar": "./dist/notice-bar/index",
+    "van-field": "./dist/field/index",
+    "van-radio": "./dist/radio/index",
+    "van-radio-group": "./dist/radio-group/index"
   }
 }

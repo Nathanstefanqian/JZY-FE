@@ -1,70 +1,50 @@
-// guide/guide.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    show: false
+    isActive: 0,
+    list: [{
+        url: '../../assets/guide1.svg',
+        title: '得到你梦想的工作',
+        subtitle: '在我们的应用中的小工具中获取工作推荐、搜索和保存工作机会',
+        show: true
+    },
+    {
+        url: '../../assets/guide2.svg',
+        title: '方便在您随时方便使用',
+        subtitle: '在我们的应用中的小工具中获取工作推荐、搜索和保存工作机会',
+        show: false
+    },
+    {
+        url: '../../assets/guide3.svg',
+        title: '轻松管理简历',
+        subtitle: '在我们的应用中的小工具中获取工作推荐、搜索和保存工作机会',
+        show: false
+    }
+	]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-    setTimeout(() => {
-        this.setData({
-            show: true
-        })
-    }, 1000)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
+  toggle() {
+      let { list } = this.data
+      let index = list.findIndex(item => item.show === true)
+      list[index].show = false
+      list[index+1].show = true
 
-  },
+      this.setData({
+          list: list,
+          isActive: index+1
+      })
+	},
+	
+	login() {
+		wx.navigateTo({
+			url: '../login/login'
+		})
+	},
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
+	register() {
+		wx.navigateTo({
+			url: '../register/register'
+		})
+	}
 })

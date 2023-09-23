@@ -16,6 +16,7 @@
                 bind:change="onChange"
                 custome-style="field"
             />
+            <view style="width: 100%; height: 20rpx;"></view>
             <span style="margin-top: 50rpx;">密码</span>
             <van-field
                 value="{{ value }}"

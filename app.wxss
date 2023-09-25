@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40rpx;
+  padding: 0 46rpx;
+  padding-top: 180rpx;
   box-sizing: border-box;
   position: relative;
 } 
@@ -18,9 +19,4 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-}
-.text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }

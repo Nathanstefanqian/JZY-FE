@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/cover/cover",
     "pages/home/home",
+    "pages/cover/cover",
     "pages/my/my",
     "pages/search/search",
     "pages/guide/guide",

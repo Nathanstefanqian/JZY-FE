@@ -1,21 +1,66 @@
-<!-- pages/home/home.wxml -->
-<view class="top"></view>
 <view class="container">
-  <van-notice-bar left-icon="volume-o" text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。" />
-  <view class="refresh-tip" wx:if="{{isRefreshing}}">
-    <text>正在刷新...</text>
+  <view class="head">
+    <view class="text">
+      <span>您好，</span>
+      <span>钱卢骏</span>
+    </view>
+    <view class="ring">
+        <image src="../../assets/ring.svg" />
+    </view>
   </view>
-  <van-search shape="round" placeholder="这里搜索" bind:search="onSearch"></van-search>
-  <van-tabs animated active="{{ active }}" bind:change="onChange">
-    <van-tab title="校内代拿">
-      <van-dropdown-menu>
-        <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
-        <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
-      </van-dropdown-menu>
-      <van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg" wx:for="item in list" custom-class="card" />
-    </van-tab>
-    <van-tab title="校外兼职">
-      <van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg" wx:for="item in list" custom-class="card" />
-    </van-tab>
-  </van-tabs>
+  <van-search value="{{ value }}" input-align="center" placeholder="开始寻找你梦寐以求的工作" style="width: 100%; margin-bottom: 64rpx;" />
+  <!-- <swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="{{ 3000 }}" duration="{{ 500 }}">
+    <block wx:for="{{ imageUrl }}">
+      <swiper-item>
+        <image src="{{ item }}" mode="aspectFit" />
+      </swiper-item>
+    </block>
+  </swiper> -->
+  <view class="module">
+    <view class="row">
+        <view class="box" wx:for="{{list}}">
+            <image src="{{item.url}}"></image>
+            <span>{{item.title}}</span>
+        </view>
+    </view>
+  </view>
+  
+  <view class="main">
+    <view class="header">
+        <span>最新职位</span>
+    </view>
+    <view class="card" wx:for="{{[1,2,3]}}">
+        <view class="card-item1">
+            <view class="card-item1-avatar">
+                <image src="../../assets/clogo.svg" mode="aspectFit" />
+            </view>
+            <view class="card-item1-company">公司名</view>
+            <view class="card-item1-star">
+            <image src="../../assets/star.svg" />
+            </view>
+        </view>
+        <view class="card-item2">
+            <view class="card-item2-title">互联网产品经理</view>
+            <view class="card-item2-subtitle">
+                <span>北京，丰台</span>
+                <span> · </span>
+                <span>全职</span>
+            </view>
+            <view class="card-item2-sub">
+                我们正在寻找项目经理，您可以在这里申请。 良好的多任务处理是这个角色的加分项。
+            </view>
+        <view class="card-item3">
+            <view class="card-item3-people">
+                <image src="../../assets/user.svg" />
+                <span>123</span>
+            </view>
+            <view class="card-item3-hit">
+                <image src="../../assets/hit.svg" />
+                <span>123</span>
+            </view>
+            <view class="card-item3-time">3小时前</view>
+        </view>
+        </view>
+    </view>
+</view>
 </view>

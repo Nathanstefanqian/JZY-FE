@@ -1,15 +1,89 @@
-/* pages/my/my.wxss */
-.bg {
-    box-sizing: border-box;
+.box {
     width: 100%;
-    height: 450rpx;
+    font-size: 40rpx;
+    margin-bottom: 40rpx;
+}
+
+.profile {
+    padding: 40rpx;
+    width: 100%;
     display: flex;
-    padding: 20rpx;
+}
+
+.profile .avatar {
+    width: 25%;
+    display: flex;
+}
+
+.avatar image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}
+
+.profile .detail {
+    display: flex;
     flex-direction: column;
 }
-.bg-image {
-    width: 100%;
-}
-.avatar {
 
+.detail span:first-child {
+    font-size: 40rpx;
+    margin-bottom: 15rpx;
+}
+
+.detail span:nth-child(2) {
+    font-size: 30rpx;
+    color: rgba(102, 110, 122, 1);
+    margin-bottom: 15rpx;
+}
+
+.detail button {
+    width: 164rpx;
+    height: 56rpx;
+    border-radius: 4rpx;
+    font-size: 20rpx;
+    color: rgba(253, 119, 83, 1);
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(253, 119, 83, 1);
+    margin: 0;
+}
+
+.divider {
+    width: 100%;
+    height: 2rpx;
+    background-color: #ebeced;
+}
+
+.main {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 50rpx;
+}
+
+.box {
+    display: flex;
+}
+.icon {
+    width: 10%;
+}
+
+.icon image {
+    width: 34rpx;
+    height: 34rpx;
+}
+
+.box .right {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40rpx;
+}
+
+.right span:first-child {
+    font-size: 24rpx;
+    margin-bottom: 20rpx;
+}
+
+.right span:nth-child(2) {
+    font-size: 24rpx;
+    color: rgba(102, 110, 122, 1);
 }

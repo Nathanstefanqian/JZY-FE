@@ -1,5 +1,25 @@
-<view class="bg">
-  <view class="top"></view>
-  <van-image round width="5rem" height="5rem" fit="cover" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+<view class="container">
+    <view class="box">我的</view>
+    <view class="profile">
+        <view class="avatar">
+            <image src="../../assets/avatar.jpeg" mode="aspectFill"></image>
+        </view>
+        <view class="detail">
+            <span>钱卢骏</span>
+            <span>1532722889@qq.com</span>
+            <button>编辑资料</button>
+        </view>
+    </view>
+    <view class="divider"></view>
+    <view class="main">
+        <view class="box" wx:for="{{[1,2,3,4]}}">
+            <view class="icon">
+                <image src="../../assets/help.svg" />
+            </view>
+            <view class="right">
+                <span>关于</span>
+                <span>关于我们这个应用</span>
+            </view>
+        </view>
+    </view>
 </view>
-<view class="container"></view>

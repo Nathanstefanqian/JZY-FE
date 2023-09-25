@@ -3,17 +3,39 @@ Page({
     active: 0,
     list: [1, 2, 3],
     isRefreshing: false,
-    option1: [
-      { text: '全部任务', value: 0 },
-      { text: '新款商品', value: 1 },
-      { text: '活动商品', value: 2 },
-    ],
-    option2: [
-      { text: '距离排序', value: 'a' },
-      { text: '时间排序', value: 'b' },
-    ],
-    value1: 0,
-    value2: 'a'
+    list: [{
+        url: '../../assets/design.svg',
+        title: '设计'
+    },
+    {
+        url: '../../assets/develop.svg',
+        title: '开发'
+    },
+    {
+        url: '../../assets/running.svg',
+        title: '运维'
+    },
+    {
+        url: '../../assets/test.svg',
+        title: '测试'
+    },
+    {
+        url: '../../assets/anno.svg',
+        title: '运营'
+    },
+    {
+        url: '../../assets/depa.svg',
+        title: '行政'
+    },
+    {
+        url: '../../assets/data.svg',
+        title: '数据'
+    },   
+    {
+        url: '../../assets/more.svg',
+        title: '更多'
+    }
+]
   },
   onPullDownRefresh() {
     this.setData({

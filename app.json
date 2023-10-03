@@ -1,12 +1,19 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/edit/edit",
+    "pages/assign-success/assign-success",
+    "pages/assign/assign",
     "pages/cover/cover",
     "pages/my/my",
     "pages/search/search",
     "pages/guide/guide",
     "pages/login/login",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/detail/detail",
+    "pages/task/task",
+    "pages/take/take",
+    "pages/star/star"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,21 +25,33 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#e3d366",
+    "selectedColor": "#fd7753",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页",
+        "text": "找工作",
         "iconPath": "assets/home.png",
-        "selectedIconPath": "assets/home1.png"
+        "selectedIconPath": "assets/home-active.png"
+      },
+      {
+        "pagePath": "pages/take/take",
+        "text": "代拿",
+        "iconPath": "assets/take.png",
+        "selectedIconPath": "assets/take-active.png"
+      },
+      {
+        "pagePath": "pages/task/task",
+        "text": "活动",
+        "iconPath": "assets/task.png",
+        "selectedIconPath": "assets/task-active.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
         "iconPath": "assets/my.png",
-        "selectedIconPath": "assets/my1.png"
+        "selectedIconPath": "assets/my-active.png"
       }
     ]
   },
@@ -55,6 +74,12 @@
     "van-notice-bar": "./dist/notice-bar/index",
     "van-field": "./dist/field/index",
     "van-radio": "./dist/radio/index",
-    "van-radio-group": "./dist/radio-group/index"
+    "van-radio-group": "./dist/radio-group/index",
+    "van-action-sheet": "./dist/action-sheet/index",
+    "van-progress": "./dist/progress/index",
+    "van-picker": "./dist/picker/index",
+    "back": "./component/back/back",
+    "van-popup": "./dist/popup/index",
+    "van-tree-select": "./dist/tree-select/index"
   }
 }

@@ -1,24 +1,51 @@
+
 <view class="container">
-    <view class="box">我的</view>
     <view class="profile">
         <view class="avatar">
-            <image src="../../assets/avatar.jpeg" mode="aspectFill"></image>
+            <image src="../../assets/avatar.svg" mode="aspectFill"></image>
         </view>
         <view class="detail">
             <span>钱卢骏</span>
             <span>1532722889@qq.com</span>
-            <button>编辑资料</button>
+            <button bindtap="onEdit">完善资料</button>
         </view>
     </view>
     <view class="divider"></view>
     <view class="main">
-        <view class="box" wx:for="{{[1,2,3,4]}}">
+      <view class="box" bindtap="onTap">
+            <view class="icon">
+                <image src="../../assets/star.svg" />
+            </view>
+            <view class="right">
+                <span>收藏</span>
+                <span>我的收藏</span>
+            </view>
+        </view>
+      <view class="box">
             <view class="icon">
                 <image src="../../assets/help.svg" />
             </view>
             <view class="right">
+                <span>帮助</span>
+                <span>联系我们</span>
+            </view>
+        </view>
+        <view class="box">
+            <view class="icon">
+                <image src="../../assets/about.svg" />
+            </view>
+            <view class="right">
                 <span>关于</span>
                 <span>关于我们这个应用</span>
+            </view>
+        </view>
+        <view class="box">
+            <view class="icon">
+                <image src="../../assets/exit.svg" />
+            </view>
+            <view class="right">
+                <span>退出</span>
+                <span>退出您的账户</span>
             </view>
         </view>
     </view>

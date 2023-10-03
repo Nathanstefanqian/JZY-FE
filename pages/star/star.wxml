@@ -1,0 +1,65 @@
+<!--pages/star/star.wxml-->
+<back></back>
+<view class="container">
+  <van-tabs active="{{ active }}" bind:change="onChange" style="width: 100%;">
+    <van-tab title="校外兼职">
+      <view class="card-list">
+        <view class="card" wx:for="{{ [1,2,3,4] }}">
+          <view class="card-item1">
+            <view class="card-item1-avatar">
+              <image src="../../assets/clogo.svg" mode="aspectFit" />
+            </view>
+            <view class="card-item1-company">公司名</view>
+            <view class="card-item1-star">
+              <image src="../../assets/star-active.svg" mode="aspectFit" />
+            </view>
+          </view>
+          <view class="card-item2">
+            <view class="card-item2-title">互联网产品经理</view>
+            <view class="card-item2-subtitle">
+              <span>北京，丰台</span>
+              <span>·</span>
+              <span>全职</span>
+            </view>
+            <view class="row2"></view>
+            <view class="row3"></view>
+          </view>
+          <view class="card-item3">
+            <view>取消收藏</view>
+            <span>2022年4月1日收藏</span>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="校内跑腿">
+      <view class="card-list">
+        <view class="card" wx:for="{{ [1,2,3,4] }}">
+          <view class="card-item1">
+            <view class="card-item1-avatar">
+              <image src="../../assets/clogo.svg" mode="aspectFit" />
+            </view>
+            <view class="card-item1-company">公司名</view>
+            <view class="card-item1-star">
+              <image src="../../assets/star-active.svg" mode="aspectFit" />
+            </view>
+          </view>
+          <view class="card-item2">
+            <view class="card-item2-title">互联网产品经理</view>
+            <view class="card-item2-subtitle">
+              <span>北京，丰台</span>
+              <span>·</span>
+              <span>全职</span>
+            </view>
+            <view class="row2"></view>
+            <view class="row3"></view>
+          </view>
+          <view class="card-item3">
+            <view>取消收藏</view>
+            <span>2022年4月1日收藏</span>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+
+</view>

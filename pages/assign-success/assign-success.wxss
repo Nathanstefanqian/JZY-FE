@@ -1,0 +1,24 @@
+/* pages/assign-success/assign-success.wxss */
+.container image {
+  margin-top: 300rpx;
+  margin-bottom: 100rpx;
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.container span {
+  font-size: 44rpx;
+  margin-bottom: 40rpx;
+}
+
+.container span:nth-child(3) {
+  font-size: 28rpx;
+  text-align: center;
+  color: rgba(102, 110, 122, 1);
+  margin-bottom: 300rpx;
+}
+
+.container button {
+  width: 100%;
+
+}

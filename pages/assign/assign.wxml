@@ -1,0 +1,34 @@
+<!--pages/assign/assign.wxml-->
+<back></back>
+<view class="container">
+  <view class="head">
+    <image src="../../assets/avatar.svg" />
+    <view class="title">有料素材店</view>
+    <view class="subtitle">
+      <span>UI界面设计师</span>
+    </view>
+  </view>
+  <view class="personal">
+    <span>个人简历</span>
+    <view class="upload" bindtap="onPersonal">
+      <span>没有上传简历</span>
+      <span>点击此处上传您的简历</span>
+    </view>
+  </view>
+  <van-divider dashed />
+  <view class="personal">
+    <span>附加信息</span>
+    <view class="info">
+      <textarea class="textarea"></textarea>
+    </view>
+  </view>
+  <button class="submit">提交申请</button>
+</view>
+
+<van-action-sheet show="{{ show }}" title="上传简历" bind:close="onClose">
+  <view class="action">
+    <view class="action-container">
+      <image src="../../assets/upload.svg" />
+    </view>
+  </view>
+</van-action-sheet>

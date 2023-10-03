@@ -26,7 +26,7 @@
             />
         </van-cell-group>
     </view>
-    <button class="btn">登录</button>
+    <button class="btn" bindtap="onLogin">登录</button>
     <van-divider dashed contentPosition="center">其他方式登录</van-divider>
     <button class="btn" style="background-color: #fff; color: #ec7f5d;">微信快捷登录</button>
     <button class="btn" style="background-color: #fff; color: #ec7f5d;">手机号验证登录</button>

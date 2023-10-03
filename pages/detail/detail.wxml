@@ -1,0 +1,78 @@
+<!--pages/detail/detail.wxml-->
+<back></back>
+<view class="container">
+  <view class="head">
+    <image src="../../assets/avatar.svg" />
+    <view class="title">UI界面设计师</view>
+    <view class="subtitle">
+      <span>有料素材店</span>
+      <span> · </span>
+      <span>全职</span>
+    </view>
+    <view class="head-2">
+    <view class="head-item">
+      <image src="../../assets/hit-detail.svg" />
+      <span>80</span>
+    </view>
+    <view class="head-item">
+      <image src="../../assets/position.svg" />
+      <span>北京·海淀</span>
+    </view>
+    </view>
+  </view>
+  <view class="body">
+    <van-tabs active="{{ active }}" animated>
+      <van-tab title="工作详情">
+        <view class="card">
+          <view class="card-head">职位描述</view>
+          <view class="card-body">
+            <span>1. 根据要求进行产品iOS、Android、PC端的设计和优化；</span>
+            <span>2. 管理和指定UI规范及交互设计原则，把控UI设计质量；</span>
+            <span>3. 理解业务和产品规划，对用户体验负责，提升专业能力；</span>
+            <span>4. 跟踪业界的可用性设计趋势，提出改进建议。</span>
+          </view>
+        </view>
+        <van-divider></van-divider>
+        <view class="card">
+          <view class="card-head">任职要求</view>
+          <view class="card-body">
+            <span>1. 根据要求进行产品iOS、Android、PC端的设计和优化；</span>
+            <span>2. 管理和指定UI规范及交互设计原则，把控UI设计质量；</span>
+            <span>3. 理解业务和产品规划，对用户体验负责，提升专业能力；</span>
+            <span>4. 跟踪业界的可用性设计趋势，提出改进建议。</span>
+          </view>
+        </view>
+        <van-divider></van-divider>
+        <view class="card">
+          <view class="card-head">所需技能</view>
+          <view class="card-body">
+            <span>1. 本科及以上学历，设计、美术等相关专业；</span>
+            <span>2. 有5年以上互联网产品UI设计经验（移动和web端）；</span>
+            <span>3. 能熟练使用Sketch、Ps、Ai等相关软件；</span>
+            <span>4. 热爱设计，关注UI、交互设计等发展趋势。</span>
+          </view>
+        </view>
+        <van-divider></van-divider>
+        <view class="foot">
+          <view class="star">
+            <image src="../../assets/star.svg" />
+          </view>
+          <button bindtap="onAssign">立即申请</button>
+        </view>     
+      </van-tab>
+      <van-tab title="公司信息">
+        <view class="card">
+          <view class="card-head">职位描述</view>
+          <view class="card-body">
+            <span>1. 根据要求进行产品iOS、Android、PC端的设计和优化；</span>
+            <span>2. 管理和指定UI规范及交互设计原则，把控UI设计质量；</span>
+            <span>3. 理解业务和产品规划，对用户体验负责，提升专业能力；</span>
+            <span>4. 跟踪业界的可用性设计趋势，提出改进建议。</span>
+          </view>
+        </view>
+        <van-divider></van-divider>
+      </van-tab>
+    </van-tabs>
+  </view>
+
+</view>

@@ -1,41 +1,24 @@
 Page({
   data: {
     active: 0,
+    show: false,
     list: [1, 2, 3],
     isRefreshing: false,
-    list: [{
-        url: '../../assets/design.svg',
-        title: '设计'
-    },
-    {
-        url: '../../assets/develop.svg',
-        title: '开发'
-    },
-    {
-        url: '../../assets/running.svg',
-        title: '运维'
-    },
-    {
-        url: '../../assets/test.svg',
-        title: '测试'
-    },
-    {
-        url: '../../assets/anno.svg',
-        title: '运营'
-    },
-    {
-        url: '../../assets/depa.svg',
-        title: '行政'
-    },
-    {
-        url: '../../assets/data.svg',
-        title: '数据'
-    },   
-    {
-        url: '../../assets/more.svg',
-        title: '更多'
-    }
-]
+    cardList: ['1', '2', '3', '4'],
+    option1: [
+      { text: '全部商品', value: 0 },
+      { text: '新款商品', value: 1 },
+      { text: '活动商品', value: 2 },
+    ],
+    option2: [
+      { text: '默认排序', value: 'a' },
+      { text: '好评排序', value: 'b' },
+      { text: '销量排序', value: 'c' },
+    ],
+    value1: 0,
+    value2: 'a',    
+    mainActiveIndex: 0,
+    activeId: null,
   },
   onPullDownRefresh() {
     this.setData({
@@ -48,6 +31,17 @@ Page({
       wx.stopPullDownRefresh()
     }, 2000);
   },
+  onClickNav({ detail = {} }) {
+    this.setData({
+      mainActiveIndex: detail.index || 0,
+    });
+  },
+
+  onClickItem({ detail = {} }) {
+    const activeId = this.data.activeId === detail.id ? null : detail.id;
+
+    this.setData({ activeId });
+  },
   onChange(event) {
     console.log(event)
     wx.showToast({
@@ -58,9 +52,24 @@ Page({
       active: !active
     })
   },
-  onSearch(event) {
+  onSelect() {
+    this.setData({
+      show: true
+    })
+  },
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+  onSearch() {
       wx.navigateTo({
         url: '../cover/cover',
       })
+  },
+  onClick() {
+    wx.navigateTo({
+      url: '../detail/detail'
+    })
   }
 })

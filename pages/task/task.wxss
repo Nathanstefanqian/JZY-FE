@@ -1,0 +1,87 @@
+/* pages/task/task.wxss */
+.space {
+  margin-bottom: 40rpx;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  box-sizing: border-box;
+  padding: 40rpx;
+  width: 90%;
+  margin-top: 40rpx;
+  border: 1px solid rgba(238, 238, 238, 1);
+  border-radius: 4px;
+}
+
+.card-item1 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24rpx;
+}
+
+.card-item1-avatar image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 40rpx;
+}
+
+.card-item1-company {
+  font-size: 28rpx;
+  color: rgba(102, 110, 122, 1);
+}
+
+.card-item2 {
+  margin-bottom: 40rpx;
+}
+
+.card-item2-title {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+.card-item2-subtitle {
+  display: flex;
+  color: rgba(102, 110, 122, 1);
+  font-size: 22rpx;
+  margin-bottom: 10rpx;
+}
+
+.card-item2-subtitle span:nth-child(2) {
+  margin: 0 10rpx;
+}
+
+.card-item2-subtitle span:nth-child(3) {
+  color:#fd7753;
+}
+
+.card-item2-sub {
+  color: rgba(102, 110, 122, 1);
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+}
+
+.card-item3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-item3 view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 158rpx;
+  border-radius: 48rpx;
+  font-size: 20rpx;
+  border: 1px solid rgba(253, 119, 83, 1);
+  color: rgba(253, 119, 83, 1);
+}
+
+.card-item3 span {
+  color: rgba(102, 110, 122, 1);
+  font-size: 20rpx;
+}

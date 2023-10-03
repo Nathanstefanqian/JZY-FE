@@ -1,0 +1,11 @@
+/* component/back/back.wxss */
+.back {
+  position: absolute;
+  z-index: 50;
+  top: 110rpx;
+  left: 20rpx;
+}
+.back image {
+  width: 50rpx;
+  height: 50rpx;
+}

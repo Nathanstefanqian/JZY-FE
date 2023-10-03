@@ -1,0 +1,4 @@
+<!--component/back/back.wxml-->
+<view class="back" bindtap="navigateBack">
+  <image src="../../assets/back.svg" bindtap="navigateBack" />
+</view>

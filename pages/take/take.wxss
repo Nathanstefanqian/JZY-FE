@@ -1,86 +1,4 @@
-
-.head {
-    display: flex;
-    /* 取消默认居中 */
-    width: 100%;
-    flex-direction: row;
-}
-
-.head .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.ring {
-    margin-left: auto;
-}
-.ring image {
-    width: 40rpx;
-    height: 40rpx;
-}
-
-.text span:first-child {
-  font-size: 20rpx;
-  color: rgba(102, 110, 122, 1);
-}
-
-.search {
-    width: 100%;
-}
-
-
-.module {
-    width: 100%;
-    height: 256rpx;
-}
-
-.module .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 30rpx;
-}
-
-.module .row2 {
-    display: flex;
-    justify-content: space-between;
-}
-.row .box, .row2 .box {
-    display: flex;
-    width: 100rpx;
-    flex-direction: column;
-    padding: 0 30rpx;
-    margin-bottom: 30rpx;
-}
-
-.box image {
-    width: 64rpx;
-    height: 64rpx;
-}
-
-.box span {
-    color:rgba(102, 110, 122, 1);
-}
-
-.main {
-    width: 100%;
-    padding: 40rpx 0;
-}
-
-.header {
-    display: flex;
-    margin-bottom: 26rpx;
-    align-items: center;
-}
-
-.header view {
-  color:rgba(253, 119, 83, 1);
-  font-size: 24rpx;
-  margin-left: auto;
-  margin-right: 20rpx;
-}
-
+/* pages/take/take.wxss */
 .card {
   display: flex;
   flex-direction: column;
@@ -174,6 +92,7 @@
     width: 50rpx;
     height: 50rpx;
 }
+
 .card-item3-hit span {
     margin-left: 30rpx;
 }
@@ -183,7 +102,3 @@
     color: rgba(102, 110, 122, 1);
 } 
 
-.popup-container {
-  width: 100%;
-  padding: 40rpx;
-}

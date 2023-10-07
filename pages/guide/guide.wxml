@@ -12,6 +12,5 @@
 <!-- </van-transition> -->
 <button class="btn" bindtap="toggle" wx:if="{{ isActive !== 2 }}">下一步</button>
 <view class="btn-group" wx:else>
-  <button bindtap="login">登录</button>
-  <button bindtap="register">注册</button>
+  <button bindtap="login">立即使用</button>
 </view>

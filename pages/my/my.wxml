@@ -1,13 +1,22 @@
 
 <view class="container">
-    <view class="profile">
+    <view class="profile" wx:if="{{ isLogin }}">
         <view class="avatar">
             <image src="../../assets/avatar.svg" mode="aspectFill"></image>
         </view>
         <view class="detail">
             <span>钱卢骏</span>
-            <span>1532722889@qq.com</span>
+            <span>学号： 2030110775</span>
             <button bindtap="onEdit">完善资料</button>
+        </view>
+    </view>
+    <view class="profile" wx:else bindtap="onLogin">
+        <view class="avatar">
+            <image src="../../assets/avatar.svg" mode="aspectFill"></image>
+        </view>
+        <view class="detail">
+            <span>请先登录噢</span>
+            <span>登录后享受更多功能！</span>
         </view>
     </view>
     <view class="divider"></view>
@@ -30,23 +39,23 @@
                 <span>联系我们</span>
             </view>
         </view>
-        <view class="box">
-            <view class="icon">
-                <image src="../../assets/about.svg" />
-            </view>
-            <view class="right">
-                <span>关于</span>
-                <span>关于我们这个应用</span>
-            </view>
-        </view>
-        <view class="box">
-            <view class="icon">
-                <image src="../../assets/exit.svg" />
-            </view>
-            <view class="right">
-                <span>退出</span>
-                <span>退出您的账户</span>
-            </view>
-        </view>
+      <view class="box">
+          <view class="icon">
+              <image src="../../assets/about.svg" />
+          </view>
+          <view class="right">
+              <span>关于</span>
+              <span>关于我们这个应用</span>
+          </view>
+      </view>
+      <view class="box" bindtap="onExit" wx:if="{{ isLogin }}">
+          <view class="icon">
+              <image src="../../assets/exit.svg" />
+          </view>
+          <view class="right">
+              <span>退出</span>
+              <span>退出您的账户</span>
+          </view>
+      </view>
     </view>
 </view>

@@ -1,41 +1,48 @@
 <!-- pages/edit/edit.wxml -->
 <back></back>
 <view class="container">
-  <view class="head">
-    <image src="../../assets/avatar.svg" />
-    <span>上传头像</span>
+  <view class="head" bindtap="onUpload">
+    <image src="{{ avatarUrl }}" mode="aspectFill" />
+    <button>上传头像</button>
   </view>
   <view class="divider"></view>
   <view class="body">
     <view class="box">
-      <span>姓名</span>
-      <input type="text" placeholder="请输入姓名" bindinput="inputHandler" />
+    <view class="getUser">
+      <span>微信名</span>
+      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">获取用户微信名和头像</button>
+    </view>
+      <input type="text" placeholder="请输入微信名" bindinput="onName" value="{{ nickName }}" />
     </view>
     <view class="box">
-      <span>年龄</span>
-      <input type="text" placeholder="请输入年龄" bindinput="inputHandler" />
+      <span>姓名</span>
+      <input type="text" placeholder="请输入姓名" bindinput="onName" />
+    </view>
+    <view class="box">
+      <span>年级</span>
+      <input disabled placeholder="请选择年级" bindtap="onGrade" />
     </view>
     <view class="box">
       <span>性别</span>
-      <input type="text" placeholder="请选择性别" bindtap="sexHandler" />
+      <input disabled placeholder="请选择性别" bindtap="onSex" />
     </view>
     <view class="box">
       <span>学号/教职工号</span>
-      <input type="text" placeholder="请输入内容" bindinput="inputHandler" />
+      <input type="text" placeholder="请输入学号" bindinput="onSchoolId" />
     </view>
     <view class="box">
       <span>学院</span>
-      <input type="text" placeholder="请选择学院" bindtap="schoolHandler" />
+      <input disabled placeholder="请选择学院" bindtap="onSchool" />
     </view>
     <view class="box">
       <span>专业</span>
-      <input type="text" placeholder="请输入专业" bindinput="inputHandler" />
+      <input type="text" placeholder="请输入专业" bindinput="onMajor" />
     </view>
     <view class="box">
       <span>手机号</span>
-      <input type="text" placeholder="请输入手机号" bindinput="inputHandler" />
+      <input type="text" placeholder="请输入手机号" bindinput="onPhone" />
     </view>
   </view>
-  <button class="submit">提交审核</button>
+  <button class="submit" bindtap="onSubmit">提交审核</button>
 </view>
 <van-action-sheet title="{{ title }}" custom-class="action" show="{{ show }}" actions="{{ actions }}" bind:close="onClose" />

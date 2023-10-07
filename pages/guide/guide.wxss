@@ -71,8 +71,7 @@
 
 .btn-group button {
     margin-top: 150rpx;
-    width: 200rpx;
+    width: 500rpx;
     color: #fff;
     background: rgba(253, 119, 83, 1);
-
 }

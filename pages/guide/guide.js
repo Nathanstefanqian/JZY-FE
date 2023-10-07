@@ -29,7 +29,6 @@ Page({
       let index = list.findIndex(item => item.show === true)
       list[index].show = false
       list[index+1].show = true
-
       this.setData({
           list: list,
           isActive: index+1
@@ -37,8 +36,8 @@ Page({
 	},
 	
 	login() {
-		wx.navigateTo({
-			url: '../login/login'
+		wx.switchTab({
+			url: '../home/home'
 		})
 	},
 

@@ -74,7 +74,22 @@ const sex = [
     name: '女'
   }
 ]
+const grade = [
+  {
+    name: '大一'
+  },
+  {
+    name: '大二'
+  },
+  {
+    name: '大三'
+  },
+  {
+    name: '大四'
+  }
+]
 module.exports = {
   colleges,
-  sex
+  sex,
+  grade
 }

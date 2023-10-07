@@ -185,5 +185,4 @@
 
 .popup-container {
   width: 100%;
-  padding: 40rpx;
 }

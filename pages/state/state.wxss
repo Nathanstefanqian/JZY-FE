@@ -1,0 +1,74 @@
+/* pages/state/state.wxss */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 150rpx;
+  margin-bottom: 20rpx;
+}
+.bg {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  padding: 40rpx 20rpx;
+  background-color: #f6f7fb;
+}
+
+
+
+.bg .card {
+  box-sizing: border-box;
+  width: 100%;
+  box-shadow: 10rpx solid #000;
+  height: 200rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  padding: 20rpx 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.row1 {
+  display: flex;
+}
+
+.row1 .title {
+  display: flex;
+  flex-direction: column;
+}
+
+.row1 .title span:nth-child(2) {
+  font-size: 28rpx;
+  color: grey;
+}
+
+.row1 .price {
+  margin-left: auto;
+  color: red;
+}
+
+.row2 {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.row2 .sbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  color: red;
+  width:100rpx;
+  padding: 10rpx 10rpx;
+  font-size: 24rpx;
+  background-color: #fbefee;
+}
+
+.row2 .btn {
+  font-size: 24rpx;
+  margin-left: auto;
+  padding: 10rpx 45rpx;
+  background-color: #69e39f;
+  border-radius: 20rpx;
+}
+

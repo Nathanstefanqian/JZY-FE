@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/home1/home1",
     "pages/edit/edit",
     "pages/assign-success/assign-success",
     "pages/assign/assign",
@@ -8,12 +8,10 @@
     "pages/my/my",
     "pages/search/search",
     "pages/guide/guide",
-    "pages/login/login",
-    "pages/register/register",
     "pages/detail/detail",
-    "pages/task/task",
-    "pages/take/take",
-    "pages/star/star"
+    "pages/star/star",
+    "pages/resume/resume",
+    "pages/state/state"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,22 +28,10 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/home1/home1",
         "text": "找工作",
         "iconPath": "assets/home.png",
         "selectedIconPath": "assets/home-active.png"
-      },
-      {
-        "pagePath": "pages/take/take",
-        "text": "代拿",
-        "iconPath": "assets/take.png",
-        "selectedIconPath": "assets/take-active.png"
-      },
-      {
-        "pagePath": "pages/task/task",
-        "text": "活动",
-        "iconPath": "assets/task.png",
-        "selectedIconPath": "assets/task-active.png"
       },
       {
         "pagePath": "pages/my/my",
@@ -80,6 +66,8 @@
     "van-picker": "./dist/picker/index",
     "back": "./component/back/back",
     "van-popup": "./dist/popup/index",
-    "van-tree-select": "./dist/tree-select/index"
+    "van-tree-select": "./dist/tree-select/index",
+    "van-submit-bar": "./dist/submit-bar/index",
+    "van-circle": "./dist/circle/index"
   }
 }

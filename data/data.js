@@ -74,6 +74,7 @@ const sex = [
     name: '女'
   }
 ]
+
 const grade = [
   {
     name: '大一'
@@ -88,8 +89,13 @@ const grade = [
     name: '大四'
   }
 ]
+
+const params = [
+  '微信名','头像', '姓名', '年级', '性别', '学号','学院', '专业', '手机号'
+]
 module.exports = {
   colleges,
   sex,
-  grade
+  grade,
+  params
 }

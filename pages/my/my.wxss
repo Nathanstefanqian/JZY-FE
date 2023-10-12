@@ -1,89 +1,188 @@
-.box {
-    width: 100%;
-    font-size: 40rpx;
-    margin-bottom: 40rpx;
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 150rpx;
+}
+.bg {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 40rpx;
+  background-image: linear-gradient(
+  180deg,
+  hsl(14deg 79% 65%) 0%,
+  hsl(14deg 82% 69%) 0%,
+  hsl(15deg 85% 73%) 0%,
+  hsl(15deg 89% 77%) 2%,
+  hsl(15deg 92% 81%) 5%,
+  hsl(15deg 96% 85%) 10%,
+  hsl(15deg 100% 89%) 18%,
+  hsl(15deg 100% 93%) 34%,
+  hsl(15deg 100% 96%) 75%,
+  hsl(0deg 0% 100%) 100%
+)
 }
 
-.profile {
-    padding: 40rpx;
-    width: 100%;
-    display: flex;
+.user {
+  display: flex;
+  margin-bottom: 40rpx;
 }
 
-.profile .avatar {
-    width: 25%;
-    display: flex;
+.user image {
+  width: 128rpx;
+  height: 128rpx;
 }
 
-.avatar image {
-    width: 120rpx;
-    height: 120rpx;
-    border-radius: 50%;
+.user .right {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 0;
+  margin-left: 40rpx;
 }
 
-.profile .detail {
-    display: flex;
-    flex-direction: column;
+.user .right .top {
+  font-size: 42rpx;
+  margin-bottom: 12rpx;
 }
 
-.detail span:first-child {
-    font-size: 40rpx;
-    margin-bottom: 15rpx;
+.user .right .bottom {
+  font-size: 24rpx;
+  color: grey;
 }
 
-.detail span:nth-child(2) {
-    font-size: 30rpx;
-    color: rgba(102, 110, 122, 1);
-    margin-bottom: 15rpx;
+.gradient {
+  background-image: linear-gradient(
+  180deg,
+  hsl(15deg 100% 93%) 34%,
+  hsl(15deg 100% 96%) 75%,
+  hsl(0deg 0% 100%) 100%
+);
 }
 
-.detail button {
-    width: 164rpx;
-    height: 56rpx;
-    border-radius: 4rpx;
-    font-size: 20rpx;
-    color: rgba(253, 119, 83, 1);
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(253, 119, 83, 1);
-    margin: 0;
+.card {
+  display: flex;
+  position: relative;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 1rpx rgba(0,0,0,0.5);
+  border-radius: 20rpx;
+  padding: 40rpx 20rpx;
+  padding-top: 20rpx; /* 添加内边距 */
+  margin-bottom: 40rpx;
 }
 
-.divider {
-    width: 100%;
-    height: 2rpx;
-    background-color: #ebeced;
+.row1 {
+  display: flex;
+  margin-top: 20rpx;
+  width: 100%;
 }
 
-.main {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 50rpx;
+.row1 .box {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.box {
-    display: flex;
-}
-.icon {
-    width: 10%;
+.row1 .box span:first-child {
+  margin-bottom: 20rpx;
 }
 
-.icon image {
-    width: 34rpx;
-    height: 34rpx;
+.row1 .box span:nth-child(2) {
+  font-size: 28rpx;
 }
 
-.box .right {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40rpx;
+.card > image {
+  width: 96rpx;
+  height: 96rpx;
 }
 
-.right span:first-child {
-    font-size: 24rpx;
-    margin-bottom: 20rpx;
+.card .col2 {
+  margin-left: 20rpx;
+  padding: 20rpx 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.right span:nth-child(2) {
-    font-size: 24rpx;
-    color: rgba(102, 110, 122, 1);
+.card .col2 .title {
+  font-size: 42rpx;
+  margin-bottom: 10rpx;
+}
+
+.card .col2 .subtitle {
+  color: grey;
+  font-size: 28rpx;
+}
+
+.card .col3 {
+  margin-left: auto;
+}
+
+.card .col3 .btn {
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  color: #fff;
+  padding: 10rpx 20rpx;
+  background-color: #acc4f2;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card .func {
+  display: flex;
+  width: 100%;
+  margin-top: 20rpx;
+  padding: 20rpx 0;
+}
+
+.card .func .func-box {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card .func .func-box image {
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: 20rpx;
+}
+
+.card .func-box .bottom {
+  font-size: 24rpx;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40rpx;
+  width: 100%;
+}
+
+.progress-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.progress-box .btn {
+  margin-left: auto;
+  padding: 5rpx 20rpx;
+  background-color: #fd7753;
+  border-radius: 10rpx;
+  color: #fff;
 }

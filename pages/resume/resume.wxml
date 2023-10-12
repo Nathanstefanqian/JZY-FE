@@ -1,0 +1,48 @@
+<!--pages/resume/resume.wxml-->
+<back></back>
+<view class="bg">
+  <header>我的简历</header>
+  <view class="card">
+    <view class="avatar">
+      <image src="../../assets/boy.svg" mode="aspectFit"/>
+      <image src="../../assets/boy.svg" mode="aspectFit"/>
+    </view>
+    <van-divider></van-divider>
+    <view class="basic">
+      <span>钱卢骏</span>
+      <view class="bottom">
+        <span>男生</span>
+        <span>·</span>
+        <span>21周岁</span>
+        <span>·</span>
+        <span>在校学生党</span>
+      </view>
+    </view>
+  </view>
+  <view class="card">
+    <view class="box">
+      <span>你想找的工作</span>
+      <span>服务生</span>
+    </view>
+    <van-divider></van-divider>
+    <view class="box">
+      <span>兼职经历</span>
+      <span>描述你的工作经验</span>
+    </view>
+    <van-divider></van-divider>
+    <view class="box">
+      <span>教育经历</span>
+      <span>本科</span>
+    </view>
+    <van-divider></van-divider>
+    <view class="box">
+      <span>技能证书</span>
+    </view>
+    <van-divider></van-divider>
+    <view class="box">
+      <span>联系方式</span>
+      <span>缺失</span>
+    </view>
+  </view>
+</view>
+

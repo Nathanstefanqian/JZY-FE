@@ -1,0 +1,66 @@
+<view class="bg">
+  <span class="empty">123</span>
+  <view class="head-container">
+    <view class="title">
+      <view class="left">
+        <image src="../../assets/guitar.svg" mode="aspectFit"/>
+      </view>
+      <view class="right">
+        <view>
+          兼职易保障 | 安全无忧
+        </view>
+        <view>
+          11重岗位审核·1000万薪资保障·100%客服响应
+        </view>
+      </view>
+    </view>
+    <view class="search">
+      <view class="location">南通·南通大学停车场</view>
+      <van-search placeholder="请输入搜索关键词" shape="round" disabled background="#FD7753" />
+    </view>
+  </view>
+
+  <view class="container">
+    <van-tabs active="{{ active }}" bind:change="onChange" color="#FD7753" custom-style="tab">
+      <van-tab title="推荐">
+        <view class="head">
+          <span>精选兼职</span>
+          <view class="ibtn active" style="margin-left: auto;">推荐</view>
+          <view class="ibtn">附近</view>
+          <view class="ibtn">最新</view>
+          <view class="ibtn active">筛选</view>
+        </view>
+        <view class="body">
+          <view class="box" wx:for="{{[1,2,3]}}" bindtap="onDetail">
+            <view class="title">
+              <span>海底捞招聘兼职</span>
+              <view class="price">
+                180元/天
+              </view>
+            </view>
+            <view class="info">
+              <view class="left">
+                <view class="location">
+                  <image src="../../assets/location.svg" mode="aspectFit"/>
+                  5千米 | 崇川区钟秀街道尚景智谷B座
+                </view>
+                <view class="business">
+                  <image src="../../assets/company.svg" mode="aspectFit"/>
+                  南通东庭财会资讯有限公司
+                </view>
+              </view>
+              <view class="right">
+                <view class="btn">
+                </view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="线上">内容 2</van-tab>
+      <van-tab title="跑腿">内容 3</van-tab>
+      <van-tab title="线下">内容 4</van-tab>
+    </van-tabs>
+  </view>
+</view>

@@ -56,5 +56,23 @@ Page({
         console.error(err)
       }
     })
+  },
+
+  onResume(e) {
+    wx.navigateTo({
+      url: '../resume/resume'
+    })
+  },
+
+  onBasic(e) {
+    wx.navigateTo({
+      url: '../edit/edit',
+    })
+  },
+
+  onState() {
+    wx.navigateTo({
+      url: '../state/state',
+    })
   }
 })

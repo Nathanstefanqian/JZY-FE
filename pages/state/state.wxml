@@ -1,0 +1,56 @@
+<!--pages/state/state.wxml-->
+<back></back>
+<header>我的报名</header>
+  <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="全部">
+      <van-dropdown-menu>
+        <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+        <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+      </van-dropdown-menu>
+      <view class="bg">
+        <view class="card">
+          <view class="row1">
+            <view class="title">
+              <span>汤臣河豚料理招聘服务员</span>
+              <span>2.32千米 | 印象城</span>
+            </view>
+            <view class="price">
+              3800-5000元/月
+            </view>
+          </view>
+          <view class="row2">
+            <view class="sbtn">
+            待录取
+            </view>
+            <view class="btn">
+            联系商家
+            </view>
+          </view>
+        </view>
+        <view class="card">
+          <view class="row1">
+            <view class="title">
+              <span>汤臣河豚料理招聘服务员</span>
+              <span>2.32千米 | 印象城</span>
+            </view>
+            <view class="price">
+              3800-5000元/月
+            </view>
+          </view>
+          <view class="row2">
+            <view class="sbtn">
+            待录取
+            </view>
+            <view class="btn">
+            联系商家
+            </view>
+          </view>
+        </view>
+        <van-divider></van-divider>
+    
+      </view>
+    </van-tab>
+    <van-tab title="已报名">内容 2</van-tab>
+    <van-tab title="已录取">内容 3</van-tab>
+    <van-tab title="已结束">内容 4</van-tab>
+  </van-tabs>

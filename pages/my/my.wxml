@@ -1,61 +1,81 @@
-
-<view class="container">
-    <view class="profile" wx:if="{{ isLogin }}">
-        <view class="avatar">
-            <image src="../../assets/avatar.svg" mode="aspectFill"></image>
-        </view>
-        <view class="detail">
-            <span>钱卢骏</span>
-            <span>学号： 2030110775</span>
-            <button bindtap="onEdit">完善资料</button>
-        </view>
+<view class="bg">
+  <header>我的</header>
+  <view class="user">
+    <image src="../../assets/boy.svg" mode="aspectFit"/>
+    <view class="right">
+      <view class="top">钱卢骏</view>
+      <view class="bottom">学生党 21岁</view>
     </view>
-    <view class="profile" wx:else bindtap="onLogin">
-        <view class="avatar">
-            <image src="../../assets/avatar.svg" mode="aspectFill"></image>
-        </view>
-        <view class="detail">
-            <span>请先登录噢</span>
-            <span>登录后享受更多功能！</span>
-        </view>
-    </view>
-    <view class="divider"></view>
-    <view class="main">
-      <view class="box" bindtap="onTap">
-            <view class="icon">
-                <image src="../../assets/star.svg" />
-            </view>
-            <view class="right">
-                <span>收藏</span>
-                <span>我的收藏</span>
-            </view>
-        </view>
-      <view class="box">
-            <view class="icon">
-                <image src="../../assets/help.svg" />
-            </view>
-            <view class="right">
-                <span>帮助</span>
-                <span>联系我们</span>
-            </view>
-        </view>
-      <view class="box">
-          <view class="icon">
-              <image src="../../assets/about.svg" />
-          </view>
-          <view class="right">
-              <span>关于</span>
-              <span>关于我们这个应用</span>
-          </view>
+  </view>
+  <view class="card">
+    <view class="row1">
+      <view class="box" bindtap="onState">
+        <span>2</span>
+        <span>全部报名</span>
       </view>
-      <view class="box" bindtap="onExit" wx:if="{{ isLogin }}">
-          <view class="icon">
-              <image src="../../assets/exit.svg" />
-          </view>
-          <view class="right">
-              <span>退出</span>
-              <span>退出您的账户</span>
-          </view>
+      <view class="box">
+        <span>2</span>
+        <span>待录取</span>
+      </view>
+      <view class="box">
+        <span>2</span>
+        <span>已录取</span>
+      </view>
+      <view class="box">
+        <span>2</span>
+        <span>已结束</span>
       </view>
     </view>
+  </view>
+  <view class="card flex-row">
+    <van-circle
+      custom-class="circle"
+      value="{{ 40 }}"
+      layer-color="#eeeeee"
+      color="#EC7F5D"
+      text="简历进度"
+      bind:tap="onResume"
+    />
+    <view class="progress-card">
+      <view class="progress-box">
+        <span>基础信息填写</span>
+        <view class="btn" bindtap="onBasic">去填写</view>
+      </view>
+      <van-divider></van-divider>
+      <view class="progress-box">
+        <span>完善简历信息</span>
+        <view class="btn" bindtap="onResume">去完善</view>
+      </view>
+    </view>
+  </view>
+  <view class="card">
+    <image src="../../assets/employ.svg" mode="aspectFit"/>
+    <view class="col2">
+      <view class="title">我要招人</view>
+      <view class="subtitle">海量真实简历任你挑</view>
+    </view>
+    <view class="col3">
+      <view class="btn">发布需求</view>
+    </view>
+  </view>
+  <view class="card flex-column">
+    <view class="func">
+      <view class="func-box">
+        <image src="../../assets/star_my.svg" mode="aspectFit"/>
+        <view class="bottom">我的收藏</view>
+      </view>
+      <view class="func-box">
+        <image src="../../assets/toggle.svg" mode="aspectFit"/>
+        <view class="bottom">切换至商家端</view>
+      </view>      
+      <view class="func-box">
+        <image src="../../assets/proxy.svg" mode="aspectFit"/>
+        <view class="bottom">协议与准则</view>
+      </view>      
+      <view class="func-box">
+        <image src="../../assets/setting.svg" mode="aspectFit"/>
+        <view class="bottom">我的设置</view>
+      </view>
+    </view>
+  </view>
 </view>

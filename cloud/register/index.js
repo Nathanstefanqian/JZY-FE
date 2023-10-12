@@ -7,13 +7,15 @@ exports.main = async (event, context) => {
   const { data } = event
   const db = cloud.database()
   let result = ''
+  const res = await 
   db.collection('user').add({
     data: data,
-    success: res => result = res,
+    success: res => { 
+      result = res
+      return {
+        result
+      }
+    },
     fail: err => result = err
   })
-
-  return {
-    result
-  }
 }

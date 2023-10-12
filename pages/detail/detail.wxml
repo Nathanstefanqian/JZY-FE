@@ -1,78 +1,90 @@
-<!--pages/detail/detail.wxml-->
 <back></back>
-<view class="container">
-  <view class="head">
-    <image src="../../assets/avatar.svg" />
-    <view class="title">UI界面设计师</view>
-    <view class="subtitle">
-      <span>有料素材店</span>
-      <span> · </span>
-      <span>全职</span>
-    </view>
-    <view class="head-2">
-    <view class="head-item">
-      <image src="../../assets/hit-detail.svg" />
-      <span>80</span>
-    </view>
-    <view class="head-item">
-      <image src="../../assets/position.svg" />
-      <span>北京·海淀</span>
-    </view>
+<header>职位详情</header>
+<view class="bg">
+  <view class="title">
+    职位简介
+  </view>
+  <view class="card">
+    <view class="title">
+      <span>招聘客服专员</span>
+      <view class="price">4000-8000元/月</view>
     </view>
   </view>
-  <view class="body">
-    <van-tabs active="{{ active }}" animated>
-      <van-tab title="工作详情">
-        <view class="card">
-          <view class="card-head">职位描述</view>
-          <view class="card-body">
-            <span>1. 根据要求进行产品iOS、Android、PC端的设计和优化；</span>
-            <span>2. 管理和指定UI规范及交互设计原则，把控UI设计质量；</span>
-            <span>3. 理解业务和产品规划，对用户体验负责，提升专业能力；</span>
-            <span>4. 跟踪业界的可用性设计趋势，提出改进建议。</span>
-          </view>
-        </view>
-        <van-divider></van-divider>
-        <view class="card">
-          <view class="card-head">任职要求</view>
-          <view class="card-body">
-            <span>1. 根据要求进行产品iOS、Android、PC端的设计和优化；</span>
-            <span>2. 管理和指定UI规范及交互设计原则，把控UI设计质量；</span>
-            <span>3. 理解业务和产品规划，对用户体验负责，提升专业能力；</span>
-            <span>4. 跟踪业界的可用性设计趋势，提出改进建议。</span>
-          </view>
-        </view>
-        <van-divider></van-divider>
-        <view class="card">
-          <view class="card-head">所需技能</view>
-          <view class="card-body">
-            <span>1. 本科及以上学历，设计、美术等相关专业；</span>
-            <span>2. 有5年以上互联网产品UI设计经验（移动和web端）；</span>
-            <span>3. 能熟练使用Sketch、Ps、Ai等相关软件；</span>
-            <span>4. 热爱设计，关注UI、交互设计等发展趋势。</span>
-          </view>
-        </view>
-        <van-divider></van-divider>
-        <view class="foot">
-          <view class="star">
-            <image src="../../assets/star.svg" />
-          </view>
-          <button bindtap="onAssign">立即申请</button>
-        </view>     
-      </van-tab>
-      <van-tab title="公司信息">
-        <view class="card">
-          <view class="card-head">职位描述</view>
-          <view class="card-body">
-            <span>1. 根据要求进行产品iOS、Android、PC端的设计和优化；</span>
-            <span>2. 管理和指定UI规范及交互设计原则，把控UI设计质量；</span>
-            <span>3. 理解业务和产品规划，对用户体验负责，提升专业能力；</span>
-            <span>4. 跟踪业界的可用性设计趋势，提出改进建议。</span>
-          </view>
-        </view>
-        <van-divider></van-divider>
-      </van-tab>
-    </van-tabs>
+  <view class="card">
+    <view class="row">
+      <view class="top">
+        <image src="../../assets/date.svg" mode="aspectFit"/>
+        <span>工作日期</span>
+      </view>
+      <view class="bottom">
+        <span>不限</span>
+      </view>
+    </view>
+    <view class="row">
+      <view class="top">
+        <image src="../../assets/time.svg" mode="aspectFit"/>
+        <span>工作时段</span>
+      </view>
+      <view class="bottom">
+        <span>工作日 09:00 ~ 18:00</span>
+      </view>
+    </view>
+    <view class="row">
+      <view class="top">
+        <image src="../../assets/location_detail.svg" mode="aspectFit"/>
+        <span>崇川区钟秀街道</span>
+      </view>
+      <view class="bottom">
+        <span>骑行28分钟 公交58分钟</span>
+      </view>
+    </view>
+    <view class="row">
+      <view class="top">
+        <image src="../../assets/requirement.svg" mode="aspectFit"/>
+        <span>职位要求</span>
+      </view>
+      <view class="bottom">
+        <span>不限性别 | 限18岁以上40岁以下</span>
+      </view>
+    </view>
   </view>
+  <view class="title">
+    职位详情
+  </view>
+  <view class="card">
+    <span>1、年龄18-40岁,男女不限;兼职还在招</span>
+    <span>2、普通话标准逻辑清晰,语言表达沟通能力强；</span>
+    <span>3、积极、自信，有强烈的挣钱欲望。</span>
+  </view>
+  <view class="title">
+    发布企业
+  </view>
+  <view class="card">
+    <view class="box">
+      <view class="left">
+        <image src="../../assets/avatar.svg" mode="aspectFit"/>
+      </view>
+      <view class="right">
+        <span>
+          石家庄讯上科技有限公司
+        </span>
+        <view>
+          <image src="../../assets/verify.svg" mode="aspectFit"/>
+          企业认证
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="blank"></view>
+</view>
+<view class="foot-layout">
+  <view class="foot">
+    <view class="star">
+      <image src="../../assets/star.svg" mode="aspectFit"/>
 
+    </view>
+    <view class="btn">在线沟通</view>
+    <view class="btn animate">立即报名</view>
+
+  </view>
 </view>

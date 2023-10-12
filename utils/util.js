@@ -1,19 +1,15 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : `0${n}`
+const { params } = require('../data/data')
+const checkParams = (name, index) => {
+  if(!name) {
+    wx.showToast({
+      title: `${params[index]}没填哦！`,
+      icon: 'error'
+    })
+    return false
+  }
+  return true
 }
 
 module.exports = {
-  formatTime
+  checkParams
 }

@@ -55,10 +55,10 @@
   padding-bottom: 0;
 }
 
-.box input {
+.box .info {
   margin-top: 10rpx;
   border: 0px solid #FD7753;
-  padding: 5rpx 10rpx;
+  padding-top: 20rpx;
   height: 96rpx;
 }
 .getUser {

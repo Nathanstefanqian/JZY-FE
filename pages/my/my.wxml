@@ -1,28 +1,32 @@
 <view class="bg">
   <header>我的</header>
   <view class="user">
-    <image src="../../assets/boy.svg" mode="aspectFit"/>
-    <view class="right">
-      <view class="top">钱卢骏</view>
-      <view class="bottom">学生党 21岁</view>
+    <image src="{{ avatarUrl }}" mode="aspectFill"/>
+    <view class="right" wx:if="{{ isLogin }}" bindtap="onPersonal">
+      <view class="top" bindtap="onPersonal">钱卢骏</view>
+      <view class="bottom">{{ major }} {{ grade }}</view>
+    </view>
+    <view class="right" wx:else bindtap="onLogin">
+      <view class="top">登录/注册</view>
+      <view class="bottom">登录后享受更多权益和功能</view>
     </view>
   </view>
   <view class="card">
     <view class="row1">
       <view class="box" bindtap="onState">
-        <span>2</span>
+        <span>{{ data[0] }}</span>
         <span>全部报名</span>
       </view>
       <view class="box">
-        <span>2</span>
+        <span>{{ data[1] }}</span>
         <span>待录取</span>
       </view>
       <view class="box">
-        <span>2</span>
+        <span>{{ data[2] }}</span>
         <span>已录取</span>
       </view>
       <view class="box">
-        <span>2</span>
+        <span>{{ data[3] }}</span>
         <span>已结束</span>
       </view>
     </view>
@@ -30,16 +34,16 @@
   <view class="card flex-row">
     <van-circle
       custom-class="circle"
-      value="{{ 40 }}"
+      value="{{ 100 }}"
       layer-color="#eeeeee"
       color="#EC7F5D"
-      text="简历进度"
+      text="简历100分"
       bind:tap="onResume"
     />
     <view class="progress-card">
       <view class="progress-box">
-        <span>基础信息填写</span>
-        <view class="btn" bindtap="onBasic">去填写</view>
+        <span>基础信息修改</span>
+        <view class="btn" bindtap="onBasic">{{ isLogin ? '去修改' : '登录查看' }}</view>
       </view>
       <van-divider></van-divider>
       <view class="progress-box">

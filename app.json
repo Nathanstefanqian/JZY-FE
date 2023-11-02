@@ -11,7 +11,8 @@
     "pages/detail/detail",
     "pages/star/star",
     "pages/resume/resume",
-    "pages/state/state"
+    "pages/state/state",
+    "pages/personal/personal"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -68,6 +69,8 @@
     "van-popup": "./dist/popup/index",
     "van-tree-select": "./dist/tree-select/index",
     "van-submit-bar": "./dist/submit-bar/index",
-    "van-circle": "./dist/circle/index"
+    "van-circle": "./dist/circle/index",
+    "van-calendar": "./dist/calendar/index",
+    "van-datetime-picker": "./dist/datetime-picker/index"
   }
 }

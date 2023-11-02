@@ -4,45 +4,244 @@
   <header>我的简历</header>
   <view class="card">
     <view class="avatar">
-      <image src="../../assets/boy.svg" mode="aspectFit"/>
-      <image src="../../assets/boy.svg" mode="aspectFit"/>
+      <image class="add" src="{{ avatarUrl }}" mode="aspectFill"/>
+      <image class="add" wx:for="{{ photoUrl }}" mode="aspectFill" src="{{ item }}" wx:key="{{ index }}"/>
+      <view class="add" bindtap="onUploadPhoto" wx:if="{{ photoUrl.length <= 4 }}">+</view>
     </view>
     <van-divider></van-divider>
-    <view class="basic">
+    <view class="basic"  bindtap="onPersonal">
       <span>钱卢骏</span>
       <view class="bottom">
-        <span>男生</span>
+        <span>{{ personal.sex + '生'}}</span>
         <span>·</span>
-        <span>21周岁</span>
+        <span>{{ personal.age }}周岁</span>
         <span>·</span>
         <span>在校学生党</span>
       </view>
     </view>
   </view>
   <view class="card">
-    <view class="box">
+    <view class="box" bindtap="onJob">
       <span>你想找的工作</span>
-      <span>服务生</span>
+      <span>{{ job.isPeriod + ' ; ' +  job.worktime + ' ; ' + job.workday + ' ; ' + job.workperiod + ' ; ' + job.name + ' ; ' }}</span>
+    </view>
+    <van-divider></van-divider>
+    <view class="box" >
+      <view class="title">
+        <span>兼职经历</span>
+        <span bindtap="onExper">+</span>
+      </view>
+      <view class="experience" wx:for="{{ experienceList }}" wx:key="index">
+        <span>{{ item.name + " ; " + item.startTime + ' - ' + item.endTime + 
+    " ; " + item.desc + " ; " }}</span>
+      </view>
+      <span wx:if="{{ experienceList.length === 0 }}">点击 + 添加兼职经历</span>
     </view>
     <van-divider></van-divider>
     <view class="box">
-      <span>兼职经历</span>
-      <span>描述你的工作经验</span>
+      <view class="title">
+        <span>技能证书</span>
+        <span bindtap="onSkill">+</span>
+      </view>
+      <view class="experience" wx:for="{{ skillList }}" wx:key="index">
+        <span bindtap="onSkillDetailShow" data-index="{{ index }}">{{ item.skillName }}</span>
+      </view>
+      <span wx:if="{{ skillList.length === 0 }}" bindtap="onSkillDetailShow">点击 + 添加技能证书</span>
     </view>
     <van-divider></van-divider>
-    <view class="box">
-      <span>教育经历</span>
-      <span>本科</span>
-    </view>
-    <van-divider></van-divider>
-    <view class="box">
-      <span>技能证书</span>
-    </view>
-    <van-divider></van-divider>
-    <view class="box">
+    <view class="box" bindtap="onContact">
       <span>联系方式</span>
-      <span>缺失</span>
+      <span>{{ contact.phone ?  " 电话: " + contact.phone + " ; 微信: " + contact.wx + " ; 邮箱: " + contact.email + " ; QQ: " + contact.qq + " ; " : '缺失' }}</span>
     </view>
   </view>
+  <button bindtap="onUpdateConfirm">确认更新</button>
 </view>
 
+<van-action-sheet show="{{ show[0] }}" title="你想找的工作" bind:close="onClose">
+  <view class="action-container">
+    <view class="box">
+      <span>能否长期工作(3个月以上)</span>
+      <view>
+        <van-radio-group value="{{ jobValue[0] }}" bind:change="onChange" direction="horizontal" data-radio="0">
+          <van-radio name="0">是</van-radio>
+          <van-radio name="1">否</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+    <view class="box">
+      <span>能接受的工作时间</span>
+      <view>
+        <van-radio-group value="{{ jobValue[1] }}" bind:change="onChange" direction="horizontal" data-radio="1">
+          <van-radio name="0">工作日</van-radio>
+          <van-radio name="1">节假日</van-radio>
+          <van-radio name="2">寒暑假</van-radio>
+          <van-radio name="3">都可以</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+    <view class="box">
+      <span>能接受的工作时段</span>
+      <view>
+        <van-radio-group value="{{ jobValue[2] }}" bind:change="onChange" direction="horizontal" data-radio="2">
+          <van-radio name="0">早班</van-radio>
+          <van-radio name="1">白班</van-radio>
+          <van-radio name="2">晚班</van-radio>
+          <van-radio name="3">都可以</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+    <view class="box">
+      <span>你想每周工作几天</span>
+      <view>
+        <van-radio-group value="{{ jobValue[3] }}" bind:change="onChange" direction="horizontal" data-radio="3">
+          <van-radio name="0">1-2天</van-radio>
+          <van-radio name="1">3-4天</van-radio>
+          <van-radio name="2">5天以上</van-radio>
+          <van-radio name="3">都可以</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+    <view class="box">
+      <span>你想工作的行业</span>
+      <view>
+        <input placeholder="请输入" value="{{ jobName }}" bindinput="onJobNameInput" />
+      </view>
+    </view>
+    <button bind:tap="onJobLookingForConfirm">确认</button>
+  </view>
+</van-action-sheet>
+
+<van-action-sheet show="{{ show[1] }}" title="兼职经历" bind:close="onClose">
+  <view class="action-container">
+    <view class="box">
+      <span>公司名称</span>
+      <input placeholder="请输入就职公司名称" bindinput="onCompanyNameInput" value="{{ experience.name }}" />
+    </view>
+    <view class="box" bindtap="onTimeShow">
+      <span>工作时间</span>
+      <input placeholder="请输入工作时间" disabled value="{{ time }}" />
+    </view>
+    <view class="box">
+      <span>工作描述</span>
+      <input placeholder="请输入职位工作描述" bindinput="onJobDescInput" value="{{ experience.desc}}" />
+    </view>
+  </view>
+  <button bindtap="onExperienceConfirm">确认</button>
+</van-action-sheet>
+
+<van-action-sheet show="{{ show[2] }}" title="技能证书" bind:close="onClose">
+  <view class="action-container">
+    <view class="box">
+      <span>专业技能</span>
+      <input placeholder="请输入您的专业技能" bindinput="onSkillInput" />
+    </view>
+    <view class="box">
+      <span>相关材料</span>
+      <input placeholder="点击上传相关材料" disabled bindtap="onUploadSkill" />
+      <view class="skill-picBox">
+        <view class="skill-picContainer" wx:for="{{ skillFileUrl }}" wx:key="index">
+          <image src="{{ item }}" />
+        </view>
+      </view>
+    </view>
+    <button bindtap="onSkillConfirm">确认</button>
+  </view>
+</van-action-sheet>
+
+<van-action-sheet show="{{ show[3] }}" title="联系方式" bind:close="onClose">
+  <view class="action-container">
+    <view class="box">
+      <span>手机</span>
+      <view>
+        <input placeholder="请输入手机号" value="{{ contact.phone }}" bindinput="onPhoneInput" />
+      </view>
+    </view>
+    <view class="box">
+      <span>邮箱</span>
+      <view>
+        <input placeholder="请输入邮箱" value="{{ contact.email }}" bindinput="onEmailInput" />
+      </view>
+    </view>
+    <view class="box">
+      <span>微信</span>
+      <view>
+        <input placeholder="请输入微信号" value="{{ contact.wx }}" bindinput="onWxInput" />
+      </view>
+    </view>
+    <view class="box">
+      <span>QQ</span>
+      <view>
+        <input placeholder="请输入QQ号" value="{{ contact.qq }}" bindinput="onQQInput" />
+      </view>
+    </view>
+    <button bind:tap="onContactConfirm">确认</button>
+  </view>
+</van-action-sheet>
+
+<van-action-sheet show="{{ show[4] }}" title="个人信息" bind:close="onClose">
+  <view class="action-container">
+    <view class="box">
+      <span>年龄</span>
+      <view>
+        <input placeholder="请输入年龄（数字）" value="{{ age }}" bindinput="onAgeInput" />
+      </view>
+    </view>
+    <view class="box">
+      <span>身份</span>
+      <view>
+        <van-radio-group value="{{ personal }}" bind:change="onPersonalChange" direction="horizontal" data-radio="0">
+          <van-radio name="0">在校学生党</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+    <button bind:tap="onPersonalConfirm">确认</button>
+  </view>
+</van-action-sheet>
+
+<van-action-sheet show="{{ timeShow }}" title="选择时间范围" bind:close="onTimeClose">
+  <view class="action-container">
+    <view class="timeBox">
+      <span>开始时间</span>
+      <view bindtap="onTimeSelectShow">
+        <span>{{ startTime ? startTime : '请选择开始时间' }}</span>
+      </view>
+    </view>
+    <view class="timeBox">
+      <span>结束时间</span>
+      <view bindtap="onTimeSelectShow">
+        <span>{{ endTime ? endTime : '请选择结束时间' }}</span>
+      </view>
+    </view>
+    <button bindtap="onTimeConfirm">确认</button>
+  </view>
+</van-action-sheet>
+
+
+<van-popup show="{{ timeSelectShow }}" bind:close="onTimeSelectorClose" custom-class="popup">
+  <van-datetime-picker
+  type="date"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  formatter="{{ formatter }}"
+  bind:confirm="onTimePickerConfirm"
+  bind:cancel="onTimeSelectorClose"
+/>
+</van-popup>
+
+<van-popup show="{{ skillShow }}" bind:close="onClose" custom-class="popup">
+<view class="skillShow-container">
+  <view class="title">
+    <span>技能名称</span>
+    <span bindtap="onDeleteSkill">删除</span>
+  </view>
+  <span>{{ skillShowItem.skillName }}</span>
+  <view>技能证书</view>
+  <view>
+    <view class="picBox">
+      <image src="{{ item }}" wx:for="{{ skillShowItem.skillFileUrl }}" />
+    </view>
+  </view>
+  <view wx:for="{{ skill-picBox }}">
+  </view>
+</view>
+</van-popup>

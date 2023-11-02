@@ -93,9 +93,15 @@ const grade = [
 const params = [
   '微信名','头像', '姓名', '年级', '性别', '学号','学院', '专业', '手机号'
 ]
+
+const jobRequire = [
+  ["长期工作", "短期工作"],["工作日", "节假日", "寒暑假", "都可以"],["早班", "白班", "晚班", "都可以"],
+  ["1-2天", "3-4天", "5天以上", "都可以"]
+]
 module.exports = {
   colleges,
   sex,
   grade,
-  params
+  params,
+  jobRequire
 }

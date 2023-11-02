@@ -1,5 +1,6 @@
 const { colleges, sex, grade } = require('../../data/data')
-const db = wx.cloud.database().collection('user')
+const user = wx.cloud.database().collection('user')
+const user_job = wx.cloud.database().collection('user_job')
 const uploadFile = url => {
   const name = url.substring(url.lastIndexOf('/') + 1).toLowerCase()
   return new Promise((resolve, reject) => {
@@ -24,16 +25,16 @@ Page({
     index: 0,
     actions: [],
     title: '',
-    avatarUrl: '../../assets/boy.svg',
-    nickName: '1',
-    major: '1',
-    schoolId: '1',
-    name: '1',
-    grade: '1',
-    phone: '1',
-    sex: '1',
+    avatarUrl: wx.getStorageSync('avatarUrl') || '../../assets/boy.svg',
+    nickName: wx.getStorageSync('nickName') || '1',
+    major: wx.getStorageSync('major') || '1',
+    schoolId: wx.getStorageSync('schoolId') || '1',
+    name: wx.getStorageSync('name') ||'1',
+    grade: wx.getStorageSync('grade') ||'1',
+    phone: wx.getStorageSync('phone') ||'1',
+    sex: wx.getStorageSync('sex') ||'1',
     select: '1',
-    school: '1'
+    school: wx.getStorageSync('school') ||'1'
   },
   onClose() {
     this.setData({
@@ -140,12 +141,17 @@ Page({
     }
     const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl: res }
     // 在需要显示加载中效果的地方调用
-    db.add({
+    user.add({
       data: obj,
       complete: res =>  {
         wx.hideLoading()
         wx.showToast({ title: '注册成功' })
-      }
-    })
+        wx.setStorageSync('key', data)
+        for(let key in obj) {
+          wx.setStorageSync(key, obj[key])
+        }
+        wx.setStorageSync('isLogin', true)
+        wx.navigateBack()
+    }})
   }
 })

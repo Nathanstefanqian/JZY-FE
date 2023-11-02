@@ -1,8 +1,9 @@
 /* pages/resume/resume.wxss */
 .bg {
+  overflow: scroll;
   box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding: 10rpx 20rpx;
   background-image: linear-gradient(
     180deg,
@@ -34,6 +35,21 @@ header {
   border-radius: 20rpx;
   padding: 40rpx 20rpx;
   margin-bottom: 100rpx;
+}
+
+.card .avatar {
+  display: flex;
+  flex-direction: row;
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 92rpx;
+  height: 92rpx;
+  background-color: #f6f7fb;
+  border-radius: 20rpx;
 }
 
 .card .avatar image {
@@ -70,4 +86,107 @@ header {
 .card .box > span:nth-child(2) {
   font-size: 28rpx;
   color: grey;
+}
+
+.card .box .title {
+  width: 100%;
+  display: flex;
+}
+
+.card .box .title span  {
+  font-weight: 800;
+  margin-bottom: 20rpx;
+}
+
+.card .box .title span:nth-child(2) {
+  margin-left: auto;
+  margin-right: 20rpx;
+}
+
+.experience > span {
+  font-size: 28rpx;
+  color: grey;
+}
+
+.action-container {
+  padding: 20rpx;
+}
+
+.action-container .box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40rpx;
+}
+
+.action-container .half {
+  width: 50%;
+}
+
+.action-container .box span {
+  margin-bottom: 10rpx;
+}
+
+.skill-picBox {
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.skill-picContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx 0rpx;
+  border: 2rpx solid;
+  width: 128rpx;
+  margin-right: 20rpx;
+}
+
+.skill-picBox image {
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.action-container .timeBox {
+  margin-bottom: 40rpx;
+}
+
+.timeBox view {
+  margin-top: 10rpx;
+}
+.timeBox view span {
+  font-size: 28rpx;
+  color: grey;
+}
+
+.popup {
+  width: 80%;
+  border-radius: 20rpx;
+}
+
+.skillShow-container {
+  padding: 20rpx;
+  width: 80%;
+  height: 50vh;
+}
+
+.skillShow-container .picBox {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.skillShow-container .picBox image {
+  width: 320rpx;
+  height: 320rpx;
+  margin: 20rpx 0;
+}
+
+.skillShow-container .title {
+  display: flex;
+}
+
+.skillShow-container .title span:nth-child(2) {
+  margin-left: auto;
+  color: red;
 }

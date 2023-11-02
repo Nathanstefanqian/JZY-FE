@@ -1,0 +1,45 @@
+<!-- pages/edit/edit.wxml -->
+<back></back>
+<view class="container">
+  <view class="head" bindtap="onUpload">
+    <image src="{{ avatarUrl }}" mode="aspectFill" />
+  </view>
+  <view class="divider"></view>
+  <view class="body">
+    <view class="box">
+      <view class="getUser">
+        <span>微信名</span>
+      </view>
+      <view class="info">{{ nickName }}</view>
+    </view>
+    <view class="box">
+      <span>姓名</span>
+      <view class="info">{{ name }}</view>
+    </view>
+    <view class="box">
+      <span>年级</span>
+      <view class="info">{{ grade }}</view>
+    </view>
+    <view class="box">
+      <span>性别</span>
+      <view class="info">{{ sex }}</view>
+    </view>
+    <view class="box">
+      <span>学号/教职工号</span>
+      <view class="info">{{ schoolId }}</view>
+    </view>
+    <view class="box">
+      <span>学院</span>
+      <view class="info">{{ school }}</view>
+    </view>
+    <view class="box">
+      <span>专业</span>
+      <view class="info">{{ major }}</view>
+    </view>
+    <view class="box">
+      <span>手机号</span>
+      <view class="info">{{ phone }}</view>
+    </view>
+  </view>
+</view>
+<van-action-sheet title="{{ title }}" custom-class="action" show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />

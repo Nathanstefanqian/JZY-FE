@@ -7,5 +7,5 @@ exports.main = async (event, context) => {
   const db = cloud.database()
   const c = db.collection('user')
   const res = await c.where({ openId: openId }).get()
-  return res.data
+  return res
 }

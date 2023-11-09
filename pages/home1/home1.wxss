@@ -70,7 +70,7 @@
   border-radius: 40rpx;
   padding: 20rpx 40rpx;
   margin-bottom: 40rpx;
-  box-shadow: 0 0 1rpx rgba(0,0,0,0.5);
+  border: solid 1rpx rgba(0,0,0,0.5);
   background-color: #fff;
 }
 

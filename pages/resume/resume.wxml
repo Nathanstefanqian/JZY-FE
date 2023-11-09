@@ -245,3 +245,5 @@
   </view>
 </view>
 </van-popup>
+
+<van-loading  wx:if="{{ loading }}"type="spinner" />

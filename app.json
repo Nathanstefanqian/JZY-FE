@@ -54,6 +54,7 @@
     "van-tabs": "./dist/tabs/index",
     "van-card": "./dist/card/index",
     "van-image": "./dist/image/index",
+    "van-loading": "./dist/loading/index",
     "van-dropdown-menu": "./dist/dropdown-menu/index",
     "van-dropdown-item": "./dist/dropdown-item/index",
     "van-transition": "./dist/transition/index",

@@ -66,6 +66,7 @@ const colleges = [
     name: '通科微电子学院'
   }
 ]
+
 const sex = [
   {
     name: '男'

@@ -6,8 +6,8 @@
   </view>
   <view class="card">
     <view class="title">
-      <span>招聘客服专员</span>
-      <view class="price">4000-8000元/月</view>
+      <span>{{ jobTitle }}</span>
+      <view class="price">{{ salary }}</view>
     </view>
   </view>
   <view class="card">
@@ -17,7 +17,7 @@
         <span>工作日期</span>
       </view>
       <view class="bottom">
-        <span>不限</span>
+        <span>{{  work[0]  }}</span>
       </view>
     </view>
     <view class="row">
@@ -26,13 +26,13 @@
         <span>工作时段</span>
       </view>
       <view class="bottom">
-        <span>工作日 09:00 ~ 18:00</span>
+        <span>{{ work[3] }} {{ work[1] }} {{work[2]}}</span>
       </view>
     </view>
     <view class="row">
       <view class="top">
         <image src="../../assets/location_detail.svg" mode="aspectFit"/>
-        <span>崇川区钟秀街道</span>
+        <span>{{ workPlace.address }} · {{ workPlace.name }}</span>
       </view>
       <view class="bottom">
         <span>骑行28分钟 公交58分钟</span>
@@ -44,7 +44,7 @@
         <span>职位要求</span>
       </view>
       <view class="bottom">
-        <span>不限性别 | 限18岁以上40岁以下</span>
+        <span>{{ demand }}</span>
       </view>
     </view>
   </view>
@@ -52,25 +52,23 @@
     职位详情
   </view>
   <view class="card">
-    <span>1、年龄18-40岁,男女不限;兼职还在招</span>
-    <span>2、普通话标准逻辑清晰,语言表达沟通能力强；</span>
-    <span>3、积极、自信，有强烈的挣钱欲望。</span>
+    <span>{{ desc }}</span>
   </view>
   <view class="title">
-    发布企业
+    发布者
   </view>
   <view class="card">
     <view class="box">
       <view class="left">
-        <image src="../../assets/avatar.svg" mode="aspectFit"/>
+        <image src="{{ user.url }}" mode="aspectFill"/>
       </view>
       <view class="right">
         <span>
-          石家庄讯上科技有限公司
+          {{ user.name }}
         </span>
         <view>
           <image src="../../assets/verify.svg" mode="aspectFit"/>
-          企业认证
+          {{ user.verifyType }}认证
         </view>
       </view>
     </view>
@@ -79,12 +77,14 @@
 </view>
 <view class="foot-layout">
   <view class="foot">
-    <view class="star">
+    <view class="star" bind:tap="onStar" wx:if="{{ isStared }}">
       <image src="../../assets/star.svg" mode="aspectFit"/>
-
+    </view>
+    <view class="star" bind:tap="onStar" wx:else>
+      <image src="../../assets/star-active.svg" mode="aspectFit"/>
     </view>
     <view class="btn">在线沟通</view>
-    <view class="btn animate">立即报名</view>
-
+    <view class="btn disabled" wx:if="{{ isRegistered }}">已报名</view>
+    <view class="btn animate" bindtap="onSignup" wx:else>立即报名</view>
   </view>
 </view>

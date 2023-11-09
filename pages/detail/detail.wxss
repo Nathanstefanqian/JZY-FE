@@ -74,6 +74,7 @@ header {
 .card .box image {
   width: 128rpx;
   height: 128rpx;
+  border-radius: 40rpx;
 }
 
 .card .box .right {
@@ -81,7 +82,7 @@ header {
   display: flex;
   flex-direction: column;
   padding: 20rpx 0;
-  margin-left: 20rpx;
+  margin-left: 40rpx;
 }
 
 .card .box .right view {
@@ -126,6 +127,11 @@ header {
   background-color: #fd7753;
   color: #fff;
   margin-left: 40rpx;
+}
+
+.disabled {
+  
+  background-color: grey;
 }
 
 .star image {

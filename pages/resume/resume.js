@@ -76,6 +76,7 @@ Page({
     jobValue: ["0","0","0","0"],
     timeShow: false,
     timeSelectShow: false,
+    loading: true
   },
   onLoad() {
     user.where({
@@ -134,6 +135,11 @@ Page({
         job: job
       }
     }).then( res => wx.showToast({ title: '成功更新'}))
+  },
+  imageOnLoad() {
+    this.setData({
+      loading: false
+    })
   },
   onPersonalConfirm() {
     this.onClose()

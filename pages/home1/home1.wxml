@@ -31,22 +31,24 @@
           <view class="ibtn active">筛选</view>
         </view>
         <view class="body">
-          <view class="box" wx:for="{{[1,2,3]}}" bindtap="onDetail">
+          <view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}">
             <view class="title">
-              <span>海底捞招聘兼职</span>
+              <span>{{ item.jobTitle  }}</span>
               <view class="price">
-                180元/天
+                {{ item.salaryEnd + item.select.selectTime }}
               </view>
             </view>
             <view class="info">
               <view class="left">
                 <view class="location">
                   <image src="../../assets/location.svg" mode="aspectFit"/>
-                  5千米 | 崇川区钟秀街道尚景智谷B座
+                  5千米 | {{ item.workPlace.address }}
                 </view>
                 <view class="business">
                   <image src="../../assets/company.svg" mode="aspectFit"/>
-                  南通东庭财会资讯有限公司
+                  <span>{{ item.user.verifyType }}</span>
+                  <span> · </span>
+                  <span>{{ item.user.name }}</span>
                 </view>
               </view>
               <view class="right">

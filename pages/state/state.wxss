@@ -13,6 +13,7 @@ header {
   height: 100vh;
   padding: 40rpx 20rpx;
   background-color: #f6f7fb;
+  overflow: scroll;
 }
 
 

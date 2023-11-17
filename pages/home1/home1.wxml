@@ -15,8 +15,8 @@
       </view>
     </view>
     <view class="search">
-      <view class="location">南通·南通大学停车场</view>
-      <van-search placeholder="请输入搜索关键词" shape="round" disabled background="#FD7753" />
+      <view class="location" bindtap="onChooseLocation">{{ location }}</view>
+      <van-search placeholder="请输入搜索关键词" shape="round" disabled background="#FD7753" bindtap="onSearch" />
     </view>
   </view>
 
@@ -28,7 +28,7 @@
           <view class="ibtn active" style="margin-left: auto;">推荐</view>
           <view class="ibtn">附近</view>
           <view class="ibtn">最新</view>
-          <view class="ibtn active">筛选</view>
+          <view class="ibtn active" bindtap="onScreenOut">筛选</view>
         </view>
         <view class="body">
           <view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}">
@@ -66,3 +66,16 @@
     </van-tabs>
   </view>
 </view>
+
+<van-action-sheet show="{{ screenShow }}" title="筛选" bind:close="onClose">
+  <view class="action-container">
+    <van-tree-select
+      items="{{ items }}"
+      main-active-index="{{ mainActiveIndex }}"
+      active-id="{{ activeId }}"
+      bind:click-nav="onClickNav"
+      bind:click-item="onClickItem"
+    />
+    <button bindtap="onScreenOutConfirm">完成</button>
+  </view>
+</van-action-sheet>

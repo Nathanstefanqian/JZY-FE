@@ -1,4 +1,4 @@
-// pages/search/search.js
+// pages/proxy/proxy.js
 Page({
 
   /**

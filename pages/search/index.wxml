@@ -1,0 +1,37 @@
+<view class="divider"></view>
+<view class="container">
+    <view class="search">
+      <input placeholder="搜索" bindconfirm="handleSearch"/>
+    </view>
+    <view class="search-wrap">
+      <view class="history-wrap">
+        <view class="search-header">
+            <text class="search-title">历史搜索</text>
+            <text class="search-clear" bindtap="handleShowClearHistory">清除</text>
+        </view>
+        <view class="search-content">
+            <view
+                    class="search-item"
+                    hover-class="hover-history-item"
+                    wx:for="{{searchHistory}}"
+                    bind:tap="handleHistoryTap"
+                    bindlongpress="deleteCurr"
+                    data-index="{{index}}"
+                    wx:key="*this"
+            >
+                {{item}}
+            </view>
+        </view>
+      </view>
+    </view>
+    <t-dialog
+            visible="{{ dialogVisible }}"
+            content="{{dialogMessage}}"
+            bindconfirm="handleDialogConfirm"
+            bindclose="handleDialogClose"
+            confirm-btn="确定"
+            cancel-btn="取消"
+            t-class-confirm="dialog__button-confirm"
+            t-class-cancel="dialog__button-cancel"
+    />
+</view>

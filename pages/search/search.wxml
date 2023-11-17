@@ -1,4 +1,0 @@
-<!--pages/search/search.wxml-->
-<view class="container">
-    <van-search placeholder="这里搜索" bind:search="onSearch" ></van-search>
-</view>

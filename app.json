@@ -6,20 +6,23 @@
     "pages/assign/assign",
     "pages/cover/cover",
     "pages/my/my",
-    "pages/search/search",
+    "pages/search/index",
     "pages/guide/guide",
     "pages/detail/detail",
     "pages/star/star",
     "pages/resume/resume",
     "pages/state/state",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/setting/setting",
+    "pages/result/index",
+    "pages/proxy/proxy"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationStyle": "default"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
@@ -72,6 +75,12 @@
     "van-submit-bar": "./dist/submit-bar/index",
     "van-circle": "./dist/circle/index",
     "van-calendar": "./dist/calendar/index",
-    "van-datetime-picker": "./dist/datetime-picker/index"
-  }
+    "van-datetime-picker": "./dist/datetime-picker/index",
+    "van-empty": "./dist/empty/index"
+  },
+  "requiredPrivateInfos": [
+    "chooseAddress",
+    "getLocation",
+    "chooseLocation"
+  ]
 }

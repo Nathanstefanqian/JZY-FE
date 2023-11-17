@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="search">
+    <input placeholder="搜索" bindconfirm="handleSearch"/>
+  </view>
+  <view>
+    <van-dropdown-menu active-color="rgba(253, 119, 83, 1);">
+      <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+      <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+    </van-dropdown-menu>
+  </view>
+  <view class="list-body">
+      <view class="item" wx:for="{{jobList}}" wx:key="index" bindtap="handleDetail" data-index="{{item.id}}">
+        <view class="row">
+          <span class="job-row1">{{item.job_title}}</span>
+          <span class="job-row1">￥ {{item.job_salary}}</span>
+        </view>
+        <view class="row">
+          <span class="job-row2">{{ item.user.name }} {{ item.user.grade }}</span>
+          <span class="job-row2">面结</span>
+        </view>
+        <view class="row">
+          <view class="job-location">{{ item.job_campus }}</view>
+        </view>   
+      </view>
+  </view>
+</view>
+
+
+

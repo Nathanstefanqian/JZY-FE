@@ -141,3 +141,7 @@
   height: 24px;
   margin-right: 20rpx;
 }
+
+.action-container {
+  padding: 20rpx;
+}

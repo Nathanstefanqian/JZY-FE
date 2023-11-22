@@ -68,39 +68,43 @@ Page({
     startTime: '',
     endTime: '',
     time: '',
-    contactName: '',
+    contactName: '请输入你的联系方式',
     jobName: '',
     jobLookingFor: '你想要找的工作',
     show: [false, false, false, false, false],
     skillShow: false,
-    jobValue: ["0","0","0","0"],
+    jobValue: ["0", "0", "0", "0"],
     timeShow: false,
     timeSelectShow: false,
     loading: true
   },
-  onLoad() {
-    user.where({
-      _openid: 'oGJPU5X4rWM6geXlgV3C9WRAazf4'
-    }).get().then(res => {
-      res = res.data[0]
-      console.log(res)
-      this.setData({
-        avatarUrl: res.avatarUrl,
-        contact: res.contact,
-        experienceList: res.experienceList,
-        job: res.job,
-        personal: res.personal,
-        skillList: res.skillList,
-        photoUrl: res.photoUrl
-      })
+  async onLoad() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
     })
+    const openid = wx.getStorageSync('openid')
+    let res = await user.where({ _openid: openid }).get()
+    res = res.data[0]
+    this.setData({
+      sex: res.sex,
+      avatarUrl: res.avatarUrl || '',
+      contact: res.contact || {},
+      experienceList: res.experienceList || [],
+      job: res.job || {},
+      personal: res.personal || {},
+      skillList: res.skillList || [],
+      photoUrl: res.photoUrl || [],
+      jobLookingFor: res.job ? res.job.isPeriod + ' ; ' +  res.job.worktime + ' ; ' + res.job.workday + ' ; ' + res.job.workperiod + ' ; ' + res.job.name + ' ; ' : '点击添加你想要找的工作'
+    }, () =>  wx.hideLoading())
   },
   async onUpdateConfirm() {
     const { personal, experienceList, skillList, contact, photoUrl, job } = this.data
+    const openid = wx.getStorageSync('openid')
     // 上传用户生活照到云资源的userPhoto文件夹中
     let photoUrlTemp = []
     await Promise.all(photoUrl.map(async url => {
-      if(url.includes("tmp")) {
+      if (url.includes("tmp")) { // 如果是刚上传的，那么就推上去
         const res = await uploadFile(url)
         photoUrlTemp.push(res)
       } else {
@@ -114,7 +118,7 @@ Page({
       let skillTemp = item
       let skillFileUrlTemp = []
       await Promise.all(item.skillFileUrl.map(async url => {
-        if(url.includes("tmp")) {
+        if (url.includes("tmp")) { // 如果是刚推上来的
           const res = await uploadFile(url)
           skillFileUrlTemp.push(res)
         } else {
@@ -125,7 +129,8 @@ Page({
       skillListTemp.push(skillTemp)
     }))
     console.log('技能列表', skillListTemp)
-    await user.where({ _openid: "oGJPU5X4rWM6geXlgV3C9WRAazf4" }).update({
+    // 更新数据
+    await user.where({ _openid: openid }).update({
       data: {
         personal: personal,
         photoUrl: photoUrlTemp,
@@ -134,12 +139,7 @@ Page({
         contact: contact,
         job: job
       }
-    }).then( res => wx.showToast({ title: '成功更新'}))
-  },
-  imageOnLoad() {
-    this.setData({
-      loading: false
-    })
+    }).then(res => wx.showToast({ title: '成功更新' }))
   },
   onPersonalConfirm() {
     this.onClose()
@@ -153,7 +153,7 @@ Page({
     const month = date.getMonth() + 1; // 月份从0开始，需要加1
     const day = date.getDate();
     const standardDate = `${year}/${month}/${day}`;
-    if(!startTime) {
+    if (!startTime) {
       this.setData({
         timeSelectShow: false,
         startTime: standardDate,
@@ -171,7 +171,7 @@ Page({
   onTimeConfirm(e) {
     const { startTime, endTime } = this.data
     let { experience } = this.data
-    const time = startTime + ' - ' +  endTime
+    const time = startTime + ' - ' + endTime
     experience.startTime = startTime
     experience.endTime = endTime
     this.setData({
@@ -181,7 +181,11 @@ Page({
     })
   },
   onContactConfirm() {
-    const { phone, email, wx, qq } = this.data.contact
+    let { phone, email, wx, qq } = this.data.contact
+    if(!phone) phone = '暂无'
+    if(!email) email = '暂无'
+    if(!qq) qq = '暂无'
+    if(!wx) wx = '暂无'
     const name = " 电话: " + phone + "; 微信: " + wx + "; 邮箱: " + email + "; QQ: " + qq + ";"
     this.setData({
       contactName: name,
@@ -193,16 +197,16 @@ Page({
     let { skillList } = this.data
     skillList.push({ skillName, skillFileUrl })
     this.setData({
-      skillList: skillList
+      skillList
     })
     this.onClose()
   },
   onExperienceConfirm() {
     const { experience } = this.data
-    let  { experienceList }  = this.data
+    let { experienceList } = this.data
     experienceList.unshift(experience)
     this.setData({
-      experienceList: experienceList,
+      experienceList,
       time: '',
       startTime: '',
       endTime: '',
@@ -218,6 +222,7 @@ Page({
   onJobLookingForConfirm() {
     const { jobValue, jobName } = this.data
     let { job } = this.data
+    console.log(job)
     job.isPeriod = jobRequire[0][Number(jobValue[0])]
     job.worktime = jobRequire[1][Number(jobValue[1])]
     job.workday = jobRequire[2][Number(jobValue[2])]
@@ -225,14 +230,14 @@ Page({
     job.name = jobName
     const jobLookingFor = jobRequire[0][Number(jobValue[0])] + " ; " + jobRequire[1][Number(jobValue[1])] + " ; " + jobRequire[2][Number(jobValue[2])] + " ; " + jobRequire[3][Number(jobValue[3])] + " ; " + jobName + " ; "
     this.setData({
-      jobLookingFor: jobLookingFor,
+      jobLookingFor,
       job: job,
       show: [false, false, false, false]
     })
   },
   onPersonalChange(e) {
     let { personal } = this.data
-    const key= ['在校学生党']
+    const key = ['在校学生党']
     const value = Number(e.detail)
     personal.id = key[value]
     this.setData({
@@ -316,7 +321,7 @@ Page({
   onJob() {
     let show = [true, false, false, false, false]
     this.setData({
-      show: show
+      show
     })
   },
   onExper() {
@@ -338,7 +343,7 @@ Page({
     })
   },
   onSkillDetailShow(e) {
-    let { skillList,skillShowItem } = this.data
+    let { skillList, skillShowItem } = this.data
     const { index } = e.target.dataset
     console.log(skillList[index])
     skillShowItem = skillList[index]
@@ -398,7 +403,7 @@ Page({
       show: show
     })
   },
-  onTimeShow() { 
+  onTimeShow() {
     this.setData({
       timeShow: true
     })
@@ -413,11 +418,11 @@ Page({
   onChange(e) {
     const radio = Number(e.currentTarget.dataset.radio)
     const value = e.detail
-    const jobValue= this.data.jobValue
+    const jobValue = this.data.jobValue
     jobValue[radio] = value
     this.setData({
       jobValue: jobValue
-    },() => console.log(jobValue))
+    }, () => console.log(jobValue))
   },
   onTimeClose() {
     this.setData({

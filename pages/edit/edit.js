@@ -25,51 +25,82 @@ Page({
     index: 0,
     actions: [],
     title: '',
-    avatarUrl: wx.getStorageSync('avatarUrl') || '../../assets/boy.svg',
-    nickName: wx.getStorageSync('nickName') || '1',
-    major: wx.getStorageSync('major') || '1',
-    schoolId: wx.getStorageSync('schoolId') || '1',
-    name: wx.getStorageSync('name') ||'1',
-    grade: wx.getStorageSync('grade') ||'1',
-    phone: wx.getStorageSync('phone') ||'1',
-    sex: wx.getStorageSync('sex') ||'1',
+    avatarUrl: '../../assets/boy.svg',
+    nickName: '',
+    major: '',
+    schoolId: '',
+    name: '',
+    grade: '',
+    phone: '',
+    sex: '',
     select: '1',
-    school: wx.getStorageSync('school') ||'1'
+    school: '',
+    isEdit: false
   },
+  onLoad(e) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    const { id } = e
+    if (id) { // 如果是修改的
+      this.setData({
+        isEdit: true,
+        avatarUrl: wx.getStorageSync('avatarUrl') || '../../assets/boy.svg',
+        nickName: wx.getStorageSync('nickName') || '',
+        major: wx.getStorageSync('major') || '',
+        schoolId: wx.getStorageSync('schoolId') || '',
+        name: wx.getStorageSync('name') || '',
+        grade: wx.getStorageSync('grade') || '',
+        phone: wx.getStorageSync('phone') || '',
+        sex: wx.getStorageSync('sex') || '',
+        school: wx.getStorageSync('school') || '',
+      }, () => wx.hideLoading())
+    }
+    else { // 如果是注册的
+      wx.hideLoading()
+    }
+  },
+
   onClose() {
     this.setData({
       show: false
     })
   },
+
   onUpload() {
     const that = this
     wx.chooseImage({
       count: 1, // 最多可选择的图片数量
       sizeType: ['compressed'], // 所选的图片的尺寸压缩方式
       sourceType: ['album', 'camera'], // 选择图片的来源，可以从相册选择或使用相机拍摄
-      success(res) {
+      async success(res) {
         console.log(res)
         const url = res.tempFilePaths[0]
+        const avatarUrl = await uploadFile(url)
         that.setData({
-          avatarUrl: url
+          avatarUrl
         }, () => {
           wx.showToast({ title: '选择成功' })
         })
       }
     })
   },
+
   onName(e) {
     const { value } = e.detail
     this.setData({
       name: value
     })
   },
+
   onNickName(e) {
     const { value } = e.detail
     this.setData({
       nickName: value
     })
   },
+
   onGrade() {
     this.setData({
       title: '请选择年级',
@@ -78,6 +109,7 @@ Page({
       index: 2
     })
   },
+
   onSchool() {
     this.setData({
       title: '请选择学院',
@@ -86,6 +118,7 @@ Page({
       index: 1
     })
   },
+
   onSex() {
     this.setData({
       title: '请选择性别',
@@ -94,24 +127,28 @@ Page({
       index: 0
     })
   },
+
   onSchoolId(e) {
     const { value } = e.detail
     this.setData({
       schoolId: value
     })
   },
+
   onMajor(e) {
     const { value } = e.detail
     this.setData({
       major: value
     })
   },
+
   onPhone(e) {
     const { value } = e.detail
     this.setData({
       phone: value
     })
   },
+
   onGetUserInfo(e) {
     const rawData = JSON.parse(e.detail.rawData)
     this.setData({
@@ -119,6 +156,7 @@ Page({
       avatarUrl: rawData.avatarUrl
     })
   },
+
   onSelect(e) {
     const { name } = e.detail
     const { index } = this.data
@@ -128,30 +166,58 @@ Page({
       [vari]: name
     })
   },
+
   async onSubmit() {
     const { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl } = this.data
     wx.showLoading({
-      title: '加载中', // 可自定义加载提示文字
-      mask: false // 是否显示遮罩层
+      title: '注册中', // 可自定义加载提示文字
+      mask: true // 是否显示遮罩层
     })
     const res = await uploadFile(avatarUrl).catch(err => { wx.hideLoading() })
-    const data = [ nickName, res, name, grade, sex, schoolId, school, major, phone ]
-    for(let i = 0; i < data.length; i++) {
-      if(!checkParams(data[i], i)) return;
+    const data = [nickName, res, name, grade, sex, schoolId, school, major, phone]
+    for (let i = 0; i < data.length; i++) {
+      if (!checkParams(data[i], i)) return // 判断是否为空
     }
     const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl: res }
     // 在需要显示加载中效果的地方调用
+    const that = this
     user.add({
       data: obj,
-      complete: res =>  {
+      complete: res => {
         wx.hideLoading()
         wx.showToast({ title: '注册成功' })
         wx.setStorageSync('key', data)
-        for(let key in obj) {
+        for (let key in obj) {
           wx.setStorageSync(key, obj[key])
         }
         wx.setStorageSync('isLogin', true)
-        wx.navigateBack()
-    }})
+        setTimeout(() => wx.navigateBack(), 2000)
+        wx.hideLoading()
+      }
+    })
+  },
+
+  async onModify() {
+    const { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl } = this.data
+    wx.showLoading({
+      title: '修改中', // 可自定义加载提示文字
+      mask: true // 是否显示遮罩层
+    })
+    const data = [nickName, avatarUrl, name, grade, sex, schoolId, school, major, phone]
+    for (let i = 0; i < data.length; i++) {
+      if (!checkParams(data[i], i)) return;
+    }
+    const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl }
+    const openid = wx.getStorageSync('openid')
+    const that = this
+    // 在需要显示加载中效果的地方调用
+    user.where({ _openid: openid }).update({
+      data: obj,
+      complete: res => {
+        wx.hideLoading()
+        wx.showToast({ title: '修改成功' })
+        wx.setStorageSync('isLogin', true)
+      }
+    })
   }
 })

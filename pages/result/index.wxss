@@ -61,3 +61,151 @@
   font-size: 14px;
   padding: 0 10rpx;
 }
+
+/* pages/home1/home1.wxss */
+.empty {
+  display: flex;
+  color: #fd7753;
+}
+
+.bg {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FD7753;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 40rpx;
+  margin-top: 20rpx;
+  padding: 10rpx 20rpx;
+  overflow: scroll;
+}
+
+.head-container {
+  padding: 0 20rpx;
+  margin-top: 55rpx;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title .left image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.title .right view:first-child {
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+.title .right view:nth-child(2) {
+  font-size: 16rpx;
+  color: #fff;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.search .location {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.body {
+  margin-top: 40rpx;
+  overflow: scroll;
+}
+
+
+.body .box {
+  color: #000;
+  box-sizing: border-box;
+  width: 100%;
+  height: 260rpx;
+  border-radius: 40rpx;
+  padding: 20rpx 40rpx;
+  margin-bottom: 40rpx;
+  border: solid 1rpx rgba(0,0,0,0.5);
+  background-color: #fff;
+}
+
+.box .title {
+  font-size: 32rpx;
+}
+
+.head {
+  display: flex;
+  width: 100%;
+  margin-top: 40rpx;
+}
+
+.ibtn {
+  padding: 10rpx 20rpx;
+  background-color: #f6f7fb;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.active {
+  color: #fd7753;
+  background-image: linear-gradient(
+    165deg,
+    hsl(13deg 98% 66%) 0%,
+    hsl(14deg 100% 74%) 1%,
+    hsl(15deg 100% 83%) 8%,
+    hsl(16deg 100% 91%) 23%,
+    hsl(0deg 0% 100%) 81%
+  );
+}
+
+
+.box .title {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.box .title .price {
+  margin-left: auto;
+  color: #FD7753;
+}
+
+.box .location {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+}
+
+.box .location image {
+  width: 48rpx;
+  height: 48rpx
+}
+
+.box .business {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.box .business image {
+  width: 24px;
+  height: 24px;
+  margin-right: 20rpx;
+}
+
+.action-container {
+  padding: 20rpx;
+}

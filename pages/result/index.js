@@ -1,29 +1,39 @@
 const app = getApp()
 const { imageCdn } = app.globalData
+const db = wx.cloud.database()
+const user = wx.cloud.database().collection('buser')
 
 Page({
   data: {
     keyword: '',
     imageCdn: imageCdn,
-    jobList: [],
-    option1: [
-      { text: '全部', value: 0 },
-      { text: '招聘中', value: 1 },
-      { text: '待发布', value: 2 },
-      { text: '已下线', value: 3 },
-      { text: '审核驳回', value: 4 },
-    ],
-    option2: [
-      { text: '默认排序', value: 'a' },
-      { text: '好评排序', value: 'b' },
-      { text: '销量排序', value: 'c' },
-    ],
-    value1: 0,
-    value2: 'a'
+    jobList: []
   },
 
-  onLoad(query) {
+  async onLoad(query) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     const { keyword } = query
+    const res = await await db.collection('job')
+      .where({
+        jobTitle: db.RegExp({
+          regexp: '.*' + keyword + '.*', // 使用正则表达式进行模糊搜索
+          options: 'i' // 设置为不区分大小写
+        })
+      })
+      .get()
+    const jobList = await Promise.all(res.data.map(async item => {
+      console.log(item)
+      const { _openid } = item
+      let result = await user.where({ _openid }).get()
+      console.log(result)
+      item.user = result.data[0]
+      return item
+    }))
+    console.log(jobList)
+    this.setData({ jobList: res.data }, () => wx.hideLoading())
   },
 
   handleSearch(e) {
@@ -33,11 +43,10 @@ Page({
     })
   },
 
-  handleDetail(e) {
-    // console.log('跳转详情', e)
-    let { index } = e.currentTarget.dataset
+  onDetail(e) {
+    const { id } = e.currentTarget.dataset
     wx.navigateTo({
-      url: `../detail/index?id=${index}`
+      url: `../detail/detail?id=${id}`
     })
   }
 })

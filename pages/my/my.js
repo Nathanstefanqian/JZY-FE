@@ -2,64 +2,44 @@
 const user = wx.cloud.database().collection('user')
 const user_job = wx.cloud.database().collection('user_job')
 const job = wx.cloud.database().collection('job')
-
-const refresh = () => {
-  var currentPages = getCurrentPages();
-  var currentPage = currentPages[currentPages.length - 1];
-  currentPage.onLoad(); // 触发页面的 onLoad 方法
-}
+const { imageUrl } = require('../../config/index')
 Page({
   data: {
+    imageUrl,
     isLogin: wx.getStorageSync('isLogin'),
     avatarUrl: wx.getStorageSync('avatarUrl') || '../../assets/boy.svg',
     name: wx.getStorageSync('name'),
     major: wx.getStorageSync('major'),
     grade: wx.getStorageSync('grade'),
-    data: [1, 2, 3, 4],
-    stateList: [],
     state: [0, 0, 0, 0]
   },
 
   async onLoad() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     const openid = wx.getStorageSync('openid')
+    // 获取该用户的任务情况
     const res = await user_job.where({ _openid: openid }).get()
-    let stateList = await Promise.all(res.data.map(async item => {
-      const { jobId } = item
-      const jobRes = await job.where({ _id: jobId }).get()
-      return jobRes.data[0]
-    }))
+    let list = res.data
     let { state } = this.data
     state = [0, 0, 0, 0]
-    stateList.map(item => {
+    list.map(item => {
       state[parseInt(item.state)] += 1
     })
-    console.log(state)
     this.setData({
-      stateList, state
-    })
-    this.setData({
+      state,
       isLogin: wx.getStorageSync('isLogin'),
       avatarUrl: wx.getStorageSync('avatarUrl') || '../../assets/boy.svg',
       name: wx.getStorageSync('name'),
       major: wx.getStorageSync('major'),
-      grade: wx.getStorageSync('grade'),
-    })
+      grade: wx.getStorageSync('grade')
+    }, () => wx.hideLoading())
   },
 
   onShow() {
     this.onLoad()
-  },
-
-  onEdit() {
-    wx.navigateTo({
-      url: '../edit/edit'
-    })
-  },
-
-  onTap() {
-    wx.navigateTo({
-      url: '../star/star',
-    })
   },
 
   onExit() {
@@ -69,55 +49,84 @@ Page({
   },
 
   async onLogin(e) {
-    const res = await user.where({ _openid: 'oGJPU5X4rWM6geXlgV3C9WRAazf4' }).get()
-
-    if (res.data.length === 0) {
-      wx.showModal({
-        title: '快去注册！', content: '当前账号没有注册，是否注册？',
-        success: res => {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: '../edit/edit',
-            })
-          }
-          else {
-            console.log('用户取消注册')
-          }
+    wx.cloud.callFunction({
+      name: 'getOpenId',
+      complete: async ress => {
+        const { openid } = ress.result
+        const res = await user.where({
+          _openid: openid
+        }).get()
+        if (!res.data.length) { // 如果没找到则引导注册
+          wx.navigateTo({
+            url: '../edit/edit'
+          })
+        } else { // 如果找到则立即登录
+        const data = res.data[0]
+        for (const key in data) {
+          wx.setStorageSync(key, data[key])
         }
+        wx.setStorageSync('openid', openid)
+        wx.setStorageSync('isLogin', true)
+        wx.showToast({ title: '登录成功' })
+        setTimeout(() => this.onLoad(), 2000)
+        }
+      }
+    })
+  },
+
+  onEdit() {
+    wx.navigateTo({
+      url: '../edit/edit'
+    })
+  },
+
+  onStar() {
+    if(wx.getStorageSync('isLogin')) { // 如果已经登录
+      wx.navigateTo({
+        url: '../star/star',
       })
     }
     else {
-      const data = res.data[0]
-      for (const key in data) {
-        wx.setStorageSync(key, data[key])
-      }
-      wx.setStorageSync('isLogin', true)
-      this.onLoad()
+      wx.showToast({
+        title: '请先登录',
+        icon: 'error'
+      })
     }
   },
 
-  onPersonal(e) {
-    wx.navigateTo({
-      url: '../personal/personal',
-    })
-  },
-
   onSetting(e) {
-    wx.navigateTo({
-      url: '../setting/setting',
-    })
+    wx.clearStorageSync()
+    wx.showToast({ title: '退出成功' })
+    setTimeout(() => this.onLoad(), 1000)
   },
 
   onResume(e) {
-    wx.navigateTo({
-      url: '../resume/resume'
-    })
+    if(wx.getStorageSync('isLogin')) { // 如果已经登录
+      wx.navigateTo({
+        url: '../resume/resume',
+      })
+    }
+    else {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'error'
+      })
+    }
   },
 
   onBasic(e) {
-    wx.navigateTo({
-      url: '../edit/edit',
-    })
+    if(wx.getStorageSync('isLogin')) { // 如果已经登录
+      wx.navigateTo({
+        url: '../edit/edit?id=1',
+      })
+    }
+    else {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'error'
+      })
+    }
+
   },
 
   onProxy(e) {
@@ -126,15 +135,18 @@ Page({
     })
   },
 
-  onState() {
+  onState() {    
+  if(wx.getStorageSync('isLogin')) { // 如果已经登录
     wx.navigateTo({
       url: '../state/state',
     })
-  },
-
-  onStar() {
-    wx.navigateTo({
-      url: '../star/star',
+  }
+  else {
+    wx.showToast({
+      title: '请先登录',
+      icon: 'error'
     })
+  }
+
   }
 })

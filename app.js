@@ -2,9 +2,10 @@
 App({
   onLaunch() {
     wx.cloud.init({
-        env: 'cloud1-1ghsd84v3284f24b',
-        traceUser: true
+      env: 'jzy-1gjdmixbb2d05e5f',
+      traceUser: true
     })
+    // openid挂载到全局
     wx.cloud.callFunction({
       name: 'getOpenId',
       complete: res => {

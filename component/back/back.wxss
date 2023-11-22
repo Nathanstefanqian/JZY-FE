@@ -5,7 +5,7 @@
   top: 110rpx;
   left: 20rpx;
 }
-.back image {
+.back .img {
   width: 50rpx;
   height: 50rpx;
 }

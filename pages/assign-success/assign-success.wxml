@@ -1,8 +1,8 @@
 <!--pages/assign-success/assign-success.wxml-->
 <text>pages/assign-success/assign-success.wxml</text>
 <view class="container">
-  <image src="../../assets/success.svg" />
-  <span>已申请成功</span>
-  <span>您的申请已成功，我们会将您的简历推给相关负责人，请耐心等待</span>
-  <button bindtap="onClick">返回首页</button>
+	<image src="{{ imageUrl }}/assetsFE/success.svg" />
+	<span>已申请成功</span>
+	<span>您的申请已成功，我们会将您的简历推给相关负责人，请耐心等待</span>
+	<button bindtap="onClick">返回首页</button>
 </view>

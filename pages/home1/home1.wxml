@@ -1,81 +1,122 @@
 <view class="bg">
-  <span class="empty">123</span>
-  <view class="head-container">
-    <view class="title">
-      <view class="left">
-        <image src="../../assets/guitar.svg" mode="aspectFit"/>
-      </view>
-      <view class="right">
-        <view>
-          兼职易保障 | 安全无忧
-        </view>
-        <view>
-          11重岗位审核·1000万薪资保障·100%客服响应
-        </view>
-      </view>
-    </view>
-    <view class="search">
-      <view class="location" bindtap="onChooseLocation">{{ location }}</view>
-      <van-search placeholder="请输入搜索关键词" shape="round" disabled background="#FD7753" bindtap="onSearch" />
-    </view>
-  </view>
-
-  <view class="container">
-    <van-tabs active="{{ active }}" bind:change="onChange" color="#FD7753" custom-style="tab">
-      <van-tab title="推荐">
-        <view class="head">
-          <span>精选兼职</span>
-          <view class="ibtn active" style="margin-left: auto;">推荐</view>
-          <view class="ibtn">附近</view>
-          <view class="ibtn">最新</view>
-          <view class="ibtn active" bindtap="onScreenOut">筛选</view>
-        </view>
-        <view class="body">
-          <view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}">
-            <view class="title">
-              <span>{{ item.jobTitle  }}</span>
-              <view class="price">
-                {{ item.salaryEnd + item.select.selectTime }}
-              </view>
-            </view>
-            <view class="info">
-              <view class="left">
-                <view class="location">
-                  <image src="../../assets/location.svg" mode="aspectFit"/>
-                  5千米 | {{ item.workPlace.address }}
-                </view>
-                <view class="business">
-                  <image src="../../assets/company.svg" mode="aspectFit"/>
-                  <span>{{ item.user.verifyType }}</span>
-                  <span> · </span>
-                  <span>{{ item.user.name }}</span>
-                </view>
-              </view>
-              <view class="right">
-                <view class="btn">
-                </view>
-              </view>
-            </view>
-
-          </view>
-        </view>
-      </van-tab>
-      <van-tab title="线上">内容 2</van-tab>
-      <van-tab title="跑腿">内容 3</van-tab>
-      <van-tab title="线下">内容 4</van-tab>
-    </van-tabs>
-  </view>
+	<span class="empty">123</span>
+	<view class="head-container">
+		<view class="title">
+			<view class="left">
+				<image src="{{ imageUrl }}/assetsFE/guitar.svg" mode="aspectFit" />
+			</view>
+			<view class="right">
+				<view>兼职易保障 | 安全无忧</view>
+				<view>11重岗位审核·1000万薪资保障·100%客服响应</view>
+			</view>
+		</view>
+		<view class="search">
+			<view class="location" bindtap="onChooseLocation">{{ location }}</view>
+			<van-search placeholder="请输入搜索关键词" shape="round" disabled background="#FD7753" style="margin-left: auto" bindtap="onSearch" />
+		</view>
+	</view>
+	<view class="container">
+		<van-tabs active="{{ active }}" bind:change="onChange" color="#FD7753" custom-style="tab">
+			<van-tab title="推荐">
+				<view class="head">
+					<span>精选兼职</span>
+					<van-tag type="warning" style="margin-left: auto" bindtap="onScreenOut">筛选</van-tag>
+				</view>
+				<view class="overflow">
+					<view class="body">
+						<view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index">
+							<view class="title">
+								<span>{{ item.jobTitle  }}</span>
+								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
+							</view>
+							<view class="info">
+								<view class="left">
+									<view class="location">
+										<image src="{{ imageUrl }}/assetsFE/location.svg" mode="aspectFit" />
+										{{ item.distance }}千米 | {{ item.workPlace.address }}
+									</view>
+									<view class="business">
+										<image src="{{ imageUrl }}/assetsFE/company.svg" mode="aspectFit" />
+										<span>{{ item.user.name }}</span>
+									</view>
+								</view>
+								<view class="right">
+									<view class="btn"></view>
+								</view>
+							</view>
+						</view>
+					</view>
+          <van-empty description="空列表" wx:if="{{ !job.length }}" />
+				</view>
+			</van-tab>
+			<van-tab title="附近">
+				<view class="overflow">
+					<view class="body">
+						<view class="box" wx:for="{{ nearList }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index">
+							<view class="title">
+								<span>{{ item.jobTitle  }}</span>
+								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
+							</view>
+							<view class="info">
+								<view class="left">
+									<view class="location">
+										<image src="{{ imageUrl }}/assetsFE/location.svg" mode="aspectFit" />
+										{{ item.distance }}千米 | {{ item.workPlace.address }}
+									</view>
+									<view class="business">
+										<image src="{{ imageUrl }}/assetsFE/company.svg" mode="aspectFit" />
+										<span>{{ item.user.name }}</span>
+									</view>
+								</view>
+								<view class="right">
+									<view class="btn"></view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</van-tab>
+			<van-tab title="最新">
+				<view class="overflow">
+					<view class="body">
+						<view class="box" wx:for="{{ timeList }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index">
+							<view class="title">
+								<span>{{ item.jobTitle  }}</span>
+								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
+							</view>
+							<view class="info">
+								<view class="left">
+									<view class="location">
+										<image src="{{ imageUrl }}/assetsFE/location.svg" mode="aspectFit" />
+										{{ item.distance }}千米 | {{ item.workPlace.address }}
+									</view>
+									<view class="business">
+										<image src="{{ imageUrl }}/assetsFE/company.svg" mode="aspectFit" />
+										<span>{{ item.user.verifyType }}</span>
+										<span>·</span>
+										<span>{{ item.user.name }}</span>
+									</view>
+								</view>
+								<view class="right">
+									<view class="btn"></view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</van-tab>
+		</van-tabs>
+	</view>
 </view>
-
 <van-action-sheet show="{{ screenShow }}" title="筛选" bind:close="onClose">
-  <view class="action-container">
-    <van-tree-select
-      items="{{ items }}"
-      main-active-index="{{ mainActiveIndex }}"
-      active-id="{{ activeId }}"
-      bind:click-nav="onClickNav"
-      bind:click-item="onClickItem"
-    />
-    <button bindtap="onScreenOutConfirm">完成</button>
-  </view>
+	<view class="action-container">
+		<van-tree-select
+			items="{{ items }}"
+			main-active-index="{{ mainActiveIndex }}"
+			active-id="{{ activeId }}"
+			bind:click-nav="onClickNav"
+			bind:click-item="onClickItem"
+		/>
+		<button bindtap="onScreenOutConfirm">完成</button>
+	</view>
 </van-action-sheet>

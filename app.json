@@ -12,7 +12,6 @@
     "pages/star/star",
     "pages/resume/resume",
     "pages/state/state",
-    "pages/personal/personal",
     "pages/setting/setting",
     "pages/result/index",
     "pages/proxy/proxy"
@@ -76,11 +75,17 @@
     "van-circle": "./dist/circle/index",
     "van-calendar": "./dist/calendar/index",
     "van-datetime-picker": "./dist/datetime-picker/index",
-    "van-empty": "./dist/empty/index"
+    "van-empty": "./dist/empty/index",
+    "van-tag": "./dist/tag/index"
   },
   "requiredPrivateInfos": [
     "chooseAddress",
     "getLocation",
     "chooseLocation"
-  ]
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
 }

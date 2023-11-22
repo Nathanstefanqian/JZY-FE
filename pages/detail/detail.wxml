@@ -1,88 +1,89 @@
 <view class="bg">
-  <view class="title">
-    职位简介
-  </view>
-  <view class="card">
-    <view class="title">
-      <span>{{ jobTitle }}</span>
-      <view class="price">{{ salary }}</view>
-    </view>
-  </view>
-  <view class="card">
-    <view class="row">
-      <view class="top">
-        <image src="../../assets/date.svg" mode="aspectFit"/>
-        <span>工作日期</span>
-      </view>
-      <view class="bottom">
-        <span>{{  work[0]  }}</span>
-      </view>
-    </view>
-    <view class="row">
-      <view class="top">
-        <image src="../../assets/time.svg" mode="aspectFit"/>
-        <span>工作时段</span>
-      </view>
-      <view class="bottom">
-        <span>{{ work[3] }} {{ work[1] }} {{work[2]}}</span>
-      </view>
-    </view>
-    <view class="row">
-      <view class="top">
-        <image src="../../assets/location_detail.svg" mode="aspectFit"/>
-        <span>{{ workPlace.address }} · {{ workPlace.name }}</span>
-      </view>
-      <view class="bottom">
-        <span>骑行28分钟 公交58分钟</span>
-      </view>
-    </view>
-    <view class="row">
-      <view class="top">
-        <image src="../../assets/requirement.svg" mode="aspectFit"/>
-        <span>职位要求</span>
-      </view>
-      <view class="bottom">
-        <span>{{ demand }}</span>
-      </view>
-    </view>
-  </view>
-  <view class="title">
-    职位详情
-  </view>
-  <view class="card">
-    <span>{{ desc }}</span>
-  </view>
-  <view class="title">
-    发布者
-  </view>
-  <view class="card">
-    <view class="box">
-      <view class="left">
-        <image src="{{ user.url }}" mode="aspectFill"/>
-      </view>
-      <view class="right">
-        <span>
-          {{ user.name }}
-        </span>
-        <view>
-          <image src="../../assets/verify.svg" mode="aspectFit"/>
-          {{ user.verifyType }}认证
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="blank"></view>
+	<view class="title" style="padding-top: 40rpx">职位简介</view>
+	<view class="card">
+		<view class="title">
+			<span>{{ jobTitle }}</span>
+			<view class="price">{{ salary }}</view>
+		</view>
+	</view>
+	<view class="card">
+		<view class="row">
+			<view class="top">
+				<image src="{{ imageUrl }}/assetsFE/date.svg" mode="aspectFit" />
+				<span>工作日期</span>
+			</view>
+			<view class="bottom">
+				<span>{{  work[0]  }}</span>
+			</view>
+		</view>
+		<view class="row">
+			<view class="top">
+				<image src="{{ imageUrl }}/assetsFE/time.svg" mode="aspectFit" />
+				<span>工作时段</span>
+			</view>
+			<view class="bottom">
+				<span>{{ work[3] }} {{ work[1] }} {{work[2]}}</span>
+			</view>
+		</view>
+		<view class="row">
+			<view class="top">
+				<image src="{{ imageUrl }}/assetsFE/location_detail.svg" mode="aspectFit" />
+				<span>工作地点</span>
+			</view>
+			<view class="bottom">
+				<span>{{ workPlace.address }} · {{ workPlace.name }}</span>
+			</view>
+		</view>
+		<view class="row">
+			<view class="top">
+				<image src="{{ imageUrl }}/assetsFE/requirement.svg" mode="aspectFit" />
+				<span>职位要求</span>
+			</view>
+			<view class="bottom">
+				<span>{{ demand }}</span>
+			</view>
+		</view>
+	</view>
+	<view class="title">职位详情</view>
+	<view class="card">
+		<span>{{ desc }}</span>
+	</view>
+	<view class="title">发布者</view>
+	<view class="card">
+		<view class="box">
+			<view class="left">
+				<image src="{{ user.url }}" mode="aspectFill" />
+			</view>
+			<view class="right">
+				<span>{{ user.name }}</span>
+				<view>
+					<image src="{{ imageUrl }}/assetsFE/verify.svg" mode="aspectFit" />
+					{{ user.verifyType }}认证
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="blank"></view>
 </view>
 <view class="foot-layout">
-  <view class="foot">
-    <view class="star" bind:tap="onStar" wx:if="{{ isStared }}">
-      <image src="../../assets/star.svg" mode="aspectFit"/>
-    </view>
-    <view class="star" bind:tap="onStar" wx:else>
-      <image src="../../assets/star-active.svg" mode="aspectFit"/>
-    </view>
-    <view class="btn">在线沟通</view>
-    <view class="btn disabled" wx:if="{{ isRegistered }}">已报名</view>
-    <view class="btn animate" bindtap="onSignup" wx:else>立即报名</view>
-  </view>
+	<view class="foot">
+		<view class="star" bind:tap="onStar" wx:if="{{ !isStared }}">
+			<image src="{{ imageUrl }}/assetsFE/star.svg" mode="aspectFit" />
+		</view>
+		<view class="star" bind:tap="onStar" wx:else>
+			<image src="{{ imageUrl }}/assetsFE/star-active.svg" mode="aspectFit" />
+		</view>
+		<view class="btn">在线沟通</view>
+		<view class="btn disabled" wx:if="{{ isRegistered }}">已报名</view>
+		<view class="btn animate" bindtap="onContact" wx:else>立即报名</view>
+	</view>
 </view>
+<van-popup show="{{ show }}" bind:close="onClose" round>
+	<div class="container"></div>
+</van-popup>
+<van-action-sheet show="{{ contactShow }}" title="报名成功" bind:close="onClose" bind:select="onSelect">
+	<view class="action-container">
+		请尽快联系招聘负责人
+		<button style="width: 100%" bindtap="onClipboard">{{ method }} : {{ contact }}</button>
+	</view>
+</van-action-sheet>

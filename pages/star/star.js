@@ -30,7 +30,7 @@ Page({
 
     wx.showModal({
       title: '提示',
-      content: '确认修改该职位吗？',
+      content: '确认取消收藏该职位吗？',
       success: async result => {
         const { openid, id } = e.currentTarget.dataset
         const res = await user_star.where({

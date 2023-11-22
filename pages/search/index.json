@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationStyle": "default"
+  "navigationStyle": "default",
+  "navigationBarTitleText": "搜索"
 }

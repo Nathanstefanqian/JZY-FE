@@ -143,17 +143,18 @@ header {
 
 .skill-picContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  width: 100%;
   align-items: center;
   padding: 20rpx 0rpx;
-  border: 2rpx solid;
-  width: 128rpx;
   margin-right: 20rpx;
 }
 
+
+
 .skill-picBox image {
-  width: 128rpx;
-  height: 128rpx;
+  border-radius: 20rpx;
 }
 
 .action-container .timeBox {
@@ -199,4 +200,12 @@ header {
 .skillShow-container .title span:nth-child(2) {
   margin-left: auto;
   color: red;
+}
+
+.btnn {
+  display: flex;
+  position: absolute;
+  width: 50%;
+  left: 200rpx;
+  bottom: -50rpx;
 }

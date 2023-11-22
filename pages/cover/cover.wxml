@@ -1,4 +1,4 @@
 <view class="bg">
-    <image src="../../assets/logo.png" mode="aspectFit" style="width: 200rpx;" />
-    <span>通大兼职易</span>
+	<image src="{{ imageUrl }}/assetsFE/logo.png" mode="aspectFit" style="width: 200rpx;" />
+	<span>通大兼职易</span>
 </view>

@@ -29,7 +29,6 @@ header {
 
 .card .title {
   font-size: 42rpx;
-  margin-bottom: 40rpx;
 }
 
 .card .price {
@@ -106,6 +105,7 @@ header {
   padding: 10rpx 20rpx;
   background-color: #fff;
 }
+
 .foot {
   box-sizing: border-box;
   display: flex;
@@ -129,7 +129,6 @@ header {
 }
 
 .disabled {
-  
   background-color: grey;
 }
 
@@ -145,6 +144,19 @@ header {
 
 .animate {
   animation: scaleAnimation 1s infinite alternate;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 500rpx;
+  height: 50vh;
+  padding: 10rpx 20rpx;
+}
+
+.action-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @keyframes scaleAnimation {

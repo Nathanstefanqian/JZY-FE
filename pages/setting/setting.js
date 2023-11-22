@@ -65,9 +65,8 @@ Page({
   },
 
   onLogOut() {
-    wx.clearStorageSync();
-    wx.navigateBack({
-      delta: 1
-    })
+    wx.clearStorageSync()
+    wx.showToast({ title: '退出成功' })
+
   }
 })

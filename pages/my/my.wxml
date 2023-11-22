@@ -7,19 +7,19 @@
 			<view class="bottom">{{ major }} {{ grade }}</view>
 		</view>
 		<view class="right" wx:else>
-			<view class="top">登录/注册</view>
+			<view class="top">点击登录/注册</view>
 			<view class="bottom">登录后享受更多权益和功能</view>
 		</view>
 	</view>
 	<view class="card">
 		<view class="row1" bindtap="onState">
 			<view class="box">
-				<span>{{ stateList.length }}</span>
-				<span>全部报名</span>
-			</view>
-			<view class="box">
 				<span>{{ state[0] }}</span>
 				<span>待录取</span>
+			</view>
+			<view class="box">
+				<span>{{ state[1] }}</span>
+				<span>已初筛</span>
 			</view>
 			<view class="box">
 				<span>{{ state[2] }}</span>
@@ -32,7 +32,7 @@
 		</view>
 	</view>
 	<view class="card flex-row">
-		<van-circle custom-class="circle" value="{{ 100 }}" layer-color="#eeeeee" color="#EC7F5D" text="简历100分" bind:tap="onResume" />
+		<van-circle custom-class="circle" value="{{ 100 }}" layer-color="#eeeeee" color="#EC7F5D" text="信誉100分" bind:tap="onResume" />
 		<view class="progress-card">
 			<view class="progress-box">
 				<span>基础信息修改</span>
@@ -46,7 +46,7 @@
 		</view>
 	</view>
 	<view class="card">
-		<image src="../../assets/employ.svg" mode="aspectFit" />
+		<image src="{{ imageUrl }}/assetsFE/employ.svg" mode="aspectFit" />
 		<view class="col2">
 			<view class="title">我要招人</view>
 			<view class="subtitle">海量真实简历任你挑</view>
@@ -58,20 +58,20 @@
 	<view class="card flex-column">
 		<view class="func">
 			<view class="func-box" bindtap="onStar">
-				<image src="../../assets/star_my.svg" mode="aspectFit" />
+				<image src="{{ imageUrl }}/assetsFE/star_my.svg" mode="aspectFit" />
 				<view class="bottom">我的收藏</view>
 			</view>
 			<view class="func-box">
-				<image src="../../assets/toggle.svg" mode="aspectFit" />
+				<image src="{{ imageUrl }}/assetsFE/toggle.svg" mode="aspectFit" />
 				<view class="bottom">切换至商家端</view>
 			</view>
 			<view class="func-box" bindtap="onProxy">
-				<image src="../../assets/proxy.svg" mode="aspectFit" />
+				<image src="{{ imageUrl }}/assetsFE/proxy.svg" mode="aspectFit" />
 				<view class="bottom">协议与准则</view>
 			</view>
 			<view class="func-box" bindtap="onSetting">
-				<image src="../../assets/setting.svg" mode="aspectFit" />
-				<view class="bottom">我的设置</view>
+				<image src="{{ imageUrl }}/assetsFE/setting.svg" mode="aspectFit" />
+				<view class="bottom">退出登录</view>
 			</view>
 		</view>
 	</view>

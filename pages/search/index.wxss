@@ -1,7 +1,3 @@
-.divider {
-  margin-top: 200rpx;
-}
-
 .container {
   box-sizing: border-box;
   width: 100vw;

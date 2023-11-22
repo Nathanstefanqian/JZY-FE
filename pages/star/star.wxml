@@ -4,11 +4,11 @@
 		<view class="card" wx:for="{{ starList }}">
 			<view class="card-item1">
 				<view class="card-item1-avatar">
-					<image src="{{ item.user.avatarUrl }}" mode="aspectFit" />
+					<image src="{{ item.user.avatarUrl }}" mode="aspectFill" />
 				</view>
 				<view class="card-item1-company">{{ item.user.name }}</view>
 				<view class="card-item1-star">
-					<image src="../../assets/star-active.svg" mode="aspectFit" />
+					<image src="{{ imageUrl }}/assetsFE/star-active.svg" mode="aspectFit" />
 				</view>
 			</view>
 			<view class="card-item2">

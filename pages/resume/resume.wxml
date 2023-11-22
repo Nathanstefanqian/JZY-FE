@@ -11,9 +11,9 @@
 			</view>
 			<van-divider></van-divider>
 			<view class="basic" bindtap="onPersonal">
-				<span>钱卢骏</span>
+				<span>{{ name }}</span>
 				<view class="bottom">
-					<span>{{ personal.sex + '生'}}</span>
+					<span>{{ sex + '生'}}</span>
 					<span>·</span>
 					<span>{{ personal.age }}周岁</span>
 					<span>·</span>
@@ -24,7 +24,7 @@
 		<view class="card">
 			<view class="box" bindtap="onJob">
 				<span>你想找的工作</span>
-				<span>{{ job.isPeriod + ' ; ' +  job.worktime + ' ; ' + job.workday + ' ; ' + job.workperiod + ' ; ' + job.name + ' ; ' }}</span>
+				<span>{{ jobLookingFor }}</span>
 			</view>
 			<van-divider></van-divider>
 			<view class="box">
@@ -33,8 +33,7 @@
 					<span bindtap="onExper">+</span>
 				</view>
 				<view class="experience" wx:for="{{ experienceList }}" wx:key="index">
-					<span>{{ item.name + " ; " + item.startTime + ' - ' + item.endTime + 
-    " ; " + item.desc + " ; " }}</span>
+					<span>{{ item.name + " ; " + item.startTime + ' - ' + item.endTime + " ; " + item.desc + " ; " }}</span>
 				</view>
 				<span wx:if="{{ experienceList.length === 0 }}">点击 + 添加兼职经历</span>
 			</view>
@@ -53,12 +52,12 @@
 			<view class="box" bindtap="onContact">
 				<span>联系方式</span>
 				<span>
-					{{ contact.phone ?  " 电话: " + contact.phone + " ; 微信: " + contact.wx + " ; 邮箱: " + contact.email + " ; QQ: " + contact.qq + " ; " : '缺失' }}
+          {{ contactName }}
 				</span>
 			</view>
 		</view>
 	</view>
-	<button bindtap="onUpdateConfirm">确认更新</button>
+	<van-button type="default" class="btnn" bindtap="onUpdateConfirm">全部更新</van-button>
 </view>
 <van-action-sheet show="{{ show[0] }}" title="你想找的工作" bind:close="onClose">
 	<view class="action-container">
@@ -141,7 +140,7 @@
 			<input placeholder="点击上传相关材料" disabled bindtap="onUploadSkill" />
 			<view class="skill-picBox">
 				<view class="skill-picContainer" wx:for="{{ skillFileUrl }}" wx:key="index">
-					<image src="{{ item }}" />
+					<image src="{{ item }}" mode="aspectFill" />
 				</view>
 			</view>
 		</view>
@@ -233,9 +232,9 @@
 		<view>技能证书</view>
 		<view>
 			<view class="picBox">
-				<image src="{{ item }}" wx:for="{{ skillShowItem.skillFileUrl }}" mode="aspectFill" />
+				<image src="{{ item }}" wx:for="{{ skillShowItem.skillFileUrl }}" mode="aspectFill" wx:key="index" />
 			</view>
 		</view>
-		<view wx:for="{{ skill-picBox }}"></view>
+		<view wx:for="{{ skill-picBox }}" wx:key="index"></view>
 	</view>
 </van-popup>

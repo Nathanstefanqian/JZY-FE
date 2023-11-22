@@ -1,15 +1,37 @@
 /* pages/proxy/proxy.wxss */
-.container {
+.main {
   box-sizing: border-box;
+  width: 100vw;
+  padding: 0 20rpx;
+  margin-top: 200rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  padding: 20rpx 40rpx;
-
+  font-family: serif;
 }
 
-.divider {
-  margin-top: 300rpx;
+.main h1 {
+  font-size: 38rpx;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+}
+
+.main h2 {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 28rpx;
+}
+
+.main view {
+  text-indent: 2em; /* 首行缩进两个字符位置 */
+  margin-top: 22rpx;
+  line-height: 45rpx;
+}
+
+.main h3 {
+  margin: 35rpx auto 2rpx 0;
+  font-size: 33rpx;
+  font-weight: 700;
 }

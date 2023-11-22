@@ -1,66 +1,104 @@
 const job = wx.cloud.database().collection('job')
 const user = wx.cloud.database().collection('buser')
+const { imageUrl } = require('../../config/index')
+function degreesToRadians(degrees) {
+  return degrees * Math.PI / 180;
+}
+function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
+  var earthRadiusKm = 6371;
+
+  var dLat = degreesToRadians(lat2 - lat1);
+  var dLon = degreesToRadians(lon2 - lon1);
+
+  var lat1Rad = degreesToRadians(lat1);
+  var lat2Rad = degreesToRadians(lat2);
+
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1Rad) * Math.cos(lat2Rad);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var distance = earthRadiusKm * c;
+
+  return distance.toFixed(1); // 保留一位小数
+}
 Page({
   data: {
+    imageUrl,
     job: [],
     location: '选择当前位置',
+    loc: null,
     screenShow: false,
     mainActiveIndex: '',
     activeId: '',
     activeList: ['', ''],
+    timeList: [],
+    nearList: [],
     items: [{
       text: '结算方式',
-      children:[
-        {text: '日结', id: 1},
-        {text: '周结', id: 2},
-        {text: '月结', id: 3},
-        {text: '完工结', id: 4}
+      children: [
+        { text: '日结', id: 1 },
+        { text: '周结', id: 2 },
+        { text: '月结', id: 3 },
+        { text: '完工结', id: 4 }
       ]
-    },{
-    text: '兼职类型',
-    children:[
-      {text: '全职', id: 5},
-      {text: '兼职', id: 6}
-    ]
-  }]
+    }, {
+      text: '兼职类型',
+      children: [
+        { text: '全职', id: 5 },
+        { text: '兼职', id: 6 }
+      ]
+    }]
+  },
+  onShow() {
+    this.onLoad()
   },
   async onLoad() {
+    if(!wx.getStorageSync('isLogin')) {
+      wx.showToast({ title: '请先登录', icon: 'error' })
+      return
+    }
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    // 获取当前用户所在位置
+    let { loc } = this.data
+    if(!loc) {
+      loc = await wx.getLocation({
+        type: 'wgs84'
+      })
+    }
     const res = await job.get()
     console.log(res)
     // 获取列表信息
-    let jobList = []
-    await Promise.all(res.data.map(async item => {
-      const res = await user.where({ _openid: item._openid }).get()
-      item['user'] = res.data[0]
-      jobList.push(item)
-      console.log(item)
+    const jobList = await Promise.all(res.data.map(async item => {
+      let result = await user.where({ _openid: item._openid }).get()
+      item['user'] = result.data[0]
+      // 经度和纬度
+      const { latitude, longitude } = item.workPlace
+      const { latitude: la, longitude: lo } = loc
+      const distance = distanceInKmBetweenEarthCoordinates(latitude, longitude, la, lo)
+      item.distance = distance
+      return item
     }))
+    const timeList = jobList
+    const nearList = jobList
+    timeList.sort((a,b) => b.time - a.time)
+    nearList.sort((a,b) => a.distance - b.distance)
     this.setData({
-      job: jobList
-    })
-    // 获取当前用户所在位置
-    wx.getLocation({
-      type: 'wgs84',
-      success: res => {
-        console.log(res)
-        var latitude = res.latitude;
-        var longitude = res.longitude;
-        console.log("经度：" + longitude + "，纬度：" + latitude)
-      },
-      fai: res => {
-        console.log(res)
-      }
-    })
+      job: jobList,
+      loc,
+      timeList,
+      nearList
+    }, () => wx.hideLoading())
+
   },
   onDetail(e) {
-    console.log(e)
     const { id } = e.currentTarget.dataset
     wx.navigateTo({
       url: `../detail/detail?id=${id}`
     })
   },
   onChooseLocation() {
-    console.log('111')
     wx.chooseLocation({
       success: res => {
         var name = res.name; // 位置名称
@@ -69,8 +107,10 @@ Page({
         var longitude = res.longitude; // 经度
         console.log("位置名称：" + name);
         this.setData({
-          location: name
+          location: name,
+          loc: res
         })
+        console.log(res)
         console.log("详细地址：" + address);
         console.log("纬度：" + latitude);
         console.log("经度：" + longitude);
@@ -81,7 +121,6 @@ Page({
     })
   },
   onScreenOut() {
-    console.log('123')
     this.setData({
       screenShow: true
     })

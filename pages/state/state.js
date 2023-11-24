@@ -14,12 +14,14 @@ Page({
     let stateList = await Promise.all(res.data.map(async item => {
       const { jobId } = item
       const jobRes = await job.where({ _id: jobId }).get()
-      return jobRes.data[0]
+      item.job = jobRes.data[0]
+      return item
     }))
     let { state } = this.data
     stateList.map(item => {
       state[parseInt(item.state)] += 1
     })
+    console.log('状态统计', state)
     console.log('状态列表', stateList)
     this.setData({
       stateList, state

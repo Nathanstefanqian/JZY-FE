@@ -76,7 +76,8 @@
     "van-calendar": "./dist/calendar/index",
     "van-datetime-picker": "./dist/datetime-picker/index",
     "van-empty": "./dist/empty/index",
-    "van-tag": "./dist/tag/index"
+    "van-tag": "./dist/tag/index",
+    "van-uploader": "./dist/uploader/index"
   },
   "requiredPrivateInfos": [
     "chooseAddress",

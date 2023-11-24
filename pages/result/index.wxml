@@ -1,6 +1,6 @@
 <view class="container">
 	<view class="search">
-		<input placeholder="搜索" bindconfirm="handleSearch" />
+		<input placeholder="{{ keyword }}" bindconfirm="handleSearch" />
 	</view>
 	<view class="body">
 		<view class="box" wx:for="{{ jobList }}" bindtap="onDetail" data-id="{{ item._id }}">
@@ -11,11 +11,11 @@
 			<view class="info">
 				<view class="left">
 					<view class="location">
-						<image src="{{ imageUrl }}/assetsFE/location.svg" mode="aspectFit" />
+						<image src="../../assets/location.svg" mode="aspectFit" />
 						5千米 | {{ item.workPlace.address }}
 					</view>
 					<view class="business">
-						<image src="{{ imageUrl }}/assetsFE/company.svg" mode="aspectFit" />
+						<image src="../../assets/person.svg" mode="aspectFit" />
 						<span>{{ item.user.verifyType }}</span>
 						<span>·</span>
 						<span>{{ item.user.name }}</span>
@@ -26,5 +26,6 @@
 				</view>
 			</view>
 		</view>
+    <van-empty description="暂无结果" wx:if="{{ !jobList.length}}" />
 	</view>
 </view>

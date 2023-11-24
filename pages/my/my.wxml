@@ -3,7 +3,7 @@
 	<view class="user" bindtap="onLogin">
 		<image src="{{ avatarUrl }}" mode="aspectFill" />
 		<view class="right" wx:if="{{ isLogin }}" bindtap="onPersonal">
-			<view class="top" bindtap="onPersonal">钱卢骏</view>
+			<view class="top" bindtap="onPersonal">{{ name }}</view>
 			<view class="bottom">{{ major }} {{ grade }}</view>
 		</view>
 		<view class="right" wx:else>

@@ -1,15 +1,12 @@
 <!--pages/star/star.wxml-->
 <view class="container">
 	<view class="card-list">
-		<view class="card" wx:for="{{ starList }}">
+		<view class="card" wx:for="{{ starList }}" bindtap="onDetail" data-index="{{ item.jobId }}">
 			<view class="card-item1">
 				<view class="card-item1-avatar">
 					<image src="{{ item.user.avatarUrl }}" mode="aspectFill" />
 				</view>
 				<view class="card-item1-company">{{ item.user.name }}</view>
-				<view class="card-item1-star">
-					<image src="{{ imageUrl }}/assetsFE/star-active.svg" mode="aspectFit" />
-				</view>
 			</view>
 			<view class="card-item2">
 				<view class="card-item2-title">{{ item.job.jobTitle }}</view>
@@ -23,7 +20,7 @@
 			</view>
 			<view class="card-item3">
 				<view bindtap="onCancel" data-id="{{ item.jobId }}" data-openid="{{ item._openid }}">取消收藏</view>
-				<span>2022年4月1日收藏</span>
+				<span>{{ item.time }} 收藏</span>
 			</view>
 		</view>
 	</view>

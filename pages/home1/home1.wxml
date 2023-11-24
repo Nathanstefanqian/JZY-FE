@@ -16,7 +16,7 @@
 		</view>
 	</view>
 	<view class="container">
-		<van-tabs active="{{ active }}" bind:change="onChange" color="#FD7753" custom-style="tab">
+		<van-tabs active="{{ active }}" color="#FD7753" custom-style="tab">
 			<van-tab title="推荐">
 				<view class="head">
 					<span>精选兼职</span>
@@ -24,7 +24,7 @@
 				</view>
 				<view class="overflow">
 					<view class="body">
-						<view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index">
+						<view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index" wx:if="{{ item.state == 0}}">
 							<view class="title">
 								<span>{{ item.jobTitle  }}</span>
 								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
@@ -32,11 +32,11 @@
 							<view class="info">
 								<view class="left">
 									<view class="location">
-										<image src="{{ imageUrl }}/assetsFE/location.svg" mode="aspectFit" />
+										<image src="../../assets/location.svg" mode="aspectFit" />
 										{{ item.distance }}千米 | {{ item.workPlace.address }}
 									</view>
 									<view class="business">
-										<image src="{{ imageUrl }}/assetsFE/company.svg" mode="aspectFit" />
+										<image src="../../assets/person.svg" mode="aspectFit" />
 										<span>{{ item.user.name }}</span>
 									</view>
 								</view>
@@ -51,58 +51,12 @@
 			</van-tab>
 			<van-tab title="附近">
 				<view class="overflow">
-					<view class="body">
-						<view class="box" wx:for="{{ nearList }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index">
-							<view class="title">
-								<span>{{ item.jobTitle  }}</span>
-								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
-							</view>
-							<view class="info">
-								<view class="left">
-									<view class="location">
-										<image src="{{ imageUrl }}/assetsFE/location.svg" mode="aspectFit" />
-										{{ item.distance }}千米 | {{ item.workPlace.address }}
-									</view>
-									<view class="business">
-										<image src="{{ imageUrl }}/assetsFE/company.svg" mode="aspectFit" />
-										<span>{{ item.user.name }}</span>
-									</view>
-								</view>
-								<view class="right">
-									<view class="btn"></view>
-								</view>
-							</view>
-						</view>
-					</view>
+          <van-empty description="暂无附近" />
 				</view>
 			</van-tab>
 			<van-tab title="最新">
 				<view class="overflow">
-					<view class="body">
-						<view class="box" wx:for="{{ timeList }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index">
-							<view class="title">
-								<span>{{ item.jobTitle  }}</span>
-								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
-							</view>
-							<view class="info">
-								<view class="left">
-									<view class="location">
-										<image src="{{ imageUrl }}/assetsFE/location.svg" mode="aspectFit" />
-										{{ item.distance }}千米 | {{ item.workPlace.address }}
-									</view>
-									<view class="business">
-										<image src="{{ imageUrl }}/assetsFE/company.svg" mode="aspectFit" />
-										<span>{{ item.user.verifyType }}</span>
-										<span>·</span>
-										<span>{{ item.user.name }}</span>
-									</view>
-								</view>
-								<view class="right">
-									<view class="btn"></view>
-								</view>
-							</view>
-						</view>
-					</view>
+          <van-empty description="暂无最新" />
 				</view>
 			</van-tab>
 		</van-tabs>

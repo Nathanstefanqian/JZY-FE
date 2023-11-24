@@ -5,8 +5,8 @@
 	<view class="container">
 		<view class="card">
 			<view class="avatar">
-				<image class="add" src="{{ avatarUrl }}" mode="aspectFill" />
-				<image class="add" wx:for="{{ photoUrl }}" mode="aspectFill" src="{{ item }}" wx:key="index" />
+          <image class="add" src="{{ avatarUrl }}" mode="aspectFill" />
+				  <image class="add" wx:for="{{ photoUrl }}" mode="aspectFill" src="{{ item }}" wx:key="index" bindlongpress="onLongPress" data-index="{{ index }}" bindtap="onPhotoPreview" />
 				<view class="add" bindtap="onUploadPhoto" wx:if="{{ photoUrl.length <= 4 }}">+</view>
 			</view>
 			<van-divider></van-divider>
@@ -33,7 +33,7 @@
 					<span bindtap="onExper">+</span>
 				</view>
 				<view class="experience" wx:for="{{ experienceList }}" wx:key="index">
-					<span>{{ item.name + " ; " + item.startTime + ' - ' + item.endTime + " ; " + item.desc + " ; " }}</span>
+					<span bindtap="onExperienceDetail" data-item="{{ item }}">{{ item.name + " ; " + item.startTime + ' - ' + item.endTime + " ; " + item.desc + " ; " }}</span>
 				</view>
 				<span wx:if="{{ experienceList.length === 0 }}">点击 + 添加兼职经历</span>
 			</view>
@@ -44,9 +44,9 @@
 					<span bindtap="onSkill">+</span>
 				</view>
 				<view class="experience" wx:for="{{ skillList }}" wx:key="index">
-					<span bindtap="onSkillDetailShow" data-index="{{ index }}">{{ item.skillName }}</span>
+					<span bindtap="onSkillDetailShow" data-item="{{ item }}">{{ item.skillName }}</span>
 				</view>
-				<span wx:if="{{ skillList.length === 0 }}" bindtap="onSkillDetailShow">点击 + 添加技能证书</span>
+				<span wx:if="{{ !skillList.length }}">点击 + 添加技能证书</span>
 			</view>
 			<van-divider></van-divider>
 			<view class="box" bindtap="onContact">
@@ -57,7 +57,8 @@
 			</view>
 		</view>
 	</view>
-	<van-button type="default" class="btnn" bindtap="onUpdateConfirm">全部更新</van-button>
+	<van-button type="primary" class="btnn" bindtap="onUpdateConfirm">全部更新</van-button>
+
 </view>
 <van-action-sheet show="{{ show[0] }}" title="你想找的工作" bind:close="onClose">
 	<view class="action-container">
@@ -127,25 +128,34 @@
 			<input placeholder="请输入职位工作描述" bindinput="onJobDescInput" value="{{ experience.desc }}" />
 		</view>
 	</view>
-	<button bindtap="onExperienceConfirm">确认</button>
+  <view class="experience-btn" wx:if="{{ isExperienceModify }}">
+    <button bindtap="onExperienceDelete" type="warn">删除</button>
+	  <button bindtap="onExperienceModify" type="primary">修改</button>
+  </view>
+  <button wx:else bindtap="onExperienceConfirm" style="width: 80%" type="primary">确认</button>
 </van-action-sheet>
 <van-action-sheet show="{{ show[2] }}" title="技能证书" bind:close="onClose">
 	<view class="action-container">
 		<view class="box">
 			<span>专业技能</span>
-			<input placeholder="请输入您的专业技能" bindinput="onSkillInput" />
+			<input placeholder="请输入您的专业技能" value="{{ skill.skillName }}" bindinput="onSkillInput" />
 		</view>
 		<view class="box">
 			<span>相关材料</span>
-			<input placeholder="点击上传相关材料" disabled bindtap="onUploadSkill" />
 			<view class="skill-picBox">
-				<view class="skill-picContainer" wx:for="{{ skillFileUrl }}" wx:key="index">
-					<image src="{{ item }}" mode="aspectFill" />
+				<view class="skill-picContainer">
+          <van-uploader file-list="{{ skill.fileList }}" bind:after-read="uploadSkill"
+          image-fit="aspectFill" bind:delete="deleteSkill" />
 				</view>
 			</view>
 		</view>
-		<button bindtap="onSkillConfirm">确认</button>
+    <view class="experience-btn" wx:if="{{ isSkillModify }}">
+      <button bindtap="onSkillDelete" type="warn">删除</button>
+      <button bindtap="onSkillModify" type="primary">修改</button>
+    </view>
+    <button wx:else bindtap="onSkillConfirm" style="width: 80%" type="primary">确认</button>
 	</view>
+
 </van-action-sheet>
 <van-action-sheet show="{{ show[3] }}" title="联系方式" bind:close="onClose">
 	<view class="action-container">
@@ -221,20 +231,4 @@
 		bind:confirm="onTimePickerConfirm"
 		bind:cancel="onTimeSelectorClose"
 	/>
-</van-popup>
-<van-popup show="{{ skillShow }}" bind:close="onClose" custom-class="popup">
-	<view class="skillShow-container">
-		<view class="title">
-			<span>技能名称</span>
-			<span bindtap="onDeleteSkill">删除</span>
-		</view>
-		<span>{{ skillShowItem.skillName }}</span>
-		<view>技能证书</view>
-		<view>
-			<view class="picBox">
-				<image src="{{ item }}" wx:for="{{ skillShowItem.skillFileUrl }}" mode="aspectFill" wx:key="index" />
-			</view>
-		</view>
-		<view wx:for="{{ skill-picBox }}" wx:key="index"></view>
-	</view>
 </van-popup>

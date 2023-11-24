@@ -13,6 +13,10 @@ Page({
     starList: []
   },
   async onLoad() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     const openid = wx.getStorageSync('openid')
     const res = await user_star.where({ _openid: openid }).get()
     const starList = await Promise.all(res.data.map(async item => {
@@ -24,23 +28,31 @@ Page({
       return item
     }))
     console.log(starList)
-    this.setData({ starList })
+    this.setData({ starList },() => wx.hideLoading())
   },
   async onCancel(e) {
-
     wx.showModal({
       title: '提示',
       content: '确认取消收藏该职位吗？',
       success: async result => {
-        const { openid, id } = e.currentTarget.dataset
-        const res = await user_star.where({
-          _openid: openid,
-          jobId: id
-        }).remove()
-        console.log(res)
-        this.onLoad()
-        wx.showToast({ title: '取消收藏成功' })
+        if(result.confirm) {
+          const { openid, id } = e.currentTarget.dataset
+          const res = await user_star.where({
+            _openid: openid,
+            jobId: id
+          }).remove()
+          console.log(res)
+          this.onLoad()
+          wx.showToast({ title: '取消收藏成功' })
+        }
       }
+    })
+  },
+  onDetail(e) {
+    const { index } = e.currentTarget.dataset
+    console.log(index)
+    wx.navigateTo({
+      url: `../detail/detail?id=${index}`
     })
   }
 })

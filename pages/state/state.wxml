@@ -3,18 +3,18 @@
 	<van-tab title="待录取">
 		<view class="bg">
 			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 0 }}" wx:key="index">
-				<view class="row1" bindtap="onCardClick" data-id="{{ item._id }}">
+				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
 					<view class="title">
-						<span>{{ item.jobTitle }}</span>
-						<span>| {{ item.workPlace.name }}</span>
+						<span>{{ item.job.jobTitle }}</span>
+						<span>| {{ item.job.workPlace.name }}</span>
 					</view>
 					<view class="price">
-						{{ item.salaryStart ? item.salaryStart + '-' + item.salaryEnd + item.select.selectTime : item.salaryEnd + item.select.selectTime }}
+						{{ item.job.salaryStart ? item.job.salaryStart + '-' + item.job.salaryEnd + item.job.select.selectTime : item.job.salaryEnd + item.job.select.selectTime }}
 					</view>
 				</view>
 				<view class="row2">
-					<view class="sbtn">待录取</view>
-					<view class="btn" bindtap="onContact" data-item="{{ item }}">联系商家</view>
+          <van-tag type="warning">待录取</van-tag>
+					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
 			<van-empty description="无报名" wx:if="{{ !state[0] }}" />
@@ -23,26 +23,19 @@
 	</van-tab>
 	<van-tab title="已初筛">
 		<view class="bg">
-			<view
-				class="card"
-				wx:for="{{ stateList }}"
-				data-id="{{ item._id }}"
-				bindtap="onCardClick"
-				wx:if="{{ item.state == 1 }}"
-				wx:key="index"
-			>
-				<view class="row1">
+			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 1 }}" wx:key="index">
+				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
 					<view class="title">
-						<span>{{ item.jobTitle }}</span>
-						<span>| {{ item.workPlace.name }}</span>
+						<span>{{ item.job.jobTitle }}</span>
+						<span>{{ item.job.workPlace.name }}</span>
 					</view>
 					<view class="price">
-						{{ item.salaryStart ? item.salaryStart + '-' + item.salaryEnd + item.select.selectTime : item.salaryEnd + item.select.selectTime }}
+						{{ item.job.salaryStart ? item.job.salaryStart + '-' + item.job.salaryEnd + item.job.select.selectTime : item.job.salaryEnd + item.job.select.selectTime }}
 					</view>
 				</view>
 				<view class="row2">
-					<view class="sbtn">已初筛</view>
-					<view class="btn">联系商家</view>
+          <van-tag type="primary">已初筛</van-tag>
+					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
 			<van-empty description="无初筛" wx:if="{{ !state[1] }}" />
@@ -51,26 +44,19 @@
 	</van-tab>
 	<van-tab title="已录取">
 		<view class="bg">
-			<view
-				class="card"
-				wx:for="{{ stateList }}"
-				data-id="{{ item._id }}"
-				bindtap="onCardClick"
-				wx:if="{{ item.state == 1 }}"
-				wx:key="index"
-			>
-				<view class="row1">
+			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 2 }}" wx:key="index">
+				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
 					<view class="title">
-						<span>{{ item.jobTitle }}</span>
-						<span>| {{ item.workPlace.name }}</span>
+						<span>{{ item.job.jobTitle }}</span>
+						<span>{{ item.job.workPlace.name }}</span>
 					</view>
 					<view class="price">
-						{{ item.salaryStart ? item.salaryStart + '-' + item.salaryEnd + item.select.selectTime : item.salaryEnd + item.select.selectTime }}
+						{{ item.job.salaryStart ? item.job.salaryStart + '-' + item.job.salaryEnd + item.job.select.selectTime : item.job.salaryEnd + item.job.select.selectTime }}
 					</view>
 				</view>
 				<view class="row2">
-					<view class="sbtn">已录取</view>
-					<view class="btn">联系商家</view>
+					<van-tag type="success">已录取</van-tag>
+					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
 			<van-empty description="无录取" wx:if="{{ !state[2] }}" />
@@ -79,26 +65,19 @@
 	</van-tab>
 	<van-tab title="已拒绝">
 		<view class="bg">
-			<view
-				class="card"
-				wx:for="{{ stateList }}"
-				data-id="{{ item._id }}"
-				bindtap="onCardClick"
-				wx:if="{{ item.state == 3 }}"
-				wx:key="index"
-			>
-				<view class="row1">
+			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 3 }}" wx:key="index">
+				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
 					<view class="title">
-						<span>{{ item.jobTitle }}</span>
-						<span>| {{ item.workPlace.name }}</span>
+						<span>{{ item.job.jobTitle }}</span>
+						<span>{{ item.job.workPlace.name }}</span>
 					</view>
 					<view class="price">
-						{{ item.salaryStart ? item.salaryStart + '-' + item.salaryEnd + item.select.selectTime : item.salaryEnd + item.select.selectTime }}
+						{{ item.job.salaryStart ? item.job.salaryStart + '-' + item.job.salaryEnd + item.job.select.selectTime : item.job.salaryEnd + item.job.select.selectTime }}
 					</view>
 				</view>
 				<view class="row2">
-					<view class="sbtn">已拒绝</view>
-					<view class="btn">联系商家</view>
+          <van-tag type="danger">已拒绝</van-tag>
+					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
 			<van-empty description="无拒绝" wx:if="{{ !state[3] }}" />

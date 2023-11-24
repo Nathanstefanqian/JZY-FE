@@ -70,13 +70,13 @@ Page({
 
   onUpload() {
     const that = this
-    wx.chooseImage({
+    wx.chooseMedia({
       count: 1, // 最多可选择的图片数量
       sizeType: ['compressed'], // 所选的图片的尺寸压缩方式
       sourceType: ['album', 'camera'], // 选择图片的来源，可以从相册选择或使用相机拍摄
       async success(res) {
         console.log(res)
-        const url = res.tempFilePaths[0]
+        const url = res.tempFiles[0].tempFilePath
         const avatarUrl = await uploadFile(url)
         that.setData({
           avatarUrl
@@ -173,12 +173,20 @@ Page({
       title: '注册中', // 可自定义加载提示文字
       mask: true // 是否显示遮罩层
     })
-    const res = await uploadFile(avatarUrl).catch(err => { wx.hideLoading() })
-    const data = [nickName, res, name, grade, sex, schoolId, school, major, phone]
+    const data = [nickName, avatarUrl, name, grade, sex, schoolId, school, major, phone]
+    let phoneNumberRegex = /^1([3456789])\d{9}$/;
+    console.log(avatarUrl)
     for (let i = 0; i < data.length; i++) {
       if (!checkParams(data[i], i)) return // 判断是否为空
     }
-    const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl: res }
+    if (!phoneNumberRegex.test(phone)) {
+      wx.showToast({
+        title: '手机号不正确',
+        icon: 'error'
+      })
+      return
+    }
+    const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl }
     // 在需要显示加载中效果的地方调用
     const that = this
     user.add({
@@ -204,8 +212,17 @@ Page({
       mask: true // 是否显示遮罩层
     })
     const data = [nickName, avatarUrl, name, grade, sex, schoolId, school, major, phone]
+    let phoneNumberRegex = /^1([3456789])\d{9}$/;
+
     for (let i = 0; i < data.length; i++) {
       if (!checkParams(data[i], i)) return;
+    }
+    if (!phoneNumberRegex.test(phone)) {
+      wx.showToast({
+        title: '手机号不正确',
+        icon: 'error'
+      })
+      return
     }
     const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl }
     const openid = wx.getStorageSync('openid')
@@ -215,6 +232,9 @@ Page({
       data: obj,
       complete: res => {
         wx.hideLoading()
+        for (let key in obj) {
+          wx.setStorageSync(key, obj[key])
+        }
         wx.showToast({ title: '修改成功' })
         wx.setStorageSync('isLogin', true)
       }

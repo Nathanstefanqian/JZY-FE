@@ -2,6 +2,7 @@ const job = wx.cloud.database().collection("job")
 const user = wx.cloud.database().collection("buser")
 const user_job = wx.cloud.database().collection("user_job")
 const user_star = wx.cloud.database().collection("user_star")
+const verify = wx.cloud.database().collection("verify")
 Page({
   data: {
     active: 0,
@@ -18,24 +19,33 @@ Page({
     contactShow: false,
     contact: '',
     method: '',
-    jobDetail: ''
+    jobDetail: '',
+    verifyType: ''
   },
   async onLoad(e) {
     wx.showLoading({
       title: '加载中',
       mask: true
     })
-    const { id } = e
-    if (id) this.setData({ id })
-    const JobId = id ? id : this.data.id
+    let id
+    if(e && e.id) {
+      id = e.id
+      this.setData({ id })
+    } else {
+      id = this.data.id
+    }
+    console.log(id)
+    const JobId = id
     // 载入详情
     let res = await job.where({ _id: id }).get()
-    const data = res.data[0]
-    res = await user.where({ _openid: data._openid }).get()
+    const data = res.data[0] // 代表拿到的职位详情信息
+    console.log('职位', res)
+    res = await user.where({ _openid: data._openid }).get() // 拿到商家信息
     const buser = res.data[0]
     const jobDetail = data
     // 查询是否已报名
-    res = await user_job.where({ jobId: id, _openid: data._openid }).get()
+    const openid = wx.getStorageSync('openid')
+    res = await user_job.where({ jobId: id, _openid: openid }).get()
     if (res.data.length) {
       this.setData({
         isRegistered: true
@@ -43,7 +53,15 @@ Page({
     }
 
     // 查询是否已收藏
-    res = await user_star.where({ jobId: id }).get()
+    res = await user_star.where({ jobId: id, _openid: openid }).get()
+    console.log('收藏', res)
+    let isStared = res.data.length ? true: false
+
+    // 查询是否已认证
+    res = await verify.where({ _openid: data._openid }).get()
+    console.log('认证详情', res)
+    let verifyType = res.data[0].type ? '企业' : '个人'
+
     
     this.setData({
       jobTitle: data.jobTitle,
@@ -53,8 +71,9 @@ Page({
       demand: data.demand,
       desc: data.desc,
       user: buser,
-      id,
-      jobDetail
+      jobDetail,
+      isStared,
+      verifyType
     }, () => wx.hideLoading())
   },
   onAssign() {
@@ -64,14 +83,15 @@ Page({
   },
   async onSignup() {
     const { id } = this.data
+    console.log(id)
     const currentTime = new Date()
     // 修改数据库
-    const res = await user_job.add({
-      data: { jobId: id, state: 0, time: currentTime } // state分为四个状态 0代表待录取，1代表已录取，2代表已结束
-    })
+    // const res = await user_job.add({
+    //   data: { jobId: id, state: 0, time: currentTime } // state分为四个状态 0代表待录取，1代表已录取，2代表已结束
+    // })
     // 修改后及时刷新页面
-    this.onLoad()
-    console.log(res)
+    // this.onLoad()
+    // console.log(res)
   },
   async onStar() {
     const { id, isStared } = this.data
@@ -114,8 +134,11 @@ Page({
     await user_job.add({
       data: { jobId: _id, state: 0, time: currentTime } // state分为四个状态 0代表待录取，1代表已录取，2代表已结束
     })
+    wx.showToast({
+      title: '报名成功'
+    })
     // 修改后及时刷新页面
-    this.onLoad()
+    setTimeout(() => this.onLoad(),2000)
 
   },
   async onClipboard() {

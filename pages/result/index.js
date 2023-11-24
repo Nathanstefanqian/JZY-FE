@@ -33,7 +33,7 @@ Page({
       return item
     }))
     console.log(jobList)
-    this.setData({ jobList: res.data }, () => wx.hideLoading())
+    this.setData({ jobList: res.data, keyword }, () => wx.hideLoading())
   },
 
   handleSearch(e) {

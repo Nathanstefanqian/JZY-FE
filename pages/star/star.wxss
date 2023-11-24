@@ -22,8 +22,8 @@
 }
 
 .card-item1-avatar image {
-  width: 128rpx;
-  height: 128rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 20rpx;
   margin-right: 40rpx;
 }

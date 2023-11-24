@@ -9,7 +9,7 @@
 	<view class="card">
 		<view class="row">
 			<view class="top">
-				<image src="{{ imageUrl }}/assetsFE/date.svg" mode="aspectFit" />
+				<image src="../../assets/date.svg" mode="aspectFit" />
 				<span>工作日期</span>
 			</view>
 			<view class="bottom">
@@ -18,7 +18,7 @@
 		</view>
 		<view class="row">
 			<view class="top">
-				<image src="{{ imageUrl }}/assetsFE/time.svg" mode="aspectFit" />
+				<image src="../../assets/time.svg" mode="aspectFit" />
 				<span>工作时段</span>
 			</view>
 			<view class="bottom">
@@ -27,7 +27,7 @@
 		</view>
 		<view class="row">
 			<view class="top">
-				<image src="{{ imageUrl }}/assetsFE/location_detail.svg" mode="aspectFit" />
+				<image src="../../assets/location_detail.svg" mode="aspectFit" />
 				<span>工作地点</span>
 			</view>
 			<view class="bottom">
@@ -36,7 +36,7 @@
 		</view>
 		<view class="row">
 			<view class="top">
-				<image src="{{ imageUrl }}/assetsFE/requirement.svg" mode="aspectFit" />
+				<image src="../../assets/requirement.svg" mode="aspectFit" />
 				<span>职位要求</span>
 			</view>
 			<view class="bottom">
@@ -57,8 +57,8 @@
 			<view class="right">
 				<span>{{ user.name }}</span>
 				<view>
-					<image src="{{ imageUrl }}/assetsFE/verify.svg" mode="aspectFit" />
-					{{ user.verifyType }}认证
+					<image src="../../assets/verify.svg" mode="aspectFit" />
+					{{ verifyType }}认证
 				</view>
 			</view>
 		</view>
@@ -68,12 +68,12 @@
 <view class="foot-layout">
 	<view class="foot">
 		<view class="star" bind:tap="onStar" wx:if="{{ !isStared }}">
-			<image src="{{ imageUrl }}/assetsFE/star.svg" mode="aspectFit" />
+			<image src="../../assets/star.svg" mode="aspectFit" />
 		</view>
 		<view class="star" bind:tap="onStar" wx:else>
-			<image src="{{ imageUrl }}/assetsFE/star-active.svg" mode="aspectFit" />
+			<image src="../../assets/star-active.svg" mode="aspectFit" />
 		</view>
-		<view class="btn">在线沟通</view>
+		<view class="btn">电话沟通</view>
 		<view class="btn disabled" wx:if="{{ isRegistered }}">已报名</view>
 		<view class="btn animate" bindtap="onContact" wx:else>立即报名</view>
 	</view>

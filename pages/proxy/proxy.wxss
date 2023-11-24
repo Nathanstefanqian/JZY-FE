@@ -3,7 +3,7 @@
   box-sizing: border-box;
   width: 100vw;
   padding: 0 20rpx;
-  margin-top: 200rpx;
+  margin-top: 40rpx;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -55,15 +55,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 92rpx;
-  height: 92rpx;
+  width: 90rpx;
+  height: 90rpx;
   background-color: #f6f7fb;
   border-radius: 20rpx;
 }
 
 .card .avatar image {
-  width: 92rpx;
-  height: 92rpx;
+  width: 90rpx;
+  height: 90rpx;
   margin-right: 20rpx;
 }
 
@@ -112,9 +112,16 @@ header {
   margin-right: 20rpx;
 }
 
+.experience {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .experience > span {
   font-size: 28rpx;
   color: grey;
+  width: 100px;
 }
 
 .action-container {
@@ -144,7 +151,6 @@ header {
 .skill-picContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
   align-items: center;
   padding: 20rpx 0rpx;
@@ -208,4 +214,8 @@ header {
   width: 50%;
   left: 200rpx;
   bottom: -50rpx;
+}
+
+.experience-btn {
+  display: flex;
 }

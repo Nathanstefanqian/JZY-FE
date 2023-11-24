@@ -3,9 +3,6 @@ const { imageCdn } = app.globalData
 
 Page({
   data: {
-    imageCdn: imageCdn,
-    dialogVisible: false,
-    dialogMessage: '确认清除历史记录吗？',
     searchHistory: []
   },
 
@@ -16,24 +13,21 @@ Page({
   },
 
   handleShowClearHistory() {
-    this.setData({
-      dialogVisible: true,
+    wx.showModal({
+      title: '确认清除历史记录吗',
+      complete: res => {
+        if(res.confirm) {
+          this.setData({
+            searchHistory: []
+          })
+          wx.setStorageSync('searchHistory', [])
+        }
+      }
     })
   },
 
-  handleDialogConfirm() {
-    this.setData({
-      searchHistory: [],
-      dialogVisible: false
-    })
-    wx.setStorageSync('searchHistory', [])
-  },
 
-  handleDialogClose() {
-    this.setData({
-      dialogVisible: false
-    })
-  },
+
 
   handleSearch(e) {
     const { value } = e.detail

@@ -3,7 +3,7 @@
 	<view class="head-container">
 		<view class="title">
 			<view class="left">
-				<image src="{{ imageUrl }}/assetsFE/guitar.svg" mode="aspectFit" />
+				<image src="../../assets/logo.svg" mode="aspectFit" />
 			</view>
 			<view class="right">
 				<view>兼职易保障 | 安全无忧</view>

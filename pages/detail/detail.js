@@ -85,13 +85,6 @@ Page({
     const { id } = this.data
     console.log(id)
     const currentTime = new Date()
-    // 修改数据库
-    // const res = await user_job.add({
-    //   data: { jobId: id, state: 0, time: currentTime } // state分为四个状态 0代表待录取，1代表已录取，2代表已结束
-    // })
-    // 修改后及时刷新页面
-    // this.onLoad()
-    // console.log(res)
   },
   async onStar() {
     const { id, isStared } = this.data

@@ -27,7 +27,7 @@ Page({
       item.time = formatTime(item.time)
       return item
     }))
-    console.log(starList)
+    console.log('1',starList)
     this.setData({ starList },() => wx.hideLoading())
   },
   async onCancel(e) {

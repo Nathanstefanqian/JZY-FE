@@ -58,7 +58,6 @@
 		</view>
 	</view>
 	<van-button type="primary" class="btnn" bindtap="onUpdateConfirm">全部更新</van-button>
-
 </view>
 <van-action-sheet show="{{ show[0] }}" title="你想找的工作" bind:close="onClose">
 	<view class="action-container">

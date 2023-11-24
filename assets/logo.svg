@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 80 80" fill="none"><g opacity="1"  transform="translate(0 0)  rotate(0)"><path id="路径" fill-rule="evenodd" style="fill:#FFFFFF" opacity="1" d="M0 64C0 72.84 7.16 80 16 80L64 80C72.84 80 80 72.84 80 64L80 16C80 7.16 72.84 0 64 0L16 0C7.16 0 0 7.16 0 16L0 64Z"></path><path id="路径" fill-rule="evenodd" style="fill:#FD7753" opacity="0.8" d="M18.25 28.1L34.86 39.1L39.73 35.87L39.73 13.84L18.25 28.07L18.25 28.1Z"></path><path id="路径" fill-rule="evenodd" style="fill:#FD7753" opacity="0.8" d="M39.73 42.34L34.86 39.11L18.25 50.11L18.25 50.15L39.73 64.37L39.73 42.34Z"></path><path id="路径" fill-rule="evenodd" style="fill:#FD7753" opacity="0.8" d="M41.83 36.22L46.71 39.45L63.31 28.45L63.31 28.42L41.83 14.19L41.83 36.22Z"></path><path id="路径" fill-rule="evenodd" style="fill:#FD7753" opacity="0.8" d="M63.31 50.45L46.71 39.45L41.83 42.68L41.83 64.71L63.31 50.48L63.31 50.45Z"></path><path id="路径" fill-rule="evenodd" style="fill:#FD7753" opacity="1" d="M34.86 39.1L18.25 28.1L18.25 50.1L34.86 39.1Z"></path><path id="路径" fill-rule="evenodd" style="fill:#FD7753" opacity="1" d="M46.72 39.45L63.32 50.45L63.32 28.45L46.72 39.45Z"></path></g></svg>
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_13_2)">
+<circle cx="149.797" cy="138.797" r="99.8306" fill="#EC7F5D"/>
+<path d="M102.876 158.763L153.885 232.138H51.8674L102.876 158.763Z" fill="#6079A8"/>
+<line x1="149.797" y1="137.297" x2="229.661" y2="137.297" stroke="white" stroke-width="3"/>
+<line x1="154.708" y1="138.802" x2="154.287" y2="38.9725" stroke="white" stroke-width="3"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M150.795 260.59C217.508 260.59 271.59 206.508 271.59 139.795C271.59 73.0818 217.508 19 150.795 19C84.0818 19 30 73.0818 30 139.795C30 206.508 84.0818 260.59 150.795 260.59ZM150.795 248.511C210.837 248.511 259.511 199.837 259.511 139.795C259.511 79.7531 210.837 31.0795 150.795 31.0795C90.7531 31.0795 42.0795 79.7531 42.0795 139.795C42.0795 199.837 90.7531 248.511 150.795 248.511Z" fill="#EC7F5D"/>
+<path d="M197.715 116.834L285.9 239.626H109.53L197.715 116.834Z" fill="#414A97"/>
+</g>
+<defs>
+<clipPath id="clip0_13_2">
+<rect width="300" height="300" fill="white"/>
+</clipPath>
+</defs>
+</svg>

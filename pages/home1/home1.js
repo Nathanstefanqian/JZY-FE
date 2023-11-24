@@ -136,7 +136,6 @@ Page({
   },
   onClickItem({ detail = {} }) {
     let { activeId, activeList, mainActiveIndex } = this.data;
-    console.log(detail.id)
     activeId = detail.id
     activeList[mainActiveIndex] = activeId
     this.setData({ activeId, activeList })

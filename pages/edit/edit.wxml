@@ -7,14 +7,14 @@
 	</view>
 	<view class="divider"></view>
 	<view class="body">
-		<view class="box">
+		<!-- <view class="box">
 			<view class="getUser">
 				<span>微信名</span>
 			</view>
 			<input type="text" placeholder="请输入微信名" bindinput="onNickName" value="{{ nickName }}" />
-		</view>
+		</view> -->
 		<view class="box">
-			<span>姓名</span>
+			<span>真实姓名</span>
 			<input type="text" placeholder="请输入姓名" bindinput="onName" value="{{ name }}" />
 		</view>
 		<view class="box">

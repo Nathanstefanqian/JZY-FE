@@ -1,0 +1,18 @@
+<van-tabs>
+  <van-tab title="已完成">
+    <view class="log-container">
+      <view class="card" wx:for="{{ list }}" wx:key="index">
+        <view class="title">任务名 {{ item.job.jobTitle }}</view>
+        <view class="title">商家名 {{ item.buser.name }}</view>
+        <view class="title">取货地 {{ item.job.workPlace.name }}</view>
+        <view class="title">送货地 {{ item.job.destPlace.name }}</view>
+        <view class="title">完成时间 {{ item.cTime }}</view>
+        <view class="title">发布时间 {{ item.time }}</view>
+      </view>
+      <van-empty description="暂无列表" wx:if="{{ !list.length }}" />
+    </view>
+  </van-tab>
+  <van-tab title="未完成">
+    <van-empty description="暂无列表" />
+  </van-tab>
+</van-tabs>

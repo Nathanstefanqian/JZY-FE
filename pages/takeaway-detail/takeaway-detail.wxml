@@ -1,0 +1,88 @@
+<view class="bg">
+	<view class="title" style="padding-top: 40rpx">跑腿简介</view>
+	<view class="card">
+		<view class="title">
+			<span>{{ jobTitle }}</span>
+			<view class="price">{{salary}}元</view>
+		</view>
+	</view>
+	<view class="card">
+		<view class="row">
+			<view class="top">
+				<image src="../../assets/date.svg" mode="aspectFit" />
+				<span>预计收货时间</span>
+			</view>
+			<view class="bottom">
+				<span>{{  destTime  }} 之前</span>
+			</view>
+		</view>
+		<view class="row">
+			<view class="top">
+				<image src="../../assets/time.svg" mode="aspectFit" />
+				<span>取货地点</span>
+			</view>
+			<view class="bottom">
+				<span>{{ workPlace.address }} · {{ workPlace.name }}</span>
+			</view>
+		</view>
+		<view class="row">
+			<view class="top">
+				<image src="../../assets/location_detail.svg" mode="aspectFit" />
+				<span>收货地点</span>
+			</view>
+			<view class="bottom">
+				<span>{{ destPlace.address }} · {{ destPlace.name }}</span>
+			</view>
+		</view>
+		<view class="row">
+			<view class="top">
+				<image src="../../assets/requirement.svg" mode="aspectFit" />
+				<span>职位要求</span>
+			</view>
+			<view class="bottom">
+				<span>{{ desc }}</span>
+			</view>
+		</view>
+	</view>
+	<view class="title">备注</view>
+	<view class="card">
+		<span>{{ desc }}</span>
+	</view>
+	<view class="title">发布者</view>
+	<view class="card">
+		<view class="box">
+			<view class="left">
+				<image src="{{ user.url }}" mode="aspectFill" />
+			</view>
+			<view class="right">
+				<span>{{ user.name }}</span>
+				<view>
+					<image src="../../assets/verify.svg" mode="aspectFit" />
+					{{ verifyType }}认证
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="blank"></view>
+</view>
+<view class="foot-layout">
+	<view class="foot">
+		<view class="star" bind:tap="onStar" wx:if="{{ !isStared }}">
+			<image src="../../assets/star.svg" mode="aspectFit" />
+		</view>
+		<view class="star" bind:tap="onStar" wx:else>
+			<image src="../../assets/star-active.svg" mode="aspectFit" />
+		</view>
+		<view class="btn disabled" style="margin-left: auto" wx:if="{{ isRegistered }}">目前已有接单</view>
+		<view class="btn animate" bindtap="onContact" style="margin-left: auto" wx:else>立即接单</view>
+	</view>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose" round>
+	<div class="container"></div>
+</van-popup>
+<van-action-sheet show="{{ contactShow }}" title="接单成功" bind:close="onClose" bind:select="onSelect">
+	<view class="action-container">
+		请前往跑腿工作台实时共享接单状态
+		<button style="width: 100%" bindtap="onClipboard">{{ method }} : {{ contact }}</button>
+	</view>
+</van-action-sheet>

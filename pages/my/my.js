@@ -11,7 +11,10 @@ Page({
     name: wx.getStorageSync('name'),
     major: wx.getStorageSync('major'),
     grade: wx.getStorageSync('grade'),
-    state: [0, 0, 0, 0]
+    state: [0, 0, 0, 0],
+    isTeacher: 0,
+    school: '',
+    schoolId: ''
   },
 
   async onLoad() {
@@ -34,7 +37,9 @@ Page({
       avatarUrl: wx.getStorageSync('avatarUrl') || '../../assets/boy.svg',
       name: wx.getStorageSync('name'),
       major: wx.getStorageSync('major'),
-      grade: wx.getStorageSync('grade')
+      grade: wx.getStorageSync('grade'),
+      school: wx.getStorageSync('school'),
+      isTeacher: wx.getStorageSync('isTeacher') || 0
     }, () => wx.hideLoading())
   },
 
@@ -50,8 +55,9 @@ Page({
 
   async onLogin(e) {
     wx.cloud.callFunction({
-      name: 'getOpenId',
+      name: 'getOpenid',
       complete: async ress => {
+        console.log(ress)
         const { openid } = ress.result
         const res = await user.where({
           _openid: openid

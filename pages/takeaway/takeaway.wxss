@@ -1,0 +1,181 @@
+.bg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.head {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: #fff;
+  font-size: 40rpx;
+  margin-top: 50px;
+}
+
+.main-container {
+  box-sizing: border-box;
+  margin-top: 60rpx;
+  border-radius: 42rpx 42rpx 0 0;
+  padding: 20rpx;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  overflow: scroll;
+}
+
+.job {
+  box-sizing: border-box;
+  padding: 0 25rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 100rpx;
+  color: #fff;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 10rpx 40rpx;
+  background-color: rgba(000, 000, 000, 0.4);
+  border-radius: 20rpx;
+}
+.btn image {
+  margin-right: 20rpx
+}
+.job > span {
+  font-size: 48rpx;
+}
+
+.box {
+  box-sizing: border-box;
+  padding: 30rpx 25rpx;
+  border-radius: 48rpx;
+  margin-bottom: 20rpx;
+  width: 100%;
+  border: 1rpx solid #000;
+}
+
+.tab-container {
+  margin-top: 40rpx;
+}
+
+.text {
+  margin-bottom: 40rpx;
+  color: grey;
+}
+
+.top {
+  display: flex;
+  height: 100rpx;
+}
+
+.top > image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 30rpx;
+}
+
+.info {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 30rpx;
+  height: 120rpx;
+  padding: 10rpx 0;
+}
+
+.info-top {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5rpx;
+}
+
+.info-top .name {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.info-top .time {
+  font-size: 24rpx;
+  color: grey;
+}
+.info-bot {
+  font-size: 30rpx;
+  color: grey;
+}
+
+.time {
+  margin-left: auto;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 40rpx;
+}
+
+.ibtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30rpx;
+  width: 100%;
+  height: 60rpx;
+  background-color: #f6f7f8;
+  border-radius: 20rpx;
+  margin: 0 20rpx;
+}
+
+.first {
+  margin-left: 0;
+}
+
+.action-container {
+  padding: 20rpx 20rpx;
+}
+
+.action-container > span {
+  color: grey;
+  font-size: 28rpx;
+}
+
+.action-container .body {
+  margin-top: 20rpx;
+}
+.action-box {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1rpx solid #000;
+  border-radius: 20rpx;
+  padding: 20rpx 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.action-box .right {
+  margin-left: auto;
+}
+
+.plus {
+  position: absolute;
+  bottom: 100rpx;
+  right: 100rpx;
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.map {
+  margin-top: 10rpx;
+  border-radius: 20rpx;
+  width: 100vw;
+  height: 65vh;
+}
+
+
+

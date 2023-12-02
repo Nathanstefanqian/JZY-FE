@@ -29,3 +29,8 @@
   background-color: rgba(235, 236, 237, 1);
 }
 
+.bg {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fd7753;
+}

@@ -102,8 +102,8 @@ Page({
       wx.showToast({ title: '已取消收藏' })
     }
     else { // 确认收藏
-      const res = await user_star.add({
-        data: { jobId: id, time: currentTime, type: 0 }
+      await user_star.add({
+        data: { jobId: id, time: currentTime, type: 2 }
       })
       this.setData({
         isStared: true

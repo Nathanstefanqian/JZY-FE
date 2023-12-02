@@ -4,7 +4,7 @@
 		<image src="{{ avatarUrl }}" mode="aspectFill" />
 		<view class="right" wx:if="{{ isLogin }}" bindtap="onPersonal">
 			<view class="top" bindtap="onPersonal">{{ name }}</view>
-			<view class="bottom">{{ major }} {{ grade }}</view>
+			<view class="bottom">{{ isTeacher ? '老师 · ' + school : '学生 · ' + major + " · " + grade }}</view>
 		</view>
 		<view class="right" wx:else>
 			<view class="top">点击登录/注册</view>

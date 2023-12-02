@@ -1,0 +1,165 @@
+header {
+  width: 100vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 160rpx;
+  padding-bottom: 40rpx;
+}
+
+.bg {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f6f7f8;
+  padding: 0 20rpx;
+}
+
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 4px #000;
+  border-radius: 20rpx;
+  padding: 40rpx 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.card .title {
+  font-size: 42rpx;
+}
+
+.card .price {
+  font-size: 36rpx;
+  color: red;
+}
+.row {
+  margin-bottom: 20rpx;
+}
+.row .top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.row .top image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+
+.row .top span {
+  font-size: 28rpx;
+  color: grey;
+}
+
+.row .bottom {
+  margin-left: 46rpx;
+  font-size: 28rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+}
+
+.card .box {
+  display: flex;
+}
+
+.card .box image {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 40rpx;
+}
+
+.card .box .right {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 0;
+  margin-left: 40rpx;
+}
+
+.card .box .right view {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.card .box .right view image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 20rpx;
+}
+
+.foot-layout {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 200rpx;
+  padding: 10rpx 20rpx;
+  background-color: #fff;
+}
+
+.foot {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  height: 120rpx;
+  padding: 10rpx 20rpx;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  width: 300rpx;
+  height: 90rpx;
+  background-color: #fd7753;
+  color: #fff;
+  margin-left: 40rpx;
+}
+
+.disabled {
+  background-color: grey;
+}
+
+.star image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.blank {
+  height: 200rpx;
+  width: 100vw;
+}
+
+.animate {
+  animation: scaleAnimation 1s infinite alternate;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 500rpx;
+  height: 50vh;
+  padding: 10rpx 20rpx;
+}
+
+.action-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes scaleAnimation {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}

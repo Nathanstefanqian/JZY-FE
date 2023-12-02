@@ -1,4 +1,0 @@
-<!--pages/setting/setting.wxml-->
-<view class="container">
-	<span bind:tap="onLogOut">退出登录</span>
-</view>

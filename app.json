@@ -1,9 +1,8 @@
 {
   "pages": [
     "pages/home1/home1",
+    "pages/test/test",
     "pages/edit/edit",
-    "pages/assign-success/assign-success",
-    "pages/assign/assign",
     "pages/cover/cover",
     "pages/my/my",
     "pages/search/index",
@@ -12,9 +11,12 @@
     "pages/star/star",
     "pages/resume/resume",
     "pages/state/state",
-    "pages/setting/setting",
     "pages/result/index",
-    "pages/proxy/proxy"
+    "pages/proxy/proxy",
+    "pages/takeaway/takeaway",
+    "pages/teacher-detail/teacher-detail",
+    "pages/takeaway-detail/takeaway-detail",
+    "pages/log/log"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,6 +37,12 @@
         "text": "找工作",
         "iconPath": "assets/home.png",
         "selectedIconPath": "assets/home-active.png"
+      },
+      {
+        "pagePath": "pages/takeaway/takeaway",
+        "text": "正在跑腿",
+        "iconPath": "assets/takeaway.png",
+        "selectedIconPath": "assets/takeaway-active.png"
       },
       {
         "pagePath": "pages/my/my",
@@ -82,7 +90,9 @@
   "requiredPrivateInfos": [
     "chooseAddress",
     "getLocation",
-    "chooseLocation"
+    "chooseLocation",
+    "startLocationUpdate",
+    "onLocationChange"
   ],
   "permission": {
     "scope.userLocation": {

@@ -2,7 +2,6 @@ const { jobRequire } = require('../../data/data')
 const user = wx.cloud.database().collection('user')
 const uploadFile = url => {
   const name = url.substring(url.lastIndexOf('/') + 1).toLowerCase()
-  console.log(name)
   return new Promise((resolve, reject) => {
     wx.cloud.uploadFile({
       cloudPath: `user/${name}`, // 文件名为临时文件的名称
@@ -28,9 +27,7 @@ Page({
       name: ''
     },
     personal: {
-      sex: '男',
       age: '',
-      id: ''
     },
     name: '',
     contact: {
@@ -53,7 +50,6 @@ Page({
     },
     experienceList: [],
     skillList: [],
-    skillFileUrl: [],
     photoUrl: [],
     minDate: 1577808000000,
     maxDate: new Date().getTime(),
@@ -79,7 +75,8 @@ Page({
     timeSelectShow: false,
     loading: true,
     isExperienceModify: false,
-    isSkillModify: false
+    isSkillModify: false,
+    isTeacher: ''
   },
   async onLoad() {
     wx.showLoading({
@@ -91,6 +88,7 @@ Page({
     res = res.data[0]
 
     this.setData({
+      isTeacher: res.isTeacher || 0,
       sex: res.sex,
       avatarUrl: res.avatarUrl || '',
       contact: res.contact || {},
@@ -102,18 +100,10 @@ Page({
       jobLookingFor: res.job ? res.job.isPeriod + ' ; ' + res.job.worktime + ' ; ' + res.job.workday + ' ; ' + res.job.workperiod + ' ; ' + res.job.name + ' ; ' : '点击添加你想要找的工作'
     }, () => wx.hideLoading())
   },
-  // 表单输入方法
-  onPersonalChange(e) {
-    let { personal } = this.data
-    const key = ['在校学生党']
-    const value = Number(e.detail)
-    personal.id = key[value]
-    this.setData({ personal })
-  },
   onAgeInput(e) {
     let { personal } = this.data
     personal.age = e.detail.value
-    this.setData({ personal: personal })
+    this.setData({ personal })
   },
   onJobNameInput(e) {
     this.setData({

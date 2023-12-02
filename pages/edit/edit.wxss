@@ -6,22 +6,11 @@
   align-items: center;
   padding: 0 46rpx;
   padding-top: 180rpx;
+  padding-bottom: 40rpx;
   box-sizing: border-box;
   position: relative;
-  background-image: linear-gradient(
-    180deg,
-    hsl(14deg 79% 65%) 0%,
-    hsl(14deg 82% 69%) 0%,
-    hsl(15deg 85% 73%) 0%,
-    hsl(15deg 89% 77%) 2%,
-    hsl(15deg 92% 81%) 5%,
-    hsl(15deg 96% 85%) 10%,
-    hsl(15deg 100% 89%) 18%,
-    hsl(15deg 100% 93%) 34%,
-    hsl(15deg 100% 96%) 75%,
-    hsl(0deg 0% 100%) 100%
-  )
-} 
+  background-color: #f9d8ca;
+}
 
 .head {
   width: 100%;
@@ -44,15 +33,19 @@
 
 .body {
   width: 100%;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
 }
 
 .box {
   box-sizing: border-box;
   padding: 20rpx 20rpx;
   border-radius: 20rpx;
-  margin: 40rpx 0;
+  margin: 20rpx 0; 
   background-color: #fff;
   padding-bottom: 0;
+  width: 100%; 
 }
 
 .box input {
@@ -61,22 +54,15 @@
   padding: 5rpx 10rpx;
   height: 96rpx;
 }
+
 .getUser {
   display: flex;
   align-items: center;
 }
-.getUser button {
-  margin-left: auto;
-  margin-right: 0;
-  font-size: 20rpx;
-  color: #FD7753;
+
+.van-ellipsis{
+  width: 300rpx;
+  background-color: #f9d8ca;
 }
 
-.action {
-  max-height: 300rpx;
-}
 
-.submit {
-  width: 100%;
-  margin-bottom: 50rpx;
-}

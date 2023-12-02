@@ -1,0 +1,15 @@
+/* pages/log/log.wxss */
+
+.log-container {
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 0 20rpx;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 2rpx solid #000;
+  border-radius: 20rpx;
+  padding: 20rpx 10rpx;
+  margin-top: 20rpx;
+}

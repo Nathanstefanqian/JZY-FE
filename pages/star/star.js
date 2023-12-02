@@ -8,9 +8,15 @@ const formatTime = (timeString) => {
     .replace(/\.\d+Z$/, ''); // 将小数点及 'Z' 删除
   return formattedTime;
 };
+/**
+ * 兼职 0
+ * 跑腿 1
+ * 家教 2
+ */
 Page({
   data: {
-    starList: []
+    starList: [],
+    countList: [0,0,0]
   },
   async onLoad() {
     wx.showLoading({
@@ -19,16 +25,17 @@ Page({
     })
     const openid = wx.getStorageSync('openid')
     const res = await user_star.where({ _openid: openid }).get()
+    let countList = [0,0,0]
     const starList = await Promise.all(res.data.map(async item => {
       const jobItem = await job.where({ _id: item.jobId }).get()
       const userItem = await user.where({ _id: item.openid }).get()
       item.job = jobItem.data[0]
       item.user = userItem.data[0]
       item.time = formatTime(item.time)
+      countList[item.type] += 1
       return item
     }))
-    console.log('1',starList)
-    this.setData({ starList },() => wx.hideLoading())
+    this.setData({ starList, countList },() => wx.hideLoading())
   },
   async onCancel(e) {
     wx.showModal({

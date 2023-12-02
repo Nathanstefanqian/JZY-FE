@@ -1,0 +1,2 @@
+<button bindtap="startRecordingLocation">测试</button>
+<map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" scale="16" show-location="true" style="width: 100%; height: 300px;"></map>

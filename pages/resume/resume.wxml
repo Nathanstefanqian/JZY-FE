@@ -15,9 +15,9 @@
 				<view class="bottom">
 					<span>{{ sex + '生'}}</span>
 					<span>·</span>
-					<span>{{ personal.age }}周岁</span>
+					<span>{{ personal.age }} 岁</span>
 					<span>·</span>
-					<span>在校学生党</span>
+					<span>{{ isTeacher ? '老师' : '学生'}}</span>
 				</view>
 			</view>
 		</view>
@@ -191,14 +191,6 @@
 			<span>年龄</span>
 			<view>
 				<input placeholder="请输入年龄（数字）" value="{{ age }}" bindinput="onAgeInput" />
-			</view>
-		</view>
-		<view class="box">
-			<span>身份</span>
-			<view>
-				<van-radio-group value="{{ personal }}" bind:change="onPersonalChange" direction="horizontal" data-radio="0">
-					<van-radio name="0">在校学生党</van-radio>
-				</van-radio-group>
 			</view>
 		</view>
 		<button bind:tap="onPersonalConfirm">确认</button>

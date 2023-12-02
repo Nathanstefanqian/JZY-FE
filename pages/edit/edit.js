@@ -1,6 +1,5 @@
 const { colleges, sex, grade } = require('../../data/data')
 const user = wx.cloud.database().collection('user')
-const user_job = wx.cloud.database().collection('user_job')
 const uploadFile = url => {
   const name = url.substring(url.lastIndexOf('/') + 1).toLowerCase()
   return new Promise((resolve, reject) => {
@@ -21,6 +20,8 @@ const uploadFile = url => {
 const { checkParams } = require('../../utils/util')
 Page({
   data: {
+    active: 0,
+    isTeacher: 0,
     show: false,
     index: 0,
     actions: [],
@@ -55,12 +56,17 @@ Page({
         phone: wx.getStorageSync('phone') || '',
         sex: wx.getStorageSync('sex') || '',
         school: wx.getStorageSync('school') || '',
+        isTeacher: wx.getStorageSync('isTeacher') || 0,
+        active: wx.getStorageSync('isTeacher') ? 1 : 0
       }, () => wx.hideLoading())
     }
     else { // 如果是注册的
       wx.hideLoading()
     }
   },
+  onChange(e) {
+    this.setData({ active: e.detail.index })
+  },  
 
   onClose() {
     this.setData({
@@ -148,6 +154,20 @@ Page({
       phone: value
     })
   },
+  onGetPhoneNumber(e) {
+    console.log(e)
+    const code = e.detail.code
+    wx.cloud.callFunction({
+        name: 'getPhoneNumber',
+        data: {
+            code
+        }
+    }).then(res => {
+      console.log(res)
+        // let phoneNumber = res.result.phoneInfo.phoneNumber
+        // console.log(phoneNumber)
+    })
+  },
 
   onGetUserInfo(e) {
     const rawData = JSON.parse(e.detail.rawData)
@@ -168,17 +188,22 @@ Page({
   },
 
   async onSubmit() {
-    const { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl } = this.data
+    let { name, grade, sex, schoolId, school, major, phone, avatarUrl,active } = this.data
+    if(avatarUrl == '../../assets/boy.svg') avatarUrl = ''
     wx.showLoading({
       title: '注册中', // 可自定义加载提示文字
       mask: true // 是否显示遮罩层
     })
-    const data = [nickName, avatarUrl, name, grade, sex, schoolId, school, major, phone]
-    let phoneNumberRegex = /^1([3456789])\d{9}$/;
-    console.log(avatarUrl)
+    let data = [ avatarUrl, name,sex, schoolId, school, phone]
+    if(!active) {
+      data.push(major)
+      data.push(grade) // 学生的话还多一个专业和年级
+    }
+
     for (let i = 0; i < data.length; i++) {
       if (!checkParams(data[i], i)) return // 判断是否为空
     }
+    let phoneNumberRegex = /^1([3456789])\d{9}$/;
     if (!phoneNumberRegex.test(phone)) {
       wx.showToast({
         title: '手机号不正确',
@@ -186,8 +211,15 @@ Page({
       })
       return
     }
-    const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl }
-    // 在需要显示加载中效果的地方调用
+    let obj = { name, grade, sex, schoolId, school, major, phone, avatarUrl }
+    if(!active) {
+      obj.grade = grade
+      obj.major = major
+      obj.isTeacher = 0
+    }
+    else {
+      obj.isTeacher = 1
+    }
     const that = this
     user.add({
       data: obj,
@@ -206,17 +238,23 @@ Page({
   },
 
   async onModify() {
-    const { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl } = this.data
+    const { name, grade, sex, schoolId, school, major, phone, avatarUrl, active } = this.data
     wx.showLoading({
       title: '修改中', // 可自定义加载提示文字
       mask: true // 是否显示遮罩层
     })
-    const data = [nickName, avatarUrl, name, grade, sex, schoolId, school, major, phone]
-    let phoneNumberRegex = /^1([3456789])\d{9}$/;
+    const data = [avatarUrl, name, sex, schoolId, school, phone]
+    let phoneNumberRegex = /^1([3456789])\d{9}$/
+    if(!active) {
+      data.push(major)
+      data.push(grade) // 学生的话还多一个专业和年级
+    }
 
+    // 验空
     for (let i = 0; i < data.length; i++) {
       if (!checkParams(data[i], i)) return;
     }
+    // 手机号码验证
     if (!phoneNumberRegex.test(phone)) {
       wx.showToast({
         title: '手机号不正确',
@@ -224,7 +262,12 @@ Page({
       })
       return
     }
-    const obj = { nickName, name, grade, sex, schoolId, school, major, phone, avatarUrl }
+    // 
+    let obj = { name,  sex, schoolId, school, phone, avatarUrl }
+    if(!active) {
+      obj.grade = grade
+      obj.major = major
+    }
     const openid = wx.getStorageSync('openid')
     const that = this
     // 在需要显示加载中效果的地方调用
@@ -235,7 +278,7 @@ Page({
         for (let key in obj) {
           wx.setStorageSync(key, obj[key])
         }
-        wx.showToast({ title: '修改成功' })
+        wx.showToast({ title: '修改成功' },() => that.onLoad())
         wx.setStorageSync('isLogin', true)
       }
     })

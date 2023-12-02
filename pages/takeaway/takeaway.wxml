@@ -1,0 +1,46 @@
+<!--pages/home/home.wxml-->
+<view class="bg">
+	<view class="head">正在跑腿</view>
+	<view class="job">
+		<span>{{ isTaken ? currentTakeaway.jobTitle : '暂无正在进行' }}</span>
+    <view class="btn" bindtap="onLog">
+			<span>跑腿记录</span>
+		</view>
+	</view>
+	<view class="main-container">
+		<van-tabs active="{{ active }}" color="#fd7753" animated>
+			<van-tab title="跑腿进度">
+        <view wx:if="{{ isTaken&& progress == 1 }}">
+          <view>当前任务：</view>
+          <view>请前往</view>
+          <view> {{ currentTakeaway.workPlace.address }}</view>
+          <view>{{  currentTakeaway.workPlace.name }}</view>
+          <view>拿快递</view>  
+        <button type="primary" bindtap="onIhaveTaken">我已拿到</button>
+        </view>
+        <view wx:if="{{ isTaken&&progress == 2 }}">
+          <view>当前任务：</view>
+          <view>请将快递送至</view>
+          <view> {{ currentTakeaway.destPlace.address }} </view>
+          <view>{{  currentTakeaway.destPlace.name }}</view>
+          <button type="primary" bindtap="onIhaveDelivered">我已送达</button>
+        </view>
+        <view wx:if="{{ isTaken&&progress == 3 }}">
+          <view>等待商家确定结束该订单后即可结束此订单</view>
+        </view>
+				<van-empty description="暂无待接单" wx:if="{{ !isTaken }}" />
+        <button bind:tap="onPhoneCalling" wx:else style="margin-top: 50rpx">拨打商家电话</button>
+			</van-tab>
+			<van-tab title="位置查看">
+				<van-empty description="当前未接单" wx:if="{{ !isTaken }}" />
+        <map id="myMap" wx:else class="map" latitude="{{ locationData.latitude }}" longitude="{{ locationData.longitude }}" markers="{{markers}}" show-location="{{true}}">
+        </map>
+			</van-tab>
+		</van-tabs>
+	</view>
+</view>
+<van-action-sheet show="{{ contactShow }}" title="联系方式" bind:close="onClose" bind:select="onSelect">
+	<view class="action-container">
+		<button style="width: 100%" bindtap="onClipboard">电话：{{ phone }}</button>
+	</view>
+</van-action-sheet>

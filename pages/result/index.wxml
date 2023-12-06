@@ -6,6 +6,7 @@
 		<view class="box" wx:for="{{ jobList }}" bindtap="onDetail" data-id="{{ item._id }}">
 			<view class="title">
 				<span>{{ item.jobTitle }}</span>
+        <van-tag type="success" style="margin-left: 20rpx">{{ item.isTeacher ? '家教' : '兼职' }}</van-tag>
 				<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
 			</view>
 			<view class="info">
@@ -16,8 +17,6 @@
 					</view>
 					<view class="business">
 						<image src="../../assets/person.svg" mode="aspectFit" />
-						<span>{{ item.user.verifyType }}</span>
-						<span>·</span>
 						<span>{{ item.user.name }}</span>
 					</view>
 				</view>

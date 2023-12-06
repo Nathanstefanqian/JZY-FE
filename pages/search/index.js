@@ -25,10 +25,7 @@ Page({
       }
     })
   },
-
-
-
-
+  
   handleSearch(e) {
     const { value } = e.detail
     if(!this.data.searchHistory.includes(value)) {

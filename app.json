@@ -85,7 +85,8 @@
     "van-datetime-picker": "./dist/datetime-picker/index",
     "van-empty": "./dist/empty/index",
     "van-tag": "./dist/tag/index",
-    "van-uploader": "./dist/uploader/index"
+    "van-uploader": "./dist/uploader/index",
+    "load-more": "./component/load-more/index"
   },
   "requiredPrivateInfos": [
     "chooseAddress",

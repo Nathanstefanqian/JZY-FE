@@ -1,86 +1,30 @@
 <!--pages/star/star.wxml-->
 <view class="container">
-  <van-tabs>
-      <van-tab title="兼职收藏">
-      	<view class="card-list">
-          <view class="card" wx:for="{{ starList }}" wx:if="{{ item.type == 0 }}" bindtap="onDetail" data-index="{{ item.jobId }}">
-            <view class="card-item1">
-              <view class="card-item1-avatar">
-                <image src="{{ item.user.avatarUrl }}" mode="aspectFill" />
-              </view>
-              <view class="card-item1-company">{{ item.user.name }}</view>
-            </view>
-            <view class="card-item2">
-              <view class="card-item2-title">{{ item.job.jobTitle }}</view>
-              <view class="card-item2-subtitle">
-                <span>{{item.job.workPlace.name}}</span>
-                <span>·</span>
-                <span>{{ item.job.work[3]}}</span>
-              </view>
-              <view class="row2"></view>
-              <view class="row3"></view>
-            </view>
-            <view class="card-item3">
-              <view bindtap="onCancel" data-id="{{ item.jobId }}" data-openid="{{ item._openid }}">取消收藏</view>
-              <span>{{ item.time }} 收藏</span>
-            </view>
-          </view>
+  <view class="card-list">
+    <view class="card" wx:for="{{ starList }}" data-index="{{ item.jobId }}" bindtap="onDetail" data-isTeacher="{{ item.isTeacher }}">
+      <view class="card-item1">
+        <view class="card-item1-avatar">
+          <image src="{{ item.user.avatarUrl }}" mode="aspectFill" />
         </view>
-	      <van-empty description="暂无收藏" wx:if="{{ !countList[0] }}" />
-      </van-tab>
-      <van-tab title="跑腿收藏">
-        <view class="card-list">
-          <view class="card" wx:for="{{ starList }}" wx:if="{{ item.type == 1 }}" bindtap="onDetail" data-index="{{ item.jobId }}">
-            <view class="card-item1">
-              <view class="card-item1-avatar">
-                <image src="{{ item.user.avatarUrl }}" mode="aspectFill" />
-              </view>
-              <view class="card-item1-company">{{ item.user.name }}</view>
-            </view>
-            <view class="card-item2">
-              <view class="card-item2-title">{{ item.job.jobTitle }}</view>
-              <view class="card-item2-subtitle">
-                <span>{{item.job.workPlace.name}}</span>
-                <span>·</span>
-                <span>{{ item.job.work[3]}}</span>
-              </view>
-              <view class="row2"></view>
-              <view class="row3"></view>
-            </view>
-            <view class="card-item3">
-              <view bindtap="onCancel" data-id="{{ item.jobId }}" data-openid="{{ item._openid }}">取消收藏</view>
-              <span>{{ item.time }} 收藏</span>
-            </view>
-          </view>
-	      <van-empty description="暂无收藏" wx:if="{{ !countList[1] }}" />
+        <view class="card-item1-company">{{ item.user.name }}</view>
+      </view>
+      <view class="card-item2">
+        <view class="card-item2-title">{{ item.job.jobTitle }}</view>
+        <van-tag type="success" wx:if="{{item.job.isTeacher}}" >家教</van-tag>
+        <van-tag type="warning" wx:else >兼职</van-tag>
+        <view class="card-item2-subtitle">
+          <span>{{item.job.workPlace.name}}</span>
+          <span>·</span>
+          <span>{{ item.job.work[3]}}</span>
         </view>
-      </van-tab>
-      <van-tab title="家教收藏">
-        <view class="card-list">
-          <view class="card" wx:for="{{ starList }}" wx:if="{{ item.type == 2 }}" bindtap="onDetail" data-index="{{ item.jobId }}">
-            <view class="card-item1">
-              <view class="card-item1-avatar">
-                <image src="{{ item.user.avatarUrl }}" mode="aspectFill" />
-              </view>
-              <view class="card-item1-company">{{ item.user.name }}</view>
-            </view>
-            <view class="card-item2">
-              <view class="card-item2-title">{{ item.job.jobTitle }}</view>
-              <view class="card-item2-subtitle">
-                <span>{{item.job.workPlace.name}}</span>
-                <span>·</span>
-                <span>{{ item.job.work[3]}}</span>
-              </view>
-              <view class="row2"></view>
-              <view class="row3"></view>
-            </view>
-            <view class="card-item3">
-              <view bindtap="onCancel" data-id="{{ item.jobId }}" data-openid="{{ item._openid }}">取消收藏</view>
-              <span>{{ item.time }} 收藏</span>
-            </view>
-          </view>
-        </view>
-	      <van-empty description="暂无收藏" wx:if="{{ !countList[2] }}" />
-      </van-tab>
-  </van-tabs>
+        <view class="row2"></view>
+        <view class="row3"></view>
+      </view>
+      <view class="card-item3">
+        <view bindtap="onCancel" data-id="{{ item.jobId }}" data-openid="{{ item._openid }}">取消收藏</view>
+        <span>{{ item.time }} 收藏</span>
+      </view>
+    </view>
+  </view>
+  <van-empty description="暂无收藏" wx:if="{{ !starList.length }}" />
 </view>

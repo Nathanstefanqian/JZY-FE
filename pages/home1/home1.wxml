@@ -11,107 +11,106 @@
 			</view>
 		</view>
 		<view class="search">
-			<view class="location" bindtap="onChooseLocation">{{ location }}</view>
+			<view class="location" bindtap="onChooseLocation">{{ loc.name ? loc.name : location }}</view>
 			<van-search placeholder="请输入搜索关键词" shape="round" disabled background="#FD7753" style="margin-left: auto" bindtap="onSearch" />
 		</view>
 	</view>
 	<view class="container">
-		<van-tabs active="{{ active }}" color="#FD7753" custom-style="tab">
+		<van-tabs active="{{ active }}" color="#FD7753" custom-style="tab" bind:change="handleTabs">
 			<van-tab title="我要兼职">
 				<view class="head">
 					<span>精选兼职</span>
-					<van-tag type="warning" style="margin-left: auto" bindtap="onScreenOut">筛选</van-tag>
+					<van-tag type="warning" style="margin-left: auto" bindtap="onScreenOut">{{ actions[sortMethod].name }}</van-tag>
 				</view>
-				<view class="overflow">
-					<view class="body">
-						<view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index" wx:if="{{ item.state == 0 && item.isTeacher == 0 }}">
-							<view class="title">
-								<span>{{ item.jobTitle  }}</span>
-								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
-							</view>
-							<view class="info">
-								<view class="left">
-									<view class="location">
-										<image src="../../assets/location.svg" mode="aspectFit" />
-										{{ item.distance }}千米 | {{ item.workPlace.address }}
-									</view>
-									<view class="business">
-										<image src="../../assets/person.svg" mode="aspectFit" />
-										<span>{{ item.user.name }}</span>
-									</view>
-								</view>
-								<view class="right">
-									<view class="btn"></view>
-								</view>
-							</view>
-						</view>
-					</view>
-          <van-empty description="暂无兼职" wx:if="{{ !countList[0] }}" />
-				</view>
+        <scroll-view class="overflow body" scroll-y="true" bindscroll="handleScroll" data-index="0">
+          <view class="box" wx:for="{{ job }}" bindtap="onDetail" data-id="{{ item._id }}" wx:key="index">
+            <view class="title">
+              <span>{{ item.jobTitle  }}</span>
+              <view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
+            </view>
+            <view class="info">
+              <view class="left">
+                <view class="location">
+                  <image src="../../assets/location.svg" mode="aspectFit" />
+                  {{ item.distance }}千米 | {{ item.workPlace.address }}
+                </view>
+                <view class="business">
+                  <image src="../../assets/person.svg" mode="aspectFit" />
+                  <span>{{ item.user.name }}</span>
+                </view>
+              </view>
+              <view class="right">
+                <view class="btn"></view>
+              </view>
+            </view>
+          </view>
+          <load-more status="{{ status }}"></load-more>
+          <van-empty description="暂无兼职" wx:if="{{ !job.length }}" />
+        </scroll-view>
 			</van-tab>
+
 			<van-tab title="我要跑腿">
-        <view class="head">
-					<span>跑腿推荐</span>
-					<van-tag type="warning" style="margin-left: auto" bindtap="onScreenOut">筛选</van-tag>
+				<view class="head">
+					<span>精选兼职</span>
+					<van-tag type="warning" style="margin-left: auto" bindtap="onScreenOut">{{ actions[sortMethod].name }}</van-tag>
 				</view>
-				<view class="overflow">
-          <view class="body">
-						<view class="box" wx:for="{{ takeawayList }}" wx:if="{{ item.state == 0 }}" bindtap="onTakeAwayDetail" data-id="{{ item._id }}" wx:key="index">
-							<view class="title">
-								<span>{{ item.jobTitle  }}</span>
-								<view class="price">{{ item.salaryEnd + '元' }}</view>
-							</view>
-							<view class="info">
-								<view class="left">
-									<view class="location">
-										<image src="../../assets/location.svg" mode="aspectFit" />
-										{{ item.distance }}千米 | {{ item.workPlace.address }}
-									</view>
-									<view class="business">
-										<image src="../../assets/person.svg" mode="aspectFit" />
-										<span>{{ item.user.name }}</span>
-									</view>
-								</view>
-								<view class="right">
-									<view class="btn"></view>
-								</view>
-							</view>
-						</view>
-					</view>
-          <van-empty description="暂无跑腿" wx:if="{{ !countList[2] }}" />
-				</view>
+        <scroll-view class="overflow body" scroll-y="true" bindscroll="handleScroll" data-index="1">
+          <view class="box" wx:for="{{ takeawayList }}" bindtap="onTakeAwayDetail" data-id="{{ item._id }}" wx:key="index">
+            <view class="title">
+              <span>{{ item.jobTitle  }}</span>
+              <view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
+            </view>
+            <view class="info">
+              <view class="left">
+                <view class="location">
+                  <image src="../../assets/location.svg" mode="aspectFit" />
+                  {{ item.distance }}千米 | {{ item.workPlace.address }}
+                </view>
+                <view class="business">
+                  <image src="../../assets/person.svg" mode="aspectFit" />
+                  <span>{{ item.user.name }}</span>
+                </view>
+              </view>
+              <view class="right">
+                <view class="btn"></view>
+              </view>
+            </view>
+          </view>
+          <load-more status="{{ status }}"></load-more>
+          <van-empty description="暂无跑腿" wx:if="{{ !takeawayList.length }}" />
+        </scroll-view>
 			</van-tab>
+
 			<van-tab title="我要家教">
-        <view class="head">
+				<view class="head">
 					<span>精选家教</span>
-					<van-tag type="warning" style="margin-left: auto" bindtap="onScreenOut">筛选</van-tag>
+					<van-tag type="warning" style="margin-left: auto" bindtap="onScreenOut">{{ actions[sortMethod].name }}</van-tag>
 				</view>
-				<view class="overflow">
-          <view class="body">
-						<view class="box" wx:for="{{ job }}" bindtap="onTeacherDetail" data-id="{{ item._id }}" wx:key="index" wx:if="{{ item.state == 0 && item.isTeacher == 1 }}">
-							<view class="title">
-								<span>{{ item.jobTitle  }}</span>
-								<view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
-							</view>
-							<view class="info">
-								<view class="left">
-									<view class="location">
-										<image src="../../assets/location.svg" mode="aspectFit" />
-										{{ item.distance }}千米 | {{ item.workPlace.address }}
-									</view>
-									<view class="business">
-										<image src="../../assets/person.svg" mode="aspectFit" />
-										<span>{{ item.user.name }}</span>
-									</view>
-								</view>
-								<view class="right">
-									<view class="btn"></view>
-								</view>
-							</view>
-						</view>
-					</view>
-          <van-empty description="暂无家教" wx:if="{{ !countList[1] }}" />
-				</view>
+        <scroll-view class="overflow body" scroll-y="true" bindscroll="handleScroll" data-index="2">
+          <view class="box" wx:for="{{ homeList }}" bindtap="onTeacherDetail" data-id="{{ item._id }}" wx:key="index">
+            <view class="title">
+              <span>{{ item.jobTitle  }}</span>
+              <view class="price">{{ item.salaryEnd + item.select.selectTime }}</view>
+            </view>
+            <view class="info">
+              <view class="left">
+                <view class="location">
+                  <image src="../../assets/location.svg" mode="aspectFit" />
+                  {{ item.distance }}千米 | {{ item.workPlace.address }}
+                </view>
+                <view class="business">
+                  <image src="../../assets/person.svg" mode="aspectFit" />
+                  <span>{{ item.user.name }}</span>
+                </view>
+              </view>
+              <view class="right">
+                <view class="btn"></view>
+              </view>
+            </view>
+          </view>
+          <load-more status="{{ status }}"></load-more>
+          <van-empty description="暂无家教" wx:if="{{ !homeList.length }}" />
+        </scroll-view>
 			</van-tab>
 		</van-tabs>
 	</view>

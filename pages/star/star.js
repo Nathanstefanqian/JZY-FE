@@ -15,9 +15,9 @@ const formatTime = (timeString) => {
  */
 Page({
   data: {
-    starList: [],
-    countList: [0,0,0]
+    starList: []
   },
+
   async onLoad() {
     wx.showLoading({
       title: '加载中',
@@ -25,18 +25,18 @@ Page({
     })
     const openid = wx.getStorageSync('openid')
     const res = await user_star.where({ _openid: openid }).get()
-    let countList = [0,0,0]
-    const starList = await Promise.all(res.data.map(async item => {
+    let starList = []
+    await Promise.all(res.data.map(async item => {
       const jobItem = await job.where({ _id: item.jobId }).get()
       const userItem = await user.where({ _id: item.openid }).get()
       item.job = jobItem.data[0]
       item.user = userItem.data[0]
       item.time = formatTime(item.time)
-      countList[item.type] += 1
-      return item
+      if(item.job.state == 0) starList.push(item)
     }))
-    this.setData({ starList, countList },() => wx.hideLoading())
+    this.setData({ starList },() => wx.hideLoading())
   },
+
   async onCancel(e) {
     wx.showModal({
       title: '提示',
@@ -55,11 +55,17 @@ Page({
       }
     })
   },
+
   onDetail(e) {
-    const { index } = e.currentTarget.dataset
-    console.log(index)
-    wx.navigateTo({
-      url: `../detail/detail?id=${index}`
-    })
+    const { index, isTeacher } = e.currentTarget.dataset
+    if(isTeacher) {
+      wx.navigateTo({
+        url: `../teacher-detail/teacher-detail?id=${index}`
+      })
+    } else {
+      wx.navigateTo({
+        url: `../detail/detail?id=${index}`
+      })
+    }
   }
 })

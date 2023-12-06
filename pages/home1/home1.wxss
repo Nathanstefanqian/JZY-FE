@@ -148,6 +148,6 @@
 
 .overflow {
   width: 100%;
-  height: 1000rpx;
+  height: 60vh;
   overflow-y: scroll;
 }

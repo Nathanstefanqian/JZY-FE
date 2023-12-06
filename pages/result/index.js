@@ -21,7 +21,8 @@ Page({
         jobTitle: db.RegExp({
           regexp: '.*' + keyword + '.*', // 使用正则表达式进行模糊搜索
           options: 'i' // 设置为不区分大小写
-        })
+        }),
+        state: 0
       })
       .get()
     const jobList = await Promise.all(res.data.map(async item => {

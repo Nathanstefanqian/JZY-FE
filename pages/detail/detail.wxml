@@ -73,9 +73,8 @@
 		<view class="star" bind:tap="onStar" wx:else>
 			<image src="../../assets/star-active.svg" mode="aspectFit" />
 		</view>
-		<view class="btn">电话沟通</view>
-		<view class="btn disabled" wx:if="{{ isRegistered }}">已报名</view>
-		<view class="btn animate" bindtap="onContact" wx:else>立即报名</view>
+		<view class="btn disabled" style="margin-left: auto" wx:if="{{ isRegistered }}">已报名</view>
+		<view class="btn animate" style="margin-left: auto" bindtap="onContact" wx:else>立即报名</view>
 	</view>
 </view>
 <van-popup show="{{ show }}" bind:close="onClose" round>

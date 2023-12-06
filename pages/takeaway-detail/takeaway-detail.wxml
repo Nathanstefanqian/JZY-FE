@@ -67,12 +67,6 @@
 </view>
 <view class="foot-layout">
 	<view class="foot">
-		<view class="star" bind:tap="onStar" wx:if="{{ !isStared }}">
-			<image src="../../assets/star.svg" mode="aspectFit" />
-		</view>
-		<view class="star" bind:tap="onStar" wx:else>
-			<image src="../../assets/star-active.svg" mode="aspectFit" />
-		</view>
 		<view class="btn disabled" style="margin-left: auto" wx:if="{{ isRegistered }}">目前已有接单</view>
 		<view class="btn animate" bindtap="onContact" style="margin-left: auto" wx:else>立即接单</view>
 	</view>

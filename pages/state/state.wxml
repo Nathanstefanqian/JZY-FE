@@ -3,7 +3,7 @@
 	<van-tab title="待录取">
 		<view class="bg">
 			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 0 }}" wx:key="index">
-				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
+				<view class="row1"  data-id="{{ item.job._id }}">
 					<view class="title">
 						<span>{{ item.job.jobTitle }}</span>
 						<span>| {{ item.job.workPlace.name }}</span>
@@ -14,6 +14,7 @@
 				</view>
 				<view class="row2">
           <van-tag type="warning">待录取</van-tag>
+          <van-tag type="warning" style="margin-left: 20rpx">{{ item.job.isTeacher ? '家教' : '兼职' }}</van-tag>
 					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
@@ -24,7 +25,7 @@
 	<van-tab title="已初筛">
 		<view class="bg">
 			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 1 }}" wx:key="index">
-				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
+				<view class="row1"  data-id="{{ item.job._id }}">
 					<view class="title">
 						<span>{{ item.job.jobTitle }}</span>
 						<span>{{ item.job.workPlace.name }}</span>
@@ -35,6 +36,7 @@
 				</view>
 				<view class="row2">
           <van-tag type="primary">已初筛</van-tag>
+          <van-tag type="warning" style="margin-left: 20rpx">{{ item.job.isTeacher ? '家教' : '兼职' }}</van-tag>
 					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
@@ -45,7 +47,7 @@
 	<van-tab title="已录取">
 		<view class="bg">
 			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 2 }}" wx:key="index">
-				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
+				<view class="row1"  data-id="{{ item.job._id }}">
 					<view class="title">
 						<span>{{ item.job.jobTitle }}</span>
 						<span>{{ item.job.workPlace.name }}</span>
@@ -56,6 +58,7 @@
 				</view>
 				<view class="row2">
 					<van-tag type="success">已录取</van-tag>
+          <van-tag type="warning" style="margin-left: 20rpx">{{ item.job.isTeacher ? '家教' : '兼职' }}</van-tag>
 					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
@@ -66,7 +69,7 @@
 	<van-tab title="已拒绝">
 		<view class="bg">
 			<view class="card" wx:for="{{ stateList }}" wx:if="{{ item.state == 3 }}" wx:key="index">
-				<view class="row1" bindtap="onCardClick" data-id="{{ item.job._id }}">
+				<view class="row1"  data-id="{{ item.job._id }}">
 					<view class="title">
 						<span>{{ item.job.jobTitle }}</span>
 						<span>{{ item.job.workPlace.name }}</span>
@@ -77,6 +80,7 @@
 				</view>
 				<view class="row2">
           <van-tag type="danger">已拒绝</van-tag>
+          <van-tag type="warning" style="margin-left: 20rpx">{{ item.job.isTeacher ? '家教' : '兼职' }}</van-tag>
 					<view class="btn" bindtap="onContact" data-item="{{ item.job }}">联系商家</view>
 				</view>
 			</view>
